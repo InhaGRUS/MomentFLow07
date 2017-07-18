@@ -9,5 +9,11 @@ public enum HumanType
 	NPC
 }
 
+public enum EquipWeaponType
+{
+	Gun,
+	MeleeWeapon
+}
+
 public class EnumPool {
 }

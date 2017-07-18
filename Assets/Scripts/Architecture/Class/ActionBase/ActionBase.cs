@@ -5,9 +5,8 @@ using UnityEngine;
 public abstract class ActionBase : MonoBehaviour {
 	public bool nowActivated = false;
 	public Actor actor;
-	public string[] bodyAnimationTriggerName;
-	public string[] shoulderAnimationTriggerName;
-	public List<ActionBase> canTransitionActionList;
+	public List<AnimationSet> setAnimationTriggerName;
+	public int animationIndex = -1;
 
 	// Use this for initialization
 	protected void Start () {
@@ -20,18 +19,9 @@ public abstract class ActionBase : MonoBehaviour {
 
 	protected abstract void BeforeTransitionAction (); // Transition이 시작되기 전 무조건적으로 실행됨 
 
-	protected void TransitionAction ()
+	protected virtual IEnumerator TransitionAction ()
 	{
-		for (int i = canTransitionActionList.Count - 1; i >= 0; i--)
-		{
-			if (canTransitionActionList [i].IsSatisfiedToAction())
-			{
-				actor.nowAction = canTransitionActionList [i];
-				break;
-			}
-		}
-		BeforeTransitionAction ();
-		CancelSpecifiedAction ();
+		yield return null;
 	}
 
 	public abstract void DoSpecifiedAction ();
@@ -42,16 +32,15 @@ public abstract class ActionBase : MonoBehaviour {
 	{
 		if (IsSatisfiedToAction ()) {
 			DoSpecifiedAction ();
-			TransitionAction ();
+			if (CanTransition())
+				StartCoroutine (TransitionAction ());
 		} else {
 			if (CanTransition ()) {
 				CancelSpecifiedAction();
-				BeforeTransitionAction ();
-				TransitionAction ();
+				StartCoroutine (TransitionAction ());
 			} else {
 				CancelSpecifiedAction();
 			}
 		}
 	}
-
 }

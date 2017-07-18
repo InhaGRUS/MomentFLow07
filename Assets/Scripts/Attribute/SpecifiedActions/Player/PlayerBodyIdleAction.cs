@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleAction : ActionBase {
-
-	public int animationIndex = -1;
+public class PlayerBodyIdleAction : BodyActionBase {
+	public KeyCode crouchKey = KeyCode.C;
 
 	// Use this for initialization
 	protected new void Start () {
@@ -24,7 +23,9 @@ public class PlayerIdleAction : ActionBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (Input.GetAxis ("Horizontal") == 0)
+		if (Input.GetAxis ("Horizontal") == 0 && Input.GetAxis ("Vertical") == 0 &&
+			!actor.stateInfo.isCrouhcing
+		)
 		{
 			return true;
 		}
@@ -33,21 +34,15 @@ public class PlayerIdleAction : ActionBase {
 
 	protected override void BeforeTransitionAction ()
 	{
-
+		nowActivated = false;
 	}
 
 	public override void DoSpecifiedAction ()
 	{
-		if (animationIndex == -1) {
-			if (actor.useShoulder) {
-				animationIndex = Random.Range (0, shoulderAnimationTriggerName.Length - 1);
-			} else {
-				animationIndex = Random.Range (shoulderAnimationTriggerName.Length - 1, bodyAnimationTriggerName.Length - 1);
-			}
-		} else {
-			actor.bodyAnimator.SetTrigger (bodyAnimationTriggerName[animationIndex]);
-			actor.shoulderAnimator.SetTrigger (shoulderAnimationTriggerName[animationIndex]);
-		}
+		SetAnimationTrigger ();
+
+		if (Input.GetKeyDown (crouchKey))
+			actor.stateInfo.isCrouhcing = true;
 
 		nowActivated = true;
 	}

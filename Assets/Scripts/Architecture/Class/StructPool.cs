@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StructPool : MonoBehaviour {
+[System.Serializable]
+public struct AnimationSet
+{
 
-	// Use this for initialization
-	void Start () {
-		
+	public string bodyAnimationName;
+	public string shoulderAnimationName;
+
+	public AnimationSet (string bodyName, string shoulderName)
+	{
+		bodyAnimationName = bodyName;
+		shoulderAnimationName = shoulderName;
 	}
+}
+
+public class StructPool  {
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

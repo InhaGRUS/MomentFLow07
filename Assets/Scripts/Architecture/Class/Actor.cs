@@ -18,7 +18,8 @@ public class Actor : DynamicObject {
 	public Animator shoulderAnimator;
 
 	public ActionBase[] actions;
-	public ActionBase nowAction;
+	public ActionBase nowBodyAction;
+	public ActionBase nowShoulderAction;
 
 	public SpecificActorStateInfo stateInfo;
 
@@ -34,15 +35,16 @@ public class Actor : DynamicObject {
 	// Update is called once per frame
 	protected new void Update () {
 		base.Update ();
-
-		nowAction.TryAction ();
-
+		if (null != nowBodyAction)
+			nowBodyAction.TryAction ();
+		Debug.Log ("Try Body");
+		if (null != nowShoulderAction)
+			nowShoulderAction.TryAction ();
 	}
 
 	private void FixedUpdate ()
 	{
 		actorVelocity = actorRigid.velocity;
-
 	}
 
 	public void SetLookDirection (bool toLeft)
@@ -105,7 +107,7 @@ public class Actor : DynamicObject {
 
 	public override void SaveObject ()
 	{
-		throw new System.NotImplementedException ();
+		
 	}
 
 	public override void LoadObject ()
