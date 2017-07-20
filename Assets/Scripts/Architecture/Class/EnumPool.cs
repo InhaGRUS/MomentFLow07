@@ -9,6 +9,13 @@ public enum HumanType
 	NPC
 }
 
+public enum AnimationStateInfoEnum
+{
+	Enter,
+	Progress,
+	Exit
+}
+
 public enum EquipWeaponType
 {
 	Gun,

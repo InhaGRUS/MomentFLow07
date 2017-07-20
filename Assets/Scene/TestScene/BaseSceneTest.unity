@@ -39,7 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 1683134517039983843, guid: 0000000000000000d000000000000000,
     type: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.64691734, g: 0.69839656, b: 0.74844277, a: 1}
+  m_IndirectSpecularColor: {r: 0.6470464, g: 0.69853514, b: 0.7485796, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4254495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7576b269efae5d8449f982dd8ff835cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b4b5684feed5f4429ace4c9dd6b5405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   aimStartPoint: {fileID: 656531863}
   aimState: 0
   maxGunAimDistance: 20
-  lineRenderer: {fileID: 0}
+  lineRenderer: {fileID: 4254498}
   aimColorFadeInDuration: 0.25
   aimColorFadeOutDurtaion: 0.25
   timer: 0
@@ -316,33 +316,60 @@ MonoBehaviour:
     damage: 0
     attackDelay: 0
   nowEquipWeaponType: 0
---- !u!84 &136623738
-RenderTexture:
+--- !u!1 &85422618
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 85422619}
+  - component: {fileID: 85422620}
+  m_Layer: 0
+  m_Name: CrouchStandupAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85422619
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85422618}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1520083718}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &85422620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85422618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07aa64b547aa7e47b2cc9824bb49266, type: 3}
   m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
+  m_EditorClassIdentifier: 
+  nowActivated: 0
+  actor: {fileID: 0}
+  setAnimationTriggerName:
+  - bodyAnimationName: TriggerStandup
+    shoulderAnimationName: TriggerStandup
+  animationIndex: -1
+  canTransition: 1
+  canTransitionActionList:
+  - {fileID: 549094674}
+  - {fileID: 1852713784}
+  - {fileID: 485703320}
+  bodyOnlyAnimationTriggerName:
+  - TriggerStandup
+  standUpKey: 99
 --- !u!1 &149699439
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,14 +757,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 485703318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5bdbf2a47039b6489a6d5be7230b11e, type: 3}
+  m_Script: {fileID: 11500000, guid: 41ca843e09775e343b67dacf0f04b4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerRun01
-    shoulderAnimationName: TriggerRun01
+  - bodyAnimationName: TriggerRun
+    shoulderAnimationName: TriggerRun
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
@@ -745,15 +772,9 @@ MonoBehaviour:
   - {fileID: 1852713784}
   - {fileID: 485703320}
   - {fileID: 1468194096}
-  - {fileID: 486006901}
-  - {fileID: 514537005}
   bodyOnlyAnimationTriggerName:
   - TriggerRun
-  crouchKey: 99
   runKey: 304
-  accel: 2000
-  maxRunSpeed: 1.2
-  runDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &486006899
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,83 +812,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 486006899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 524f203ee562a2441a13d88228b1e6d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 182a61ec31a30634fa2d328341da800c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerCrouchWalk01
-    shoulderAnimationName: TriggerCrouchWalk01
+  - bodyAnimationName: TriggerCrouchWalk
+    shoulderAnimationName: TriggerCrouchWalk
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
-  - {fileID: 549094674}
-  - {fileID: 1852713784}
-  - {fileID: 485703320}
   - {fileID: 1468194096}
   - {fileID: 486006901}
+  - {fileID: 85422620}
   bodyOnlyAnimationTriggerName:
   - TriggerCrouchWalk
   standUpKey: 99
   accel: 500
-  maxWalkSpeed: 2
+  maxWalkSpeed: 0.3
   walkDirection: {x: 0, y: 0, z: 0}
---- !u!1 &514537003
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 514537004}
-  - component: {fileID: 514537005}
-  m_Layer: 0
-  m_Name: TurnIdleAction
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &514537004
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 514537003}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1520083718}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &514537005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 514537003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 973ac93e71aa46241b072a24fc5c9134, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowActivated: 0
-  actor: {fileID: 0}
-  setAnimationTriggerName:
-  - bodyAnimationName: TriggerTurnIdle01
-    shoulderAnimationName: TriggerTurnIdle01
-  animationIndex: -1
-  canTransition: 1
-  canTransitionActionList:
-  - {fileID: 549094674}
-  - {fileID: 1852713784}
-  - {fileID: 485703320}
-  - {fileID: 1468194096}
-  - {fileID: 514537005}
-  bodyOnlyAnimationTriggerName: []
-  turnFinish: 0
 --- !u!1 &549094673
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,14 +856,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 549094673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a48df8c78ce86f4eb97f378efe1062c, type: 3}
+  m_Script: {fileID: 11500000, guid: d3f9de19acf88bb45af4549374a12229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerIdle01
-    shoulderAnimationName: TriggerIdle01
+  - bodyAnimationName: TriggerIdle
+    shoulderAnimationName: TriggerIdle
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
@@ -907,11 +871,8 @@ MonoBehaviour:
   - {fileID: 1852713784}
   - {fileID: 485703320}
   - {fileID: 1468194096}
-  - {fileID: 486006901}
-  - {fileID: 514537005}
   bodyOnlyAnimationTriggerName:
   - TriggerIdle
-  crouchKey: 99
 --- !u!4 &549094675
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1067,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 136623738}
+  RainRipplesRenderTexture: {fileID: 938489958}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -1322,6 +1283,8 @@ MonoBehaviour:
   - {fileID: 0}
   nowBodyAction: {fileID: 0}
   nowShoulderAction: {fileID: 0}
+  nowBodyAnimationName: 
+  nowShoulderAnimationName: 
   stateInfo:
     isHiding: 0
     isCrouhcing: 0
@@ -4694,6 +4657,33 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+--- !u!84 &938489958
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1041733044
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,20 +4968,11 @@ MonoBehaviour:
   useShoulder: 1
   bodyAnimator: {fileID: 149699443}
   shoulderAnimator: {fileID: 2061424890}
-  actions:
-  - {fileID: 549094674}
-  - {fileID: 1852713784}
-  - {fileID: 485703320}
-  - {fileID: 1468194096}
-  - {fileID: 486006901}
-  - {fileID: 514537005}
-  - {fileID: 1461248398}
-  - {fileID: 1425304974}
-  - {fileID: 1431142470}
-  - {fileID: 4254497}
-  - {fileID: 2084058842}
+  actions: []
   nowBodyAction: {fileID: 549094674}
   nowShoulderAction: {fileID: 1461248398}
+  nowBodyAnimationName: 
+  nowShoulderAnimationName: 
   stateInfo:
     isHiding: 0
     isCrouhcing: 0
@@ -5052,7 +5033,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1425304972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82d469984d1a7964dabf05e1b7f9ba7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 245bd3ab751eeb24a83f52da350d7a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
@@ -5104,7 +5085,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431142468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdad71a8befef9b4595d0f09b26ece6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b71de47a00f21740891d925b3188744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
@@ -5156,7 +5137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1461248396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633e4e44f3725f647bbc6f0e5baa4281, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d537a0ab0a0f4848920534041b9a2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
@@ -5208,14 +5189,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1468194094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 419e20e949d91984a91e31ffc082ea15, type: 3}
+  m_Script: {fileID: 11500000, guid: c3bddc8d11397fe4b9530b1f58c6302d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerCrouch01
-    shoulderAnimationName: TriggerCrouch01
+  - bodyAnimationName: TriggerCrouchIdle
+    shoulderAnimationName: TriggerCrouchIdle
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
@@ -5224,9 +5205,10 @@ MonoBehaviour:
   - {fileID: 485703320}
   - {fileID: 1468194096}
   - {fileID: 486006901}
+  - {fileID: 85422620}
   bodyOnlyAnimationTriggerName:
-  - TriggerCrouch
-  standUpKey: 99
+  - TriggerCrouchIdle
+  crouchKey: 99
 --- !u!1 &1484314813
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,7 +5562,7 @@ Transform:
   - {fileID: 485703319}
   - {fileID: 1468194095}
   - {fileID: 486006900}
-  - {fileID: 514537004}
+  - {fileID: 85422619}
   m_Father: {fileID: 1953211483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5850,14 +5832,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1852713783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1baed36c3df7dd54cac65b609a9d0dc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 81e7577afbcf8fd4e8251368745025f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerWalk01
-    shoulderAnimationName: TriggerWalk01
+  - bodyAnimationName: TriggerWalk
+    shoulderAnimationName: TriggerWalk
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
@@ -5865,14 +5847,8 @@ MonoBehaviour:
   - {fileID: 1852713784}
   - {fileID: 485703320}
   - {fileID: 1468194096}
-  - {fileID: 486006901}
-  - {fileID: 514537005}
   bodyOnlyAnimationTriggerName:
   - TriggerWalk
-  crouchKey: 99
-  accel: 500
-  maxWalkSpeed: 0.5
-  walkDirection: {x: 0, y: 0, z: 0}
 --- !u!4 &1852713785
 Transform:
   m_ObjectHideFlags: 0
@@ -6319,7 +6295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2084058840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd42cd8b98c8cad49981ccc419dd2f6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4209335251ace7247b2a37f1f3bdc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0

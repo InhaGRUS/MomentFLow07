@@ -17,9 +17,12 @@ public class Actor : DynamicObject {
 	public Animator bodyAnimator;
 	public Animator shoulderAnimator;
 
-	public ActionBase[] actions;
-	public ActionBase nowBodyAction;
-	public ActionBase nowShoulderAction;
+	public AnimationCheckerBase[] actions;
+	public AnimationCheckerBase nowBodyAction;
+	public AnimationCheckerBase nowShoulderAction;
+
+	public string nowBodyAnimationName;
+	public string nowShoulderAnimationName;
 
 	public SpecificActorStateInfo stateInfo;
 
@@ -30,6 +33,8 @@ public class Actor : DynamicObject {
 		outsideInfo = GetComponentInChildren <OutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
 		actorRigid = GetComponent<Rigidbody> ();
+
+		actions = GetComponentsInChildren<AnimationCheckerBase> ();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +42,7 @@ public class Actor : DynamicObject {
 		base.Update ();
 		if (null != nowBodyAction)
 			nowBodyAction.TryAction ();
-		Debug.Log ("Try Body");
+
 		if (null != nowShoulderAction)
 			nowShoulderAction.TryAction ();
 	}
@@ -91,7 +96,7 @@ public class Actor : DynamicObject {
 		return null;
 	}
 
-	public T GetSpecificAction <T> () where T : ActionBase
+	public T GetSpecificAction <T> () where T : AnimationCheckerBase
 	{
 		for (int i = 0; i < actions.Length; i++)
 		{
