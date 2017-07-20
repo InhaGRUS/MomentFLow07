@@ -8,6 +8,8 @@ public abstract class ActionBase : MonoBehaviour {
 	public List<AnimationSet> setAnimationTriggerName;
 	public int animationIndex = -1;
 
+	public bool canTransition = true;
+
 	// Use this for initialization
 	protected void Start () {
 		actor = GetComponentInParent<Actor> ();

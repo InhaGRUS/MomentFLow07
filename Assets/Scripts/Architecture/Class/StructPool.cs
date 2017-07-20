@@ -16,6 +16,17 @@ public struct AnimationSet
 	}
 }
 
+[System.Serializable]
+public struct AimLinePoints
+{
+	public List<Vector3> points;
+
+	public AimLinePoints (List<Vector3> points)
+	{
+		this.points = points;
+	}
+}
+
 public class StructPool  {
 	
 }

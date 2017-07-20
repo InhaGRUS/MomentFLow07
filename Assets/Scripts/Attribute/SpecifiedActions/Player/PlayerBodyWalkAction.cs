@@ -72,10 +72,13 @@ public class PlayerBodyWalkAction : BodyActionBase {
 			if (Input.GetAxis ("Vertical") > 0) {
 				walkDirection.z = 1;
 			}
-		walkDirection = walkDirection.normalized;
+
+		walkDirection =	walkDirection.normalized;
+
 		float tmpMaxWalkSpeedX = Mathf.Abs (maxWalkSpeed * walkDirection.x);
 		float tmpMaxWalkSpeedZ = Mathf.Abs (maxWalkSpeed * walkDirection.z);
 		actor.actorRigid.AddForce (walkDirection * accel * actor.customDeltaTime, ForceMode.Force);
 		actor.actorRigid.velocity = new Vector3 (Mathf.Clamp (actor.actorRigid.velocity.x, -tmpMaxWalkSpeedX, tmpMaxWalkSpeedX), actor.actorRigid.velocity.y, Mathf.Clamp (actor.actorRigid.velocity.z, -tmpMaxWalkSpeedZ, tmpMaxWalkSpeedZ));
+		walkDirection = Vector3.zero;
 	}
 }

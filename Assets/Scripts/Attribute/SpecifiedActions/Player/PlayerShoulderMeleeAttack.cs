@@ -7,6 +7,8 @@ public class PlayerShoulderMeleeAttack : ShoulderActionBase {
 	public Collider attackRectCollider;
 	public MeleeWeaponInfo nowEquipMeleeWeapon;
 
+	public ParticleSystem attackParticle;
+
 	private IEnumerator maintainCombo;
 
 	public float comboDuration = 1;
@@ -60,7 +62,8 @@ public class PlayerShoulderMeleeAttack : ShoulderActionBase {
 		StartCoroutine (maintainCombo);
 
 		//After Init Animations
-		SetAnimationTrigger ();
+		//SetAnimationTrigger ();
+
 		comboTimer = 0;
 		nowActivated = true;
 	}
@@ -89,6 +92,7 @@ public class PlayerShoulderMeleeAttack : ShoulderActionBase {
 			var toObj = (Actor)Convert.ChangeType(to, typeof (Actor));
 			toObj.humanInfo.hp -= nowEquipMeleeWeapon.damage;
 			Debug.Log (this.actor.name + " Damage To " + to.name);
+			attackParticle.Play ();
 			comboIndex++;
 			return true;
 		}

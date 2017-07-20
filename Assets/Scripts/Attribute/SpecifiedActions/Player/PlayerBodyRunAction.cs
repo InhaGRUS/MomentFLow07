@@ -75,10 +75,13 @@ public class PlayerBodyRunAction : BodyActionBase {
 			if (Input.GetAxis ("Vertical") > 0) {
 				runDirection.z = 1;
 			}
+
 		runDirection = runDirection.normalized;
+
 		float tmpMaxRunSpeedX = Mathf.Abs (maxRunSpeed * runDirection.x);
 		float tmpMaxRunSpeedZ = Mathf.Abs (maxRunSpeed * runDirection.z);
 		actor.actorRigid.AddForce (runDirection * accel * actor.customDeltaTime, ForceMode.Force);
 		actor.actorRigid.velocity = new Vector3 (Mathf.Clamp (actor.actorRigid.velocity.x, -tmpMaxRunSpeedX, tmpMaxRunSpeedX), actor.actorRigid.velocity.y, Mathf.Clamp (actor.actorRigid.velocity.z, -tmpMaxRunSpeedZ, tmpMaxRunSpeedZ));
+		runDirection = Vector3.zero;
 	}
 }

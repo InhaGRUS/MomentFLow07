@@ -15,5 +15,11 @@ public enum EquipWeaponType
 	MeleeWeapon
 }
 
+public enum AimState
+{
+	Normal,
+	Bounce
+}
+
 public class EnumPool {
 }

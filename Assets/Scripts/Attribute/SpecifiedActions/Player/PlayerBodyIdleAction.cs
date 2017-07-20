@@ -9,11 +9,6 @@ public class PlayerBodyIdleAction : BodyActionBase {
 	protected new void Start () {
 		base.Start ();
 	}
-	
-	// Update is called once per frame
-	protected new void Update () {
-		base.Start ();
-	}
 
 	#region implemented abstract members of ActionBase
 

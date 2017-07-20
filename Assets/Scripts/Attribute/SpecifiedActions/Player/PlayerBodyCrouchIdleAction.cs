@@ -8,13 +8,14 @@ public class PlayerBodyCrouchIdleAction : BodyActionBase {
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
+		canTransition = false;
 	}
 
 	#region implemented abstract members of ActionBase
 
 	protected override bool CanTransition ()
 	{
-		return true;
+		return canTransition;
 	}
 
 	protected override bool IsSatisfiedToAction ()
