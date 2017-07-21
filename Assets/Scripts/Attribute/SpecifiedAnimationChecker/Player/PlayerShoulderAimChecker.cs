@@ -18,6 +18,13 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 
 	public Color aimColor;
 
+	public SpriteRenderer shoulderSpriteRenderer;
+
+	public float maxAngle = 90f;
+	public float minAngle = 25f;
+
+	public float defaultAngle = 45f;
+
 	public void Update ()
 	{
 		lineRenderer.SetPosition (0, aimStartPoint.position);
@@ -27,6 +34,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	protected new void Start () {
 		base.Start ();
 		lineRenderer = GetComponent<LineRenderer> ();
+		shoulderSpriteRenderer = actor.shoulderAnimator.GetComponent<SpriteRenderer> ();
 		aimMat = new Material (lineRenderer.material);
 		lineRenderer.material = aimMat;
 	}
@@ -38,7 +46,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (actor.useShoulder && Input.GetMouseButton (1))
+		if (actor.useShoulder && Input.GetMouseButton (1) && !actor.GetSpecificAction<PlayerBodyRunChecker>().nowActivated)
 		{
 			return true;
 		}
@@ -50,55 +58,49 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-
 		var mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
-
-		switch (aimState)
-		{
+		switch (aimState) {
 		case AimState.Normal:
 			List<Vector3> points = new List<Vector3> ();
 			points.Add (aimStartPoint.position);
-
 			if (Physics.Raycast (mouseRay, out hit, maxGunAimDistance)) {
 				var tmpPoint = hit.point;
 				if (Physics.Raycast (aimStartPoint.position, (hit.point - aimStartPoint.position).normalized, out hit, maxGunAimDistance)) {
 					points.Add (hit.point);
+					AimToObject (hit.point);
 				}
-			} else {
+			}
+			else {
 				var point = aimStartPoint.position + mouseRay.direction * maxGunAimDistance;
 				points.Add (point);
+				AimToObject (hit.point);
 			}
-				
 			lineRenderer.positionCount = points.Count;
 			lineRenderer.SetPositions (points.ToArray ());
-
 			if (timer < aimColorFadeInDuration) {
 				timer += actor.customDeltaTime;
 				lineRenderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, aimColor.a * timer / aimColorFadeInDuration);
 				lineRenderer.startWidth = 0.02f * timer / aimColorFadeInDuration;
 				lineRenderer.endWidth = lineRenderer.startWidth;
 			}
-
-			if (Mathf.Sign (mouseRay.direction.x) != -Mathf.Sign (actor.transform.localScale.x))
-			{
+			if (Mathf.Sign (mouseRay.direction.x) != -Mathf.Sign (actor.transform.localScale.x)) {
 				if (Mathf.Sign (mouseRay.direction.x) < 0)
-					actor.SetLookDirection (true);
+					actor.SetLookDirection (true, 1);
 				else
-					actor.SetLookDirection (false);
+					actor.SetLookDirection (false, 1);
 			}
 			break;
 		case AimState.Bounce:
-
 			break;
 		}
-
 
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
 		timer = 0;
+		actor.ResetSetLookDirectionPriority ();
 		StopCoroutine ("EraseAimLine");
 		StartCoroutine ("EraseAimLine");
 		nowActivated = false;
@@ -117,5 +119,51 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 		}
 		lineRenderer.material.color = Color.clear;
 		timer = 0;
+	}
+
+	public void AimToObject (Vector3 targetPos)
+	{
+		float dis_x;
+		float dis_y;
+		float degree;
+
+		if (targetPos.x > actor.shoulderAnimator.transform.position.x)
+		{
+			dis_x = (actor.shoulderAnimator.transform.position.x - targetPos.x);
+			dis_y = targetPos.y - actor.shoulderAnimator.transform.position.y;
+			degree = Mathf.Atan2(dis_x, -dis_y) * Mathf.Rad2Deg;
+			actor.SetLookDirection (false);
+		}
+		else
+		{
+			dis_x = -(actor.shoulderAnimator.transform.position.x - targetPos.x);
+			dis_y = targetPos.y - actor.shoulderAnimator.transform.position.y;
+			degree = Mathf.Atan2(dis_x, -dis_y) * Mathf.Rad2Deg;
+			actor.SetLookDirection (true);
+		}
+		degree = Mathf.Clamp(degree, -maxAngle, -minAngle);
+
+		actor.shoulderAnimator.SetFloat("AimAngleRatio", Mathf.Abs(degree / 180));
+
+		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(0, 0, degree + defaultAngle);
+	}
+
+	public void AimToForward()
+	{
+		if (actor.shoulderAnimator.CompareTag ("Player")) {
+			var inputX = Input.GetAxis("Horizontal");
+			if (inputX < 0)
+			{
+				actor.SetLookDirection (false);
+			}
+			else if (inputX > 0)
+			{
+				actor.SetLookDirection (true);
+			}
+		}
+
+		actor.shoulderAnimator.SetFloat("AimAngleRatio", 0.5f);
+
+		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(Vector3.zero);
 	}
 }

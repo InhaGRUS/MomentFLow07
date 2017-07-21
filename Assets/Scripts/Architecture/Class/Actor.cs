@@ -52,12 +52,27 @@ public class Actor : DynamicObject {
 		actorVelocity = actorRigid.velocity;
 	}
 
+	private int nowSetLookDirectionPriority = 0;
+
 	public void SetLookDirection (bool toLeft)
 	{
+		SetLookDirection (toLeft, 0);
+	}
+
+	public void SetLookDirection (bool toLeft, int priority)
+	{
+		if (priority < nowSetLookDirectionPriority)
+			return;
+		nowSetLookDirectionPriority = priority;
 		if (toLeft)
 			transform.localScale = new Vector3 (1, 1, 1);
 		else
 			transform.localScale = new Vector3 (-1, 1, 1);
+	}
+
+	public void ResetSetLookDirectionPriority ()
+	{
+		nowSetLookDirectionPriority = 0;
 	}
 
 	public static Actor FindActorByHumanName (string humanName)
