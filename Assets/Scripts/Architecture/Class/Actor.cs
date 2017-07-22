@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actor : DynamicObject {
+	[Header ("ActorInfo")]
 	public HumanInfo humanInfo = new HumanInfo();
 	[HideInInspector]
 	public OutsideInfo outsideInfo;
 	[HideInInspector]
 	public EquipmentInfo equipmentInfo;
+	public SpecificActorStateInfo stateInfo;
 
 	public Rigidbody actorRigid;
 	public Collider bodyCollider;
 
 	public bool useShoulder = false;
 
+	[Header ("Body")]
 	public Animator bodyAnimator;
+	[Header ("Shoulder")]
 	public Animator shoulderAnimator;
 
+	private SpriteRenderer shoulderSpriteRenderer;
+
+	[Header ("Action")]
 	public AnimationCheckerBase[] actions;
 	public AnimationCheckerBase nowBodyAction;
 	public AnimationCheckerBase nowShoulderAction;
@@ -24,7 +31,6 @@ public class Actor : DynamicObject {
 	public string nowBodyAnimationName;
 	public string nowShoulderAnimationName;
 
-	public SpecificActorStateInfo stateInfo;
 
 	public Vector3 actorVelocity;
 
@@ -33,6 +39,10 @@ public class Actor : DynamicObject {
 		outsideInfo = GetComponentInChildren <OutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
 		actorRigid = GetComponent<Rigidbody> ();
+
+		if (useShoulder) {
+			shoulderSpriteRenderer = shoulderAnimator.GetComponent<SpriteRenderer> ();
+		}
 
 		actions = GetComponentsInChildren<AnimationCheckerBase> ();
 	}
@@ -73,6 +83,18 @@ public class Actor : DynamicObject {
 	public void ResetSetLookDirectionPriority ()
 	{
 		nowSetLookDirectionPriority = 0;
+	}
+
+	public void HideShoulder (bool hideValue)
+	{
+		if (hideValue) {
+			shoulderSpriteRenderer.enabled = false;
+			shoulderAnimator.enabled = false;
+			return;
+		}
+		shoulderSpriteRenderer.enabled = true;
+		shoulderAnimator.enabled = true;
+
 	}
 
 	public static Actor FindActorByHumanName (string humanName)

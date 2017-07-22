@@ -173,7 +173,6 @@ MonoBehaviour:
   timer: 0
   aimMat: {fileID: 0}
   aimColor: {r: 1, g: 0, b: 0, a: 0.584}
-  shoulderSpriteRenderer: {fileID: 0}
   maxAngle: 135
   minAngle: 25
   defaultAngle: 45
@@ -374,6 +373,33 @@ MonoBehaviour:
   bodyOnlyAnimationTriggerName:
   - TriggerStandup
   standUpKey: 99
+--- !u!84 &131485288
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &149699439
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +438,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 149699439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1068,7 +1094,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 1169004183}
+  RainRipplesRenderTexture: {fileID: 131485288}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -1275,10 +1301,14 @@ MonoBehaviour:
     humanType: 0
   outsideInfo: {fileID: 1041733045}
   equipmentInfo: {fileID: 0}
+  stateInfo:
+    isHiding: 0
+    isCrouhcing: 0
+    isUnbeatable: 0
   actorRigid: {fileID: 793150087}
   bodyCollider: {fileID: 760330596}
   useShoulder: 0
-  bodyAnimator: {fileID: 760330593}
+  bodyAnimator: {fileID: 0}
   shoulderAnimator: {fileID: 2027653288}
   actions:
   - {fileID: 0}
@@ -1286,10 +1316,6 @@ MonoBehaviour:
   nowShoulderAction: {fileID: 0}
   nowBodyAnimationName: 
   nowShoulderAnimationName: 
-  stateInfo:
-    isHiding: 0
-    isCrouhcing: 0
-    isUnbeatable: 0
   actorVelocity: {x: 0, y: 0, z: 0}
 --- !u!4 &793150089
 Transform:
@@ -4828,33 +4854,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1169004183
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1279096771
 Prefab:
   m_ObjectHideFlags: 0
@@ -4964,6 +4963,10 @@ MonoBehaviour:
     humanType: 0
   outsideInfo: {fileID: 1850894715}
   equipmentInfo: {fileID: 0}
+  stateInfo:
+    isHiding: 0
+    isCrouhcing: 0
+    isUnbeatable: 0
   actorRigid: {fileID: 1360601030}
   bodyCollider: {fileID: 149699440}
   useShoulder: 1
@@ -4974,10 +4977,6 @@ MonoBehaviour:
   nowShoulderAction: {fileID: 1461248398}
   nowBodyAnimationName: 
   nowShoulderAnimationName: 
-  stateInfo:
-    isHiding: 0
-    isCrouhcing: 0
-    isUnbeatable: 0
   actorVelocity: {x: 0, y: 0, z: 0}
 --- !u!4 &1360601034
 Transform:
@@ -5100,7 +5099,6 @@ MonoBehaviour:
   - {fileID: 1425304974}
   - {fileID: 1431142470}
   - {fileID: 2035999159}
-  - {fileID: 4254497}
 --- !u!1 &1461248396
 GameObject:
   m_ObjectHideFlags: 0

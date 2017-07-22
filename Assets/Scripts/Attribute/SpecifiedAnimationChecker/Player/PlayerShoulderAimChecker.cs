@@ -18,8 +18,6 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 
 	public Color aimColor;
 
-	public SpriteRenderer shoulderSpriteRenderer;
-
 	public float maxAngle = 90f;
 	public float minAngle = 25f;
 
@@ -34,7 +32,6 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	protected new void Start () {
 		base.Start ();
 		lineRenderer = GetComponent<LineRenderer> ();
-		shoulderSpriteRenderer = actor.shoulderAnimator.GetComponent<SpriteRenderer> ();
 		aimMat = new Material (lineRenderer.material);
 		lineRenderer.material = aimMat;
 	}
@@ -58,6 +55,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		Debug.Log ("Aim");
 		var mouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
 		switch (aimState) {
@@ -110,14 +108,15 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	IEnumerator EraseAimLine ()
 	{
 		while (timer < aimColorFadeInDuration) {
-			Debug.Log ("Erase");
 			timer += actor.customDeltaTime;
-			lineRenderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, aimColor.a * (1 - timer / aimColorFadeOutDurtaion));
+			lineRenderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, lineRenderer.material.color.a * (1 - timer / aimColorFadeOutDurtaion));
 			lineRenderer.startWidth = 0.02f * (1 - timer / aimColorFadeOutDurtaion);
 			lineRenderer.endWidth = lineRenderer.startWidth;
 			yield return new WaitForEndOfFrame ();
 		}
 		lineRenderer.material.color = Color.clear;
+		lineRenderer.startWidth = 0;
+		lineRenderer.endWidth = 0;
 		timer = 0;
 	}
 
