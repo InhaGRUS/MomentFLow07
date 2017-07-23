@@ -23,7 +23,7 @@ public class EquipmentInfo : MonoBehaviour {
 	public EquipWeaponType nowEquipWeaponType;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		owner = Actor.GetActor<EquipmentInfo> (this);	
 		EquipDefaultWeapon ();
 	}

@@ -16,7 +16,7 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (actor.useShoulder && Input.GetMouseButton(0))
+		if (actor.useShoulder && Input.GetMouseButton(0) && actor.equipmentInfo.nowEquipWeaponType == EquipWeaponType.Gun)
 		{
 			return true;
 		}
@@ -28,11 +28,15 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		SetAnimationTrigger ();
+		actor.GetSpecificAction <PlayerShoulderAimChecker> ().PlayerAimRender ();
+		actor.aimTarget.AimToObject (actor.GetSpecificAction<PlayerShoulderAimChecker>().lineRenderer.GetPosition(1));
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
 		nowActivated = false;
+		actor.ResetSetLookDirectionPriority ();
 	}
 	#endregion
 }

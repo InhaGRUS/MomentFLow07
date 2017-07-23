@@ -20,6 +20,8 @@ public class Actor : DynamicObject {
 	public Animator bodyAnimator;
 	[Header ("Shoulder")]
 	public Animator shoulderAnimator;
+	public AimTarget aimTarget;
+	public float armLength;
 
 	private SpriteRenderer shoulderSpriteRenderer;
 
@@ -42,6 +44,8 @@ public class Actor : DynamicObject {
 
 		if (useShoulder) {
 			shoulderSpriteRenderer = shoulderAnimator.GetComponent<SpriteRenderer> ();
+			aimTarget = GetComponent<AimTarget> ();
+			armLength = Vector3.Distance (aimTarget.shootPoint.position, shoulderAnimator.transform.position);
 		}
 
 		actions = GetComponentsInChildren<AnimationCheckerBase> ();
@@ -95,6 +99,12 @@ public class Actor : DynamicObject {
 		shoulderSpriteRenderer.enabled = true;
 		shoulderAnimator.enabled = true;
 
+	}
+
+	public void DamagedFrom (Actor fromActor, float damagedAmount)
+	{
+		stateInfo.isDamaged = true;
+		humanInfo.hp -= damagedAmount;
 	}
 
 	public static Actor FindActorByHumanName (string humanName)

@@ -6,5 +6,6 @@ using UnityEngine;
 public class SpecificActorStateInfo {
 	public bool isHiding = false;
 	public bool isCrouhcing = false;
+	public bool isDamaged = false;
 	public bool isUnbeatable = false;
 }

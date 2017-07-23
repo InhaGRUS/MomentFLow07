@@ -39,7 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 1683134517039983843, guid: 0000000000000000d000000000000000,
     type: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.64691734, g: 0.69839656, b: 0.74844277, a: 1}
+  m_IndirectSpecularColor: {r: 0.6470464, g: 0.69853514, b: 0.7485796, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -135,7 +135,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 666174441}
   m_Father: {fileID: 1614263336}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,14 +169,14 @@ MonoBehaviour:
   aimState: 0
   maxGunAimDistance: 20
   lineRenderer: {fileID: 4254498}
+  playerAdditionalLineRenderer: {fileID: 666174442}
   aimColorFadeInDuration: 0.25
   aimColorFadeOutDurtaion: 0.25
   timer: 0
   aimMat: {fileID: 0}
+  additionalAimMat: {fileID: 0}
   aimColor: {r: 1, g: 0, b: 0, a: 0.584}
-  maxAngle: 135
-  minAngle: 25
-  defaultAngle: 45
+  additionalAimColor: {r: 0.42545635, g: 1, b: 0.24264705, a: 0.628}
 --- !u!120 &4254498
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -346,7 +347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1520083718}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &85422620
 MonoBehaviour:
@@ -373,33 +374,6 @@ MonoBehaviour:
   bodyOnlyAnimationTriggerName:
   - TriggerStandup
   standUpKey: 99
---- !u!84 &131485288
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &149699439
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +490,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+--- !u!1 &190296267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 190296268}
+  m_Layer: 0
+  m_Name: BulletPoolParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &190296268
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190296267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2104106104}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &243958176
 Material:
   serializedVersion: 6
@@ -832,7 +834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1520083718}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &486006901
 MonoBehaviour:
@@ -1001,6 +1003,121 @@ Transform:
   m_Father: {fileID: 2061424889}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &666174440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 666174441}
+  - component: {fileID: 666174442}
+  m_Layer: 0
+  m_Name: PlayerAdditionalAimLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &666174441
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666174440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4254496}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!120 &666174442
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666174440}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3d749350810495a46b07906d34adf50e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
 --- !u!1 &752456489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1211,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 131485288}
+  RainRipplesRenderTexture: {fileID: 1456260885}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -1291,6 +1408,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customDeltaTime: 0
   customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
   humanInfo:
     humanName: Sellma
     isTimeImmune: 0
@@ -1304,12 +1424,15 @@ MonoBehaviour:
   stateInfo:
     isHiding: 0
     isCrouhcing: 0
+    isDamaged: 0
     isUnbeatable: 0
   actorRigid: {fileID: 793150087}
   bodyCollider: {fileID: 760330596}
   useShoulder: 0
   bodyAnimator: {fileID: 0}
   shoulderAnimator: {fileID: 2027653288}
+  aimTarget: {fileID: 0}
+  armLength: 0
   actions:
   - {fileID: 0}
   nowBodyAction: {fileID: 0}
@@ -4918,6 +5041,7 @@ GameObject:
   - component: {fileID: 1360601034}
   - component: {fileID: 1360601032}
   - component: {fileID: 1360601030}
+  - component: {fileID: 1360601031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4940,6 +5064,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &1360601031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360601029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fb74de94312194095ee897b15d69d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  shoulder: {fileID: 2061424889}
+  shootPoint: {fileID: 656531863}
+  targetAimVector: {x: 0, y: 0, z: 0}
+  nowAimVector: {x: 0, y: 0, z: 0}
+  maxAngle: 135
+  minAngle: 25
+  defaultAngle: 45
 --- !u!114 &1360601032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,6 +5096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customDeltaTime: 0
   customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
   humanInfo:
     humanName: Sellma
     isTimeImmune: 0
@@ -4966,12 +5112,15 @@ MonoBehaviour:
   stateInfo:
     isHiding: 0
     isCrouhcing: 0
+    isDamaged: 0
     isUnbeatable: 0
   actorRigid: {fileID: 1360601030}
   bodyCollider: {fileID: 149699440}
   useShoulder: 1
   bodyAnimator: {fileID: 149699443}
   shoulderAnimator: {fileID: 2061424890}
+  aimTarget: {fileID: 1360601031}
+  armLength: 0
   actions: []
   nowBodyAction: {fileID: 549094674}
   nowShoulderAction: {fileID: 1461248398}
@@ -5099,6 +5248,33 @@ MonoBehaviour:
   - {fileID: 1425304974}
   - {fileID: 1431142470}
   - {fileID: 2035999159}
+--- !u!84 &1456260885
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1461248396
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,7 +5354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1520083718}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1468194096
 MonoBehaviour:
@@ -5559,6 +5735,7 @@ Transform:
   - {fileID: 549094675}
   - {fileID: 1852713785}
   - {fileID: 485703319}
+  - {fileID: 1662743279}
   - {fileID: 1468194095}
   - {fileID: 486006900}
   - {fileID: 85422619}
@@ -5695,6 +5872,60 @@ Transform:
   m_Father: {fileID: 1953211483}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1662743278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1662743279}
+  - component: {fileID: 1662743280}
+  m_Layer: 0
+  m_Name: ShootIdleAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1662743279
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1662743278}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1520083718}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1662743280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1662743278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c1911696a9ca448db7354658423e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowActivated: 0
+  actor: {fileID: 0}
+  setAnimationTriggerName:
+  - bodyAnimationName: TriggerShoot
+    shoulderAnimationName: TriggerShoot
+  animationIndex: -1
+  canTransition: 1
+  canTransitionActionList:
+  - {fileID: 549094674}
+  - {fileID: 1852713784}
+  - {fileID: 485703320}
+  - {fileID: 1662743280}
+  - {fileID: 1468194096}
+  bodyOnlyAnimationTriggerName: []
 --- !u!1 &1705071618
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,6 +6396,7 @@ GameObject:
   - component: {fileID: 2061424890}
   - component: {fileID: 2061424892}
   - component: {fileID: 2061424891}
+  - component: {fileID: 2061424893}
   m_Layer: 0
   m_Name: Shoulder
   m_TagString: Untagged
@@ -6257,6 +6489,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+--- !u!114 &2061424893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2061424888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e58edec9004f546acee03640787d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2084058840
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,8 +6543,8 @@ MonoBehaviour:
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerShoot01
-    shoulderAnimationName: TriggerShoot01
+  - bodyAnimationName: 
+    shoulderAnimationName: TriggerShoot
   animationIndex: -1
   canTransition: 1
   shoulderOnlyAnimationTriggerName: []
@@ -6312,3 +6555,46 @@ MonoBehaviour:
   - {fileID: 2035999159}
   - {fileID: 4254497}
   - {fileID: 2084058842}
+--- !u!1 &2104106102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2104106104}
+  - component: {fileID: 2104106103}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2104106103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2104106102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381260b55a23bad4fbf73df6b36f2682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPoolParent: {fileID: 190296268}
+  bulletPools: []
+--- !u!4 &2104106104
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2104106102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 190296268}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

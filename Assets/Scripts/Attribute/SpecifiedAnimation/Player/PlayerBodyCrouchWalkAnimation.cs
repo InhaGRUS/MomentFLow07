@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBodyCrouchWalkAnimation : BodyAnimationBase {
+
 	public float accel;
 	public float maxWalkSpeed;
 	public Vector3 walkDirection;

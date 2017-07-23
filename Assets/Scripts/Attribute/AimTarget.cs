@@ -10,6 +10,10 @@ public class AimTarget : MonoBehaviour
     private SpriteRenderer shoulderSpriteRenderer;
 
     public Transform shoulder;
+	public Transform shootPoint;
+
+	public Vector3 targetAimVector;
+	public Vector3 nowAimVector;
 
     public float maxAngle;
     public float minAngle;
@@ -23,36 +27,61 @@ public class AimTarget : MonoBehaviour
         shoulderSpriteRenderer = shoulder.GetComponent<SpriteRenderer>();
     }
 
-    public void AimToObject(Vector3 targetPos)
-    {
-        float dis_x;
-        float dis_y;
-        float degree;
+	public void AimToObject (Vector3 targetPos)
+	{
+		float disY_x;
+		float disY_y;
+		float degreeY;
 
-        if (targetPos.x > transform.position.x)
-        {
-            dis_x = (shoulder.transform.position.x - targetPos.x);
-            dis_y = targetPos.y - shoulder.transform.position.y;
-            degree = Mathf.Atan2(dis_x, -dis_y) * Mathf.Rad2Deg;
+		float disZ_x;
+		float disZ_z;
+		float degreeZ;
+
+		if (targetPos.x > actor.shoulderAnimator.transform.position.x)
+		{
+			disY_x = (actor.shoulderAnimator.transform.position.x - targetPos.x);
+			disY_y = targetPos.y - actor.shoulderAnimator.transform.position.y;
+			degreeY = Mathf.Atan2(disY_x, -disY_y) * Mathf.Rad2Deg;
+
+			disZ_x = (actor.shoulderAnimator.transform.position.x - targetPos.x);
+			disZ_z = targetPos.z - actor.shoulderAnimator.transform.position.z;
+			degreeZ = Mathf.Atan2(disZ_x, -disZ_z) * Mathf.Rad2Deg;
+
 			actor.SetLookDirection (false);
-        }
-        else
-        {
-            dis_x = -(shoulder.transform.position.x - targetPos.x);
-            dis_y = targetPos.y - shoulder.transform.position.y;
-            degree = Mathf.Atan2(dis_x, -dis_y) * Mathf.Rad2Deg;
+		}
+		else
+		{
+			disY_x = -(actor.shoulderAnimator.transform.position.x - targetPos.x);
+			disY_y = targetPos.y - actor.shoulderAnimator.transform.position.y;
+			degreeY = Mathf.Atan2(disY_x, -disY_y) * Mathf.Rad2Deg;
+
+			disZ_x = (actor.shoulderAnimator.transform.position.x - targetPos.x);
+			disZ_z = targetPos.z - actor.shoulderAnimator.transform.position.z;
+			degreeZ = Mathf.Atan2(disZ_x, -disZ_z) * Mathf.Rad2Deg;
+
 			actor.SetLookDirection (true);
-        }
-        degree = Mathf.Clamp(degree, -maxAngle, -minAngle);
+		}
+		degreeY = Mathf.Clamp(degreeY, -maxAngle, -minAngle);
+		degreeZ = degreeZ + 360f;
 
-        animator.SetFloat("AimAngleRatio", Mathf.Abs(degree / 180));
+		if (degreeZ >= 360f)
+			degreeZ -= 360f;
 
-        shoulder.transform.localRotation = Quaternion.Euler(0, 0, degree + defaultAngle);
-    }
+		targetAimVector = (targetPos - shoulder.position).normalized;
+		nowAimVector = (shootPoint.position - shoulder.position).normalized;
+
+		nowAimVector = Vector3.Lerp (nowAimVector, targetAimVector, actor.customDeltaTime * 3f);
+		shootPoint.position = shoulder.position + nowAimVector * actor.armLength;
+
+		actor.shoulderAnimator.SetFloat ("AimAngleRatio", Mathf.Abs(degreeY / 180));
+		actor.bodyAnimator.SetFloat ("AimZAngleRatio", degreeZ / 360f);
+		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(0, 0, degreeY + defaultAngle);
+
+	}
 
 	public void AimToForward()
 	{
-		if (transform.CompareTag ("Player")) {
+		if (actor.shoulderAnimator.CompareTag ("Player")) {
 			var inputX = Input.GetAxis("Horizontal");
 			if (inputX < 0)
 			{
@@ -64,33 +93,8 @@ public class AimTarget : MonoBehaviour
 			}
 		}
 
-		animator.SetFloat("AimAngleRatio", 0.5f);
+		actor.shoulderAnimator.SetFloat("AimAngleRatio", 0.5f);
 
-		shoulder.transform.localRotation = Quaternion.Euler(Vector3.zero);
+		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(Vector3.zero);
 	}
-
-	public void AimToForward(bool isReverse)
-    {
-		if (transform.CompareTag ("Player")) {
-			var inputX = Input.GetAxis("Horizontal");
-			if (inputX < 0)
-			{
-				if (isReverse)
-					actor.SetLookDirection (true);
-				else
-					actor.SetLookDirection (false);
-			}
-			else if (inputX > 0)
-			{
-				if (isReverse)
-					actor.SetLookDirection (false);
-				else
-					actor.SetLookDirection (true);
-			}
-		}
-
-        animator.SetFloat("AimAngleRatio", 0.5f);
-
-        shoulder.transform.localRotation = Quaternion.Euler(Vector3.zero);
-    }
 }

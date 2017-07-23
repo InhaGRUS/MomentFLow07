@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBodyShootChecker : BodyAnimationCheckerBase {
-	
+public class DamagedChecker : BodyAnimationCheckerBase {
+
 	#region implemented abstract members of AnimationCheckerBase
 	protected override bool CanTransition ()
 	{
@@ -11,9 +11,7 @@ public class PlayerBodyShootChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (Input.GetAxis ("Horizontal") == 0 && Input.GetAxis ("Vertical") == 0 &&
-			Input.GetMouseButton (0)
-		)
+		if (actor.stateInfo.isDamaged)
 		{
 			return true;
 		}
@@ -21,16 +19,18 @@ public class PlayerBodyShootChecker : BodyAnimationCheckerBase {
 	}
 	protected override void BeforeTransitionAction ()
 	{
-		
+		actor.stateInfo.isDamaged = false;
+		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
-		
+		SetAnimationTrigger ();
+		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
-		
+		actor.stateInfo.isDamaged = false;
+		nowActivated = false;
 	}
 	#endregion
-	
 }

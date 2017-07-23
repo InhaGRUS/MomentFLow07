@@ -7,6 +7,13 @@ public abstract class DynamicObject : MonoBehaviour, ISaveable, ILoadable {
 	public float customDeltaTime;
 	public float customTimeScale = 1;
 
+	[HideInInspector]
+	public Animator[] animators;
+	[HideInInspector]
+	public ParticleSystem[] particles;
+
+	public List<float> previousTimeScaleList;
+
 	protected void Update ()
 	{
 		customDeltaTime = Time.unscaledDeltaTime * customTimeScale;
@@ -32,6 +39,40 @@ public abstract class DynamicObject : MonoBehaviour, ISaveable, ILoadable {
 		if (null != obj.GetComponentInParent<DynamicObject> ())
 			return obj.GetComponentInParent<DynamicObject> ();
 		return null;
+	}
+
+	public void ChangeTimeScale (float timeScale)
+	{
+		previousTimeScaleList.Add (customTimeScale);
+		customTimeScale = timeScale;
+		AffectCustomTimeScale ();
+	}
+
+	public void BackToPreviousTimeScale ()
+	{
+		if (previousTimeScaleList.Count != 0) {
+			customTimeScale = previousTimeScaleList [previousTimeScaleList.Count - 1];
+			previousTimeScaleList.RemoveAt (previousTimeScaleList.Count - 1);
+		} else
+			customTimeScale = 1f;
+		AffectCustomTimeScale ();
+	}
+
+	private void AffectCustomTimeScale ()
+	{
+		if (null != animators) {
+			for (int i = 0; i < animators.Length; i++)
+			{
+				animators [i].speed = customTimeScale;
+			}
+		}
+		if (null != particles) {
+			for (int i = 0; i < particles.Length; i++)
+			{
+				var ma = particles [i].main;
+				ma.simulationSpeed = customTimeScale;
+			}
+		}
 	}
 
 	#region ISaveable implementation
