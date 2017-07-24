@@ -56,7 +56,6 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-		Debug.Log ("Aim");
 		PlayerAimRender ();
 
 		nowActivated = true;

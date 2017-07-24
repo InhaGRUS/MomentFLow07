@@ -20,7 +20,7 @@ public class Bullet : DynamicObject {
 	private Vector3 startPosition = Vector3.zero;
 	[Header ("Other")]
 	public ParticleSystem destroyParticle;
-	private List<Collider> ignoreColliders;
+	private List<Collider> ignoreColliders = new List<Collider>();
 	public LayerMask collisionMask;
 	public Vector3 originVelocity;
 
@@ -50,6 +50,8 @@ public class Bullet : DynamicObject {
 		{
 			colActor.DamagedFrom (owner, damage);
 		}
+		Debug.Log ("COl : " + col.collider.name);
+		DestroyBullet ();
 	}
 
 	#region implemented abstract members of DynamicObject
@@ -69,8 +71,8 @@ public class Bullet : DynamicObject {
 	public void DestroyBullet()
 	{
 		flingDistance = 0;
+		originVelocity = Vector3.zero;
 		rigid.velocity = Vector3.zero;
-		transform.position = Vector3.zero;
 		if (0 != ignoreColliders.Count) {
 			Debug.Log ("ignore 발동");
 			for (int i = 0; i< ignoreColliders.Count; i++)
@@ -81,6 +83,13 @@ public class Bullet : DynamicObject {
 		}
 		customTimeScale = 1;
 		previousTimeScaleList.Clear ();
+
+		GetComponent<ParticleSystem> ().Stop ();
+
+		destroyParticle.transform.parent = transform.parent;
+		destroyParticle.transform.position = transform.position;
+		destroyParticle.Play ();
+	
 		BulletPool.Instance.ReturnBullet (gameObject);
 	}
 }

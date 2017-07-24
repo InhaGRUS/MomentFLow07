@@ -29,6 +29,7 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	public override void DoSpecifiedAction ()
 	{
 		SetAnimationTrigger ();
+
 		actor.GetSpecificAction <PlayerShoulderAimChecker> ().PlayerAimRender ();
 		actor.aimTarget.AimToObject (actor.GetSpecificAction<PlayerShoulderAimChecker>().lineRenderer.GetPosition(1));
 		nowActivated = true;

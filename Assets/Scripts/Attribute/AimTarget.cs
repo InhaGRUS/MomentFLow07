@@ -47,7 +47,7 @@ public class AimTarget : MonoBehaviour
 			disZ_z = targetPos.z - actor.shoulderAnimator.transform.position.z;
 			degreeZ = Mathf.Atan2(disZ_x, -disZ_z) * Mathf.Rad2Deg;
 
-			actor.SetLookDirection (false);
+			actor.SetLookDirection (false, 1);
 		}
 		else
 		{
@@ -59,7 +59,7 @@ public class AimTarget : MonoBehaviour
 			disZ_z = targetPos.z - actor.shoulderAnimator.transform.position.z;
 			degreeZ = Mathf.Atan2(disZ_x, -disZ_z) * Mathf.Rad2Deg;
 
-			actor.SetLookDirection (true);
+			actor.SetLookDirection (true, 1);
 		}
 		degreeY = Mathf.Clamp(degreeY, -maxAngle, -minAngle);
 		degreeZ = degreeZ + 360f;

@@ -96,6 +96,7 @@ public class BulletPool : MonoBehaviour {
 				borrowBullet.bulletIndex = index;
 				borrowBullet.owner = owner;
 				borrowBullet.gameObject.SetActive (true);
+				borrowBullet.GetComponent<Collider> ().enabled = true;
 				return borrowBullet;
 			}
 		}
@@ -106,7 +107,7 @@ public class BulletPool : MonoBehaviour {
 	{
 		//usedBullet.GetComponent<TrailRenderer> ().Clear ();
 		usedBullet.GetComponent<Bullet> ().owner = null;
-		usedBullet.SetActive (false);
+		usedBullet.GetComponent<Collider>().enabled = false;
 	}
 
 

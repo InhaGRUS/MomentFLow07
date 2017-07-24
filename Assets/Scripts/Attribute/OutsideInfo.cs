@@ -79,6 +79,16 @@ public class OutsideInfo : MonoBehaviour {
 	void SortDynamicListByDistance ()
 	{
 		nearDynamicObjList.Sort (delegate (DynamicObject x, DynamicObject y) {
+			if (null == x)
+			{
+				nearDynamicObjList.Remove(x);
+				return 0;
+			}
+			if (null == y)
+			{
+				nearDynamicObjList.Remove (y);
+				return 0;
+			}
 			var dis01 = Vector3.Distance (transform.position, x.transform.position);
 			var dis02 = Vector3.Distance (transform.position, y.transform.position);
 			if (dis01 > dis02) {
