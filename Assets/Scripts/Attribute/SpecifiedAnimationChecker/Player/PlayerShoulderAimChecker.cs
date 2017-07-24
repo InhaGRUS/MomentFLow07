@@ -24,6 +24,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	public void Update ()
 	{
 		lineRenderer.SetPosition (0, aimStartPoint.position);
+		playerAdditionalLineRenderer.SetPosition (0, aimStartPoint.position);
 	}
 
 	// Use this for initialization
@@ -99,7 +100,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 			lineRenderer.positionCount = points.Count;
 			lineRenderer.SetPositions (points.ToArray ());
 			// PlayerAimRay
-			var dir = (aimStartPoint.position - actor.shoulderAnimator.transform.position).normalized;
+			var dir = actor.aimTarget.nowAimVector;
 
 			if (Physics.Raycast (aimStartPoint.position, dir, out hit, maxGunAimDistance)) {
 				playerAimPoints.Add (hit.point);
@@ -113,6 +114,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 
 			if (timer < aimColorFadeInDuration) {
 				timer += actor.customDeltaTime;
+			
 				lineRenderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, aimColor.a * timer / aimColorFadeInDuration);
 				lineRenderer.startWidth = 0.02f * timer / aimColorFadeInDuration;
 				lineRenderer.endWidth = lineRenderer.startWidth;

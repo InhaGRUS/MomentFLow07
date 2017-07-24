@@ -67,11 +67,9 @@ public class AimTarget : MonoBehaviour
 		if (degreeZ >= 360f)
 			degreeZ -= 360f;
 
-		targetAimVector = (targetPos - shoulder.position).normalized;
-		nowAimVector = (shootPoint.position - shoulder.position).normalized;
+		targetAimVector = (targetPos - shootPoint.position).normalized;
 
 		nowAimVector = Vector3.Lerp (nowAimVector, targetAimVector, actor.customDeltaTime * 3f);
-		shootPoint.position = shoulder.position + nowAimVector * actor.armLength;
 
 		actor.shoulderAnimator.SetFloat ("AimAngleRatio", Mathf.Abs(degreeY / 180));
 		actor.bodyAnimator.SetFloat ("AimZAngleRatio", degreeZ / 360f);

@@ -24,7 +24,7 @@ public class ShoulderAnimationActions : MonoBehaviour {
 	{
 		var bullet = BulletPool.Instance.BorrowBullet (((GunInfo)actor.equipmentInfo.nowEquipWeaponInfo).usingBullet, actor);
 		bullet.transform.position = shootPoint.position;
-		bullet.originVelocity = (shootPoint.position - shoulder.position).normalized * bullet.maxSpeed;
+		bullet.originVelocity = actor.aimTarget.nowAimVector * bullet.maxSpeed;
 	}
 
 	public void Reload ()
