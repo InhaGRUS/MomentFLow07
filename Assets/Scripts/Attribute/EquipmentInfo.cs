@@ -16,7 +16,7 @@ public class EquipmentInfo : MonoBehaviour {
 	public List<GunInfo> nowHaveGunInfo = new List<GunInfo> ();
 	public List<MeleeWeaponInfo> nowHaveMeleeWeaponInfo = new List<MeleeWeaponInfo> ();
 	public int meleeWeaponIndex = 0;
-	//public List<ItemInfo> haveItemInfoList = new List<ItemInfo>();
+	public List<ItemInfo> nowHaveItemInfoList = new List<ItemInfo>();
 
 	public KeyCode nowEquipWeaponKey;
 	public WeaponInfo nowEquipWeaponInfo;
@@ -49,6 +49,18 @@ public class EquipmentInfo : MonoBehaviour {
 		} else if (nowHaveMeleeWeaponInfo.Count != 0) {
 			SwapWeapon<MeleeWeaponInfo> (0);
 		}
+	}
+
+	public ItemInfo GetHaveItemByName (string itemName)
+	{
+		ItemInfo item = null;
+		nowHaveItemInfoList.ForEach (delegate(ItemInfo obj) {
+			if (obj.itemName == itemName)	
+			{
+				item = obj;
+			}
+		});
+		return item;
 	}
 
 	//public string TryToPickUpItem ()

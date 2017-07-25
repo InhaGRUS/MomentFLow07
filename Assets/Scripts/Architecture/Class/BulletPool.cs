@@ -80,7 +80,7 @@ public class BulletPool : MonoBehaviour {
 
 				while (index < pool.childCount)
 				{
-					if (pool.GetChild(index).gameObject.activeSelf)
+					if (pool.GetChild(index).GetComponent<Collider>().enabled)
 					{
 						index++;
 						continue;
@@ -88,6 +88,7 @@ public class BulletPool : MonoBehaviour {
 					borrowBullet = pool.GetChild (index).GetComponent<Bullet> ();
 					borrowBullet.bulletIndex = index;
 					borrowBullet.owner = owner;
+					borrowBullet.GetComponent<Collider> ().enabled = true;
 					borrowBullet.gameObject.SetActive (true);
 					return borrowBullet;
 				}

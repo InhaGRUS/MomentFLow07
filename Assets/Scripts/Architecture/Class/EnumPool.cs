@@ -2,12 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DynamicObjectType
+{
+	Actor,
+	InteractableObject,
+	Bullet
+}
+
 public enum HumanType
 {
 	Player,
 	Enemy,
 	NPC
 }
+
+public enum ItemType
+{
+	Potion,
+	Ammo,
+	Key,
+	SkillScroll,
+	PuzzlePiece
+}
+	
 
 public enum AnimationStateInfoEnum
 {

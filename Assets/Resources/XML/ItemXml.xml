@@ -3,52 +3,19 @@
 	<Potion>
 		<Id>0</Id>
 		<Name>소량의 HP포션</Name>
-		<HpHealAmount>25</HpHealAmount>
-            <MpHealAmount>0</MpHealAmount>
             <SpriteName>Potion01</SpriteName>
-	</Potion>
-	<Potion>
-		<Id>1</Id>
-		<Name>소량0의 MP포션</Name>
-		<HpHealAmount>0</HpHealAmount>
-            <MpHealAmount>25</MpHealAmount>
-            <SpriteName>Potion01</SpriteName>
+		<Amount>25</Amount>
 	</Potion>
 	<Key>
 		<Id>0</Id>
 		<Name>Door Key</Name>
         <SpriteName>DoorKey</SpriteName>
 	</Key>
-      <GunAmmoItem>
+      <Ammo>
             <Id>0</Id>
             <Name>0.45mm 탄</Name>
-		<Amount>10</Amount>
+		<SpriteName>Potion01</SpriteName>
+            <Amount>10</Amount>
 		<UsingBullet>0.45mm</UsingBullet>
-            <SpriteName>Potion01</SpriteName>
-      </GunAmmoItem>
-      <GunAmmoItem>
-            <Id>1</Id>
-             <Name>5.5mm 탄</Name>
-		<Amount>10</Amount>
-		<UsingBullet>5.5mm</UsingBullet>
-            <SpriteName>Potion01</SpriteName>
-      </GunAmmoItem>
-      <GunItem>
-            <Id>0</Id>
-            <WeaponId>0</WeaponId>
-            <Magazine>35</Magazine>
-            <SpriteName>Potion01</SpriteName>
-      </GunItem>
-      <GunItem>
-            <Id>1</Id>
-            <WeaponId>2</WeaponId>
-            <Magazine>150</Magazine>
-            <SpriteName>Potion01</SpriteName>
-      </GunItem>
-      <GunItem>
-            <Id>2</Id>
-            <WeaponId>3</WeaponId>
-            <Magazine>150</Magazine>
-            <SpriteName>Potion01</SpriteName>
-      </GunItem>
+      </Ammo>
 </ItemSet>

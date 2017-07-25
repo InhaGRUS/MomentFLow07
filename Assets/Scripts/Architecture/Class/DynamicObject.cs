@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class DynamicObject : MonoBehaviour, ISaveable, ILoadable {
 
+	public DynamicObjectType objectType;
+
 	public float customDeltaTime;
 	public float customTimeScale = 1;
 

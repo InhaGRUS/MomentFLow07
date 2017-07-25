@@ -21,7 +21,11 @@ public class PlayerBodyInteractChecker : BodyAnimationCheckerBase {
 
 	protected override bool IsSatisfiedToAction ()
 	{
-		throw new System.NotImplementedException ();
+		if (actor.outsideInfo.nearInteractableObjList.Count != 0)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	protected override void BeforeTransitionAction ()

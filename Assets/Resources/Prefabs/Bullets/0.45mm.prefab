@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdd563fd30306d4d9ef70ae4d3d5257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: 2
   customDeltaTime: 0
   customTimeScale: 1
   animators: []
@@ -219,7 +220,7 @@ SphereCollider:
   m_GameObject: {fileID: 1195360917447746}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.03
   m_Center: {x: 0, y: 0, z: 0}

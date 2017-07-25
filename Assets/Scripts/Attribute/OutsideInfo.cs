@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OutsideInfo : MonoBehaviour {
-
+	public Actor actor;
 	public List<DynamicObject> nearDynamicObjList = new List<DynamicObject>();
-	public List<Actor> nearEnemyObjList = new List<Actor>(); 
+
+	public List<Actor> nearActorObjList = new List<Actor>(); 
+	public List<InteractableObject> nearInteractableObjList = new List<InteractableObject> ();
+	public List<Bullet> nearBulletObjList = new List<Bullet> ();
+
+	public void Start ()
+	{
+		actor = Actor.GetActor <OutsideInfo> (this);
+	}
 
 	public void OnTriggerEnter (Collider col)
 	{
@@ -13,20 +21,8 @@ public class OutsideInfo : MonoBehaviour {
 		if (null != dynamicObj)
 		{
 			if (!nearDynamicObjList.Contains (dynamicObj)) {
-				nearDynamicObjList.Add (dynamicObj);
-				SortDynamicListByDistance ();
+				IdentifyAndAddDynamicObjects (dynamicObj);
 			}
-			return;
-		}
-
-		var enemyObj = Actor.GetActor (col);
-		if (null != enemyObj && enemyObj.humanInfo.humanType == HumanType.Enemy)
-		{
-			if (!nearEnemyObjList.Contains (enemyObj)) {
-				nearEnemyObjList.Add (enemyObj);
-				SortEnemyListByDistance ();
-			}
-			return;
 		}
 	}
 
@@ -36,20 +32,8 @@ public class OutsideInfo : MonoBehaviour {
 		if (null != dynamicObj)
 		{
 			if (!nearDynamicObjList.Contains (dynamicObj)) {
-				nearDynamicObjList.Add (dynamicObj);
-				SortDynamicListByDistance ();
+				IdentifyAndAddDynamicObjects (dynamicObj);
 			}
-			return;
-		}
-
-		var enemyObj = Actor.GetActor (col);
-		if (null != enemyObj  && enemyObj.humanInfo.humanType == HumanType.Enemy)
-		{
-			if (nearEnemyObjList.Contains (enemyObj)) {
-				nearEnemyObjList.Remove (enemyObj);
-				SortEnemyListByDistance ();
-			}
-			return;
 		}
 	}
 
@@ -59,18 +43,7 @@ public class OutsideInfo : MonoBehaviour {
 		if (null != dynamicObj)
 		{
 			if (nearDynamicObjList.Contains (dynamicObj)) {
-				nearDynamicObjList.Remove (dynamicObj);
-				SortDynamicListByDistance ();
-			}
-			return;
-		}
-
-		var enemyObj = Actor.GetActor (col);
-		if (null != enemyObj && enemyObj.humanInfo.humanType == HumanType.Enemy)
-		{
-			if (!nearEnemyObjList.Contains (enemyObj)) {
-				nearEnemyObjList.Add (enemyObj);
-				SortEnemyListByDistance ();
+				IdentifyAndRemoveDynamicObjects (dynamicObj);
 			}
 			return;
 		}
@@ -102,9 +75,9 @@ public class OutsideInfo : MonoBehaviour {
 		});
 	}
 
-	void SortEnemyListByDistance ()
+	void SortActorListByDistance ()
 	{
-		nearEnemyObjList.Sort (delegate (Actor x, Actor y) {
+		nearActorObjList.Sort (delegate (Actor x, Actor y) {
 			var dis01 = Vector3.Distance (transform.position, x.transform.position);
 			var dis02 = Vector3.Distance (transform.position, y.transform.position);
 			if (dis01 > dis02) {
@@ -116,6 +89,46 @@ public class OutsideInfo : MonoBehaviour {
 				}
 			return 0;
 		});
+	}
+
+	private void IdentifyAndAddDynamicObjects (DynamicObject dynamicObj)
+	{
+		nearDynamicObjList.Add (dynamicObj);
+		SortDynamicListByDistance ();
+
+		switch (dynamicObj.objectType) {
+		case DynamicObjectType.Actor:
+			if ((Actor)dynamicObj != actor) {
+				nearActorObjList.Add ((Actor)dynamicObj);
+				SortActorListByDistance ();
+			}
+			break;
+		case DynamicObjectType.InteractableObject:
+			nearInteractableObjList.Add ((InteractableObject)dynamicObj);
+			break;
+		case DynamicObjectType.Bullet:
+			nearBulletObjList.Add ((Bullet)dynamicObj);
+			break;
+		}
+	}
+
+	private void IdentifyAndRemoveDynamicObjects (DynamicObject dynamicObj)
+	{
+		nearDynamicObjList.Remove (dynamicObj);
+		SortDynamicListByDistance ();
+
+		switch (dynamicObj.objectType) {
+		case DynamicObjectType.Actor:
+			nearActorObjList.Remove ((Actor)dynamicObj);
+			SortActorListByDistance ();
+			break;
+		case DynamicObjectType.InteractableObject:
+			nearInteractableObjList.Remove ((InteractableObject)dynamicObj);
+			break;
+		case DynamicObjectType.Bullet:
+			nearBulletObjList.Remove ((Bullet)dynamicObj);
+			break;
+		}
 	}
 
 	public DynamicObject FindNearestDynamicObject ()
