@@ -28,6 +28,7 @@ public class PlayerShoulderIdleChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		SetAnimationTrigger ();
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

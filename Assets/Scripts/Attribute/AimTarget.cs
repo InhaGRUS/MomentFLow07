@@ -71,7 +71,7 @@ public class AimTarget : MonoBehaviour
 
 		nowAimVector = Vector3.Lerp (nowAimVector, targetAimVector, actor.customDeltaTime * 3f);
 
-		actor.shoulderAnimator.SetFloat ("AimAngleRatio", Mathf.Abs(degreeY / 180));
+		actor.shoulderAnimator.SetFloat ("AimYAngleRatio", Mathf.Abs(degreeY / 180));
 		actor.bodyAnimator.SetFloat ("AimZAngleRatio", degreeZ / 360f);
 		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(0, 0, degreeY + defaultAngle);
 
@@ -91,7 +91,7 @@ public class AimTarget : MonoBehaviour
 			}
 		}
 
-		actor.shoulderAnimator.SetFloat("AimAngleRatio", 0.5f);
+		actor.shoulderAnimator.SetFloat("AimYAngleRatio", 0.5f);
 
 		actor.shoulderAnimator.transform.localRotation = Quaternion.Euler(Vector3.zero);
 	}

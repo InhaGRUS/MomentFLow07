@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Actor : DynamicObject {
 	[Header ("ActorInfo")]
+	public RoomInfo roomInfo;
 	public HumanInfo humanInfo = new HumanInfo();
 	[HideInInspector]
 	public OutsideInfo outsideInfo;
@@ -37,7 +38,7 @@ public class Actor : DynamicObject {
 	public Vector3 actorVelocity;
 
 	// Use this for initialization
-	void Start () {
+	protected new void Start () {
 		outsideInfo = GetComponentInChildren <OutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
 		actorRigid = GetComponent<Rigidbody> ();

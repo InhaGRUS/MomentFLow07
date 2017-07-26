@@ -40,8 +40,10 @@ public abstract class AnimationCheckerBase : MonoBehaviour {
 	{
 		if (IsSatisfiedToAction ()) {
 			DoSpecifiedAction ();
-			if (CanTransition())
-				StartCoroutine (TransitionAction ());
+			if (CanTransition ()) {
+				StopCoroutine ("TransitionAction");
+				StartCoroutine ("TransitionAction");
+			}
 		} else {
 			if (CanTransition ()) {
 				CancelSpecifiedAction();

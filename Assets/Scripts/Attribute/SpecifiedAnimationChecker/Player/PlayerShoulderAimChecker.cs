@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	public Transform aimStartPoint;
 	public AimState aimState = AimState.Normal;
+
+	public LayerMask aimableLayerMask;
+
 	public float maxGunAimDistance;
 
 	public LineRenderer lineRenderer;
@@ -56,6 +59,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		SetAnimationTrigger ();
 		PlayerAimRender ();
 
 		nowActivated = true;
@@ -84,9 +88,9 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 			playerAimPoints.Add (aimStartPoint.position);
 
 			// MouseRay 
-			if (Physics.Raycast (mouseRay, out hit, maxGunAimDistance)) {
+			if (Physics.Raycast (mouseRay, out hit, maxGunAimDistance, aimableLayerMask)) {
 				var tmpPoint = hit.point;
-				if (Physics.Raycast (aimStartPoint.position, (hit.point - aimStartPoint.position).normalized, out hit, maxGunAimDistance)) {
+				if (Physics.Raycast (aimStartPoint.position, (hit.point - aimStartPoint.position).normalized, out hit, maxGunAimDistance, aimableLayerMask)) {
 					points.Add (hit.point);
 					actor.aimTarget.AimToObject (hit.point);
 				}
@@ -101,7 +105,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 			// PlayerAimRay
 			var dir = actor.aimTarget.nowAimVector;
 
-			if (Physics.Raycast (aimStartPoint.position, dir, out hit, maxGunAimDistance)) {
+			if (Physics.Raycast (aimStartPoint.position, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
 				playerAimPoints.Add (hit.point);
 			}
 			else {

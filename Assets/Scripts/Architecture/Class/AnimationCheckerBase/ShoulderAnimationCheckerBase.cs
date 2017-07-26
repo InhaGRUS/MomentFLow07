@@ -30,8 +30,9 @@ public abstract class ShoulderAnimationCheckerBase : AnimationCheckerBase {
 		if (animationIndex == -1) {
 			animationIndex = Random.Range (0, setAnimationTriggerName.Count - 1);
 		} 
-
-		actor.bodyAnimator.SetTrigger (setAnimationTriggerName [animationIndex].bodyAnimationName);
-		actor.shoulderAnimator.SetTrigger (setAnimationTriggerName [animationIndex].shoulderAnimationName);
+		if (setAnimationTriggerName [animationIndex].bodyAnimationName != "")
+			actor.bodyAnimator.SetTrigger (setAnimationTriggerName [animationIndex].bodyAnimationName);
+		if (setAnimationTriggerName [animationIndex].shoulderAnimationName != "")
+			actor.shoulderAnimator.SetTrigger (setAnimationTriggerName [animationIndex].shoulderAnimationName);
 	}
 }

@@ -127,7 +127,7 @@ TrailRenderer:
   m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.05
+    widthMultiplier: 0.03
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -242,8 +242,8 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 3
-    scalar: 0
-    minScalar: 0
+    scalar: 0.1
+    minScalar: 0.05
     maxCurve:
       serializedVersion: 2
       m_Curve:
@@ -283,7 +283,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1242031422
+  randomSeed: -521264407
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3545,7 +3545,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1372324623
+  randomSeed: 2112792590
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5074,7 +5074,7 @@ ParticleSystem:
     inWorldSpace: 0
     dampen: 1
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 0

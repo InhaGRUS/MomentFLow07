@@ -2,49 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBodyCrouchWalkChecker : BodyAnimationCheckerBase {
-	public KeyCode standUpKey;
+public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 
 	// Use this for initialization
-	protected new void Start () {
+	void Start () {
 		base.Start ();
 	}
 
-	#region implemented abstract members of ActionBase
-
+	#region implemented abstract members of AnimationCheckerBase
 	protected override bool CanTransition ()
 	{
 		return true;
 	}
-
 	protected override bool IsSatisfiedToAction ()
 	{
-		if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) &&
-			actor.stateInfo.isCrouhcing
-		)	
-		{
-			return true;
-		}
 		return false;
 	}
-
 	protected override void BeforeTransitionAction ()
 	{
-		nowActivated = false;
+		throw new System.NotImplementedException ();
 	}
-
 	public override void DoSpecifiedAction ()
 	{
-		SetAnimationTrigger ();
-		nowActivated = true;
+		throw new System.NotImplementedException ();
 	}
-
 	public override void CancelSpecifiedAction ()
 	{
-		nowActivated = false;
+		throw new System.NotImplementedException ();
 	}
-
 	#endregion
-
-
 }

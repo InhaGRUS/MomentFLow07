@@ -9,11 +9,32 @@ public enum DynamicObjectType
 	Bullet
 }
 
+public enum RoomState
+{
+	Normal,
+	Alert,
+	Combat,
+	Clear
+}
+
+public enum InteractableObjectType
+{
+	Obstacle,
+	Item
+}
+
 public enum HumanType
 {
 	Player,
 	Enemy,
 	NPC
+}
+
+public enum SoundType
+{
+	GunFireSound,
+	SuspiciousSound,
+	YellSound
 }
 
 public enum ItemType

@@ -37,6 +37,8 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	public override void CancelSpecifiedAction ()
 	{
 		nowActivated = false;
+		actor.bodyAnimator.ResetTrigger ("TriggerShoot");
+		actor.shoulderAnimator.ResetTrigger ("TriggerShoot");
 		actor.ResetSetLookDirectionPriority ();
 	}
 	#endregion

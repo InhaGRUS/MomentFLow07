@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class InteractableObject : DynamicObject {
-
+	public InteractableObjectType interactableObjectType;
 	public int interactCount = 0;
 
 	// Use this for initialization

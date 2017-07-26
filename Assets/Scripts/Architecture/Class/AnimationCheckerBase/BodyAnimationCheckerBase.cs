@@ -34,14 +34,13 @@ public abstract class BodyAnimationCheckerBase : AnimationCheckerBase {
 				animationIndex = Random.Range (0, bodyOnlyAnimationTriggerName.Count - 1);
 		} 
 		if (actor.useShoulder) {
-			actor.bodyAnimator.SetTrigger (setAnimationTriggerName [animationIndex].bodyAnimationName);
-			actor.shoulderAnimator.SetTrigger (setAnimationTriggerName [animationIndex].shoulderAnimationName);
-
-			actor.bodyAnimator.SetInteger ("AnimationIndex", animationIndex);
-			actor.shoulderAnimator.SetInteger ("AnimationIndex", animationIndex);
+			if (setAnimationTriggerName [animationIndex].bodyAnimationName != "")
+				actor.bodyAnimator.SetTrigger (setAnimationTriggerName [animationIndex].bodyAnimationName);
+			if (setAnimationTriggerName [animationIndex].shoulderAnimationName != "")
+				actor.shoulderAnimator.SetTrigger (setAnimationTriggerName [animationIndex].shoulderAnimationName);
 		} else {
-			actor.bodyAnimator.SetTrigger (bodyOnlyAnimationTriggerName [animationIndex]);
-			actor.bodyAnimator.SetInteger ("AnimationIndex", animationIndex);
+			if (setAnimationTriggerName [animationIndex].bodyAnimationName != "")
+				actor.bodyAnimator.SetTrigger (bodyOnlyAnimationTriggerName [animationIndex]);
 		}
 			
 	}

@@ -62,15 +62,20 @@ public class OutsideInfo : MonoBehaviour {
 				nearDynamicObjList.Remove (y);
 				return 0;
 			}
+
 			var dis01 = Vector3.Distance (transform.position, x.transform.position);
 			var dis02 = Vector3.Distance (transform.position, y.transform.position);
+
 			if (dis01 > dis02) {
 				return 1;
 			}
 			else
-				if (dis01 < dis02) {
+			{
+				if (dis01 < dis02) 
+				{
 					return -1;
 				}
+			}
 			return 0;
 		});
 	}
@@ -78,15 +83,63 @@ public class OutsideInfo : MonoBehaviour {
 	void SortActorListByDistance ()
 	{
 		nearActorObjList.Sort (delegate (Actor x, Actor y) {
+			if (null == x)
+			{
+				nearActorObjList.Remove (x);
+				return 0;
+			}
+			if (null == y)
+			{
+				nearActorObjList.Remove (y);
+				return 0;
+			}
+
 			var dis01 = Vector3.Distance (transform.position, x.transform.position);
 			var dis02 = Vector3.Distance (transform.position, y.transform.position);
-			if (dis01 > dis02) {
+
+			if (dis01 > dis02) 
+			{
 				return 1;
 			}
 			else
-				if (dis01 < dis02) {
+			{
+				if (dis01 < dis02) 
+				{
 					return -1;
 				}
+			}
+			return 0;
+		});
+	}
+
+	void SortInteractableObjectListByDistance ()
+	{
+		nearInteractableObjList.Sort (delegate(InteractableObject x, InteractableObject y) {
+			if (null == x)
+			{
+				nearInteractableObjList.Remove (x);
+				return 0;
+			}
+			if (null == y)
+			{
+				nearInteractableObjList.Remove (y);
+				return 0;
+			}
+
+			var dis01 = Vector3.Distance (transform.position, x.transform.position);
+			var dis02 = Vector3.Distance (transform.position, y.transform.position);
+
+			if (dis01 > dis02) 
+			{
+				return 1;
+			}
+			else
+			{
+				if (dis01 < dis02) 
+				{
+					return -1;
+				}
+			}
 			return 0;
 		});
 	}
@@ -105,6 +158,7 @@ public class OutsideInfo : MonoBehaviour {
 			break;
 		case DynamicObjectType.InteractableObject:
 			nearInteractableObjList.Add ((InteractableObject)dynamicObj);
+			SortInteractableObjectListByDistance ();
 			break;
 		case DynamicObjectType.Bullet:
 			nearBulletObjList.Add ((Bullet)dynamicObj);
@@ -140,8 +194,53 @@ public class OutsideInfo : MonoBehaviour {
 		return null;
 	}
 
-	public DynamicObject FindNearestEnemyTypeObject ()
+	public InteractableObject FindNearestObstacle ()
 	{
+		
+		for (int i = 0; i < nearInteractableObjList.Count; i++)
+		{
+			if (nearInteractableObjList [i].interactableObjectType == InteractableObjectType.Obstacle)
+			{
+				return nearInteractableObjList [i];
+			}
+		}
+
+		return null;
+	}
+
+	public InteractableObject FindNearestItem ()
+	{
+		for (int i = 0; i < nearInteractableObjList.Count; i++)
+		{
+			if (nearInteractableObjList [i].interactableObjectType == InteractableObjectType.Item)
+			{
+				return nearInteractableObjList [i];
+			}
+		}
+		return null;
+	}
+
+	public Actor FindNearestEnemyTypeObject ()
+	{
+		for (int i = 0; i < nearActorObjList.Count; i++)
+		{
+			if (nearActorObjList [i].humanInfo.humanType == HumanType.Enemy)
+			{
+				return nearActorObjList [i];
+			}
+		}
+		return null;
+	}
+
+	public Actor FindNearestNPCTypeObject ()
+	{
+		for (int i = 0; i < nearActorObjList.Count; i++)
+		{
+			if (nearActorObjList [i].humanInfo.humanType == HumanType.NPC)
+			{
+				return nearActorObjList [i];
+			}
+		}
 		return null;
 	}
 }

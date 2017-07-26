@@ -13,6 +13,7 @@ public class PlayerBodyWalkAnimation : BodyAnimationBase {
 	protected override void OnAnimationEnter (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		ChangeAnimationClipByRandom ();
+		Walk ();
 	}
 
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -56,8 +57,8 @@ public class PlayerBodyWalkAnimation : BodyAnimationBase {
 
 		float tmpMaxWalkSpeedX = Mathf.Abs (maxWalkSpeed * walkDirection.x);
 		float tmpMaxWalkSpeedZ = Mathf.Abs (maxWalkSpeed * walkDirection.z);
-		actor.actorRigid.AddForce (walkDirection * accel * actor.customDeltaTime, ForceMode.Force);
-		actor.actorRigid.velocity = new Vector3 (Mathf.Clamp (actor.actorRigid.velocity.x, -tmpMaxWalkSpeedX, tmpMaxWalkSpeedX), actor.actorRigid.velocity.y, Mathf.Clamp (actor.actorRigid.velocity.z, -tmpMaxWalkSpeedZ, tmpMaxWalkSpeedZ));
+
+		actor.actorRigid.velocity = new Vector3 (Mathf.Clamp (maxWalkSpeed * walkDirection.x, -tmpMaxWalkSpeedX, tmpMaxWalkSpeedX), actor.actorRigid.velocity.y, Mathf.Clamp (maxWalkSpeed * walkDirection.z, -tmpMaxWalkSpeedZ, tmpMaxWalkSpeedZ));
 		walkDirection = Vector3.zero;
 	}
 }
