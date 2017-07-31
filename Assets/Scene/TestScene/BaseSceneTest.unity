@@ -39,7 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 1683134517039983843, guid: 0000000000000000d000000000000000,
     type: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6470464, g: 0.69853514, b: 0.7485796, a: 1}
+  m_IndirectSpecularColor: {r: 0.64691734, g: 0.69839656, b: 0.74844277, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -96,15 +96,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 15
+    agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    minRegionArea: 2
+    minRegionArea: 0.05
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 1
@@ -268,6 +268,33 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!84 &41310236
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &67377566
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +579,59 @@ Material:
     - _Rotation: 0
     m_Colors:
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+--- !u!1 &297671681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 297671682}
+  - component: {fileID: 297671683}
+  m_Layer: 0
+  m_Name: HideAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &297671682
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 297671681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 790364236}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297671683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 297671681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78be64c04271414982ebdf5059d3670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowActivated: 0
+  actor: {fileID: 0}
+  setAnimationTriggerName:
+  - bodyAnimationName: TriggerRun
+    shoulderAnimationName: TriggerRun
+  animationIndex: -1
+  canTransition: 1
+  canTransitionActionList:
+  - {fileID: 2074072729}
+  - {fileID: 297671683}
+  bodyOnlyAnimationTriggerName: []
+  disToChase: 2
+  disToTarget: 0
 --- !u!1 &319768389
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,12 +1061,12 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.015000001, y: 0.015000001, z: 0.015000001}
-  m_MoveThreshold: 0.1
+  m_Extents: {x: 0.0075, y: 0.0075, z: 0.0075}
+  m_MoveThreshold: 0.01
   m_Carve: 0
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0.015000001}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.1
 --- !u!1 &644472666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1095,7 @@ Animator:
   m_GameObject: {fileID: 644472666}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f46da1685596e94782077185c083c4f, type: 2}
+  m_Controller: {fileID: 9100000, guid: b391ca443075e8c44ae518dd17faf4db, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1339,7 +1419,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 947158463}
+  RainRipplesRenderTexture: {fileID: 41310236}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -1415,6 +1495,7 @@ Transform:
   m_Children:
   - {fileID: 2074072728}
   - {fileID: 1071751591}
+  - {fileID: 297671682}
   m_Father: {fileID: 1766023648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4821,33 +4902,6 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
---- !u!84 &947158463
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &999389805
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,23 +5047,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1071751590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f9de19acf88bb45af4549374a12229, type: 3}
+  m_Script: {fileID: 11500000, guid: e78be64c04271414982ebdf5059d3670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
-  - bodyAnimationName: TriggerIdle
-    shoulderAnimationName: 
+  - bodyAnimationName: TriggerRun
+    shoulderAnimationName: TriggerRun
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
+  - {fileID: 2074072729}
   - {fileID: 1071751592}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bodyOnlyAnimationTriggerName:
-  - TriggerIdle
+  bodyOnlyAnimationTriggerName: []
+  disToChase: 2
+  disToTarget: 0
 --- !u!1 &1107672627 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: dca263cac8189554aa10fa4d87d9225a, type: 3}
@@ -5069,12 +5122,12 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.015000001, y: 0.015000001, z: 0.015000001}
-  m_MoveThreshold: 0.1
+  m_Extents: {x: 0.0075, y: 0.0075, z: 0.0075}
+  m_MoveThreshold: 0.01
   m_Carve: 0
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0.015000001}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.1
 --- !u!1 &1155663521
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,7 +5400,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: dca263cac8189554aa10fa4d87d9225a, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dca263cac8189554aa10fa4d87d9225a, type: 3}
@@ -5399,7 +5452,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -5438,25 +5491,23 @@ MonoBehaviour:
     isCrouhcing: 0
     isDamaged: 0
     isUnbeatable: 0
-  actorRigid: {fileID: 0}
-  bodyCollider: {fileID: 0}
-  useShoulder: 0
-  bodyAnimator: {fileID: 0}
-  shoulderAnimator: {fileID: 0}
-  aimTarget: {fileID: 0}
+  actorRigid: {fileID: 1322756415}
+  bodyCollider: {fileID: 644472671}
+  useShoulder: 1
+  bodyAnimator: {fileID: 644472667}
+  shoulderAnimator: {fileID: 1811262863}
+  aimTarget: {fileID: 1322756414}
   armLength: 0
   actions: []
-  nowBodyAction: {fileID: 0}
+  nowBodyAction: {fileID: 2074072729}
   nowShoulderAction: {fileID: 0}
   nowBodyAnimationName: 
   nowShoulderAnimationName: 
   actorVelocity: {x: 0, y: 0, z: 0}
-  viewAngle: 45
-  viewDistance: 10
-  dynamicObjectListInView: []
-  actorListInVeiw: []
-  interactableObjectListInView: []
-  lookDirection: {x: 0, y: 0, z: -1}
+  agent: {fileID: 0}
+  targetActor: {fileID: 0}
+  lastTargetPoint: {x: 0, y: 0, z: 0}
+  damagedDirection: {x: 0, y: 0, z: 0}
 --- !u!4 &1322756417
 Transform:
   m_ObjectHideFlags: 0
@@ -5464,7 +5515,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1322756413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.637, y: 0.489, z: -0.356}
+  m_LocalPosition: {x: -1.33, y: 0.489, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 644472670}
@@ -5484,13 +5535,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.08
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 0
+  m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.65
   m_BaseOffset: 0
@@ -5637,7 +5688,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369593111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2704296c4f58f469cfae27d1f8c9f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6040ba61d6a56f7408de5dd77c695be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
@@ -5645,6 +5696,13 @@ MonoBehaviour:
   nearActorObjList: []
   nearInteractableObjList: []
   nearBulletObjList: []
+  viewAngle: 0
+  viewMaxDistance: 10
+  viewRecognizeDistance: 5
+  dynamicObjectListInView: []
+  actorListInVeiw: []
+  interactableObjectListInView: []
+  lookDirection: {x: 0, y: 0, z: 1}
 --- !u!65 &1369593113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6684,7 +6742,7 @@ Animator:
   m_GameObject: {fileID: 1811262858}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ad7ab7a17a309b4a91f5bac135e3916, type: 2}
+  m_Controller: {fileID: 9100000, guid: 04eb84eb46ded0d42b31d3d534bacc2a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6717,7 +6775,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1850894714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2704296c4f58f469cfae27d1f8c9f6, type: 3}
+  m_Script: {fileID: 11500000, guid: afdbe872090fe604794fa897dc5f3621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
@@ -6865,7 +6923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: dca263cac8189554aa10fa4d87d9225a, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dca263cac8189554aa10fa4d87d9225a, type: 3}
@@ -10530,23 +10588,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074072727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f9de19acf88bb45af4549374a12229, type: 3}
+  m_Script: {fileID: 11500000, guid: d99b32daafa687a4d98f18148767f8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
   actor: {fileID: 0}
   setAnimationTriggerName:
   - bodyAnimationName: TriggerIdle
-    shoulderAnimationName: 
+    shoulderAnimationName: TriggerIdle
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
   - {fileID: 2074072729}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bodyOnlyAnimationTriggerName:
-  - TriggerIdle
+  - {fileID: 1071751592}
+  bodyOnlyAnimationTriggerName: []
 --- !u!1 &2084058840
 GameObject:
   m_ObjectHideFlags: 0

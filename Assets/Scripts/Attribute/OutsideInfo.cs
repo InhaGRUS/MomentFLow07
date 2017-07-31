@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OutsideInfo : MonoBehaviour {
 	public Actor actor;
+
 	public List<DynamicObject> nearDynamicObjList = new List<DynamicObject>();
 
 	public List<Actor> nearActorObjList = new List<Actor>(); 

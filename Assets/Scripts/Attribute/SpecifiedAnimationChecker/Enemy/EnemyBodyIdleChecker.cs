@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
-
+	EnemyActor eActor;
 	// Use this for initialization
 	void Start () {
 		base.Start ();
+		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
 	}
 
 	#region implemented abstract members of AnimationCheckerBase
@@ -16,19 +17,46 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		throw new System.NotImplementedException ();
+		if (null == eActor.targetActor)
+		{
+			return true;
+		}
+		return false;
 	}
 	protected override void BeforeTransitionAction ()
 	{
-		throw new System.NotImplementedException ();
+		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
-		throw new System.NotImplementedException ();
+		SetAnimationTrigger ();
+		FindSuspiciousObject ();
+		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
-		throw new System.NotImplementedException ();
+		nowActivated = false;
 	}
 	#endregion
+
+	public void FindSuspiciousObject ()
+	{
+		for (int i = 0; i < ((EnemyOutsideInfo)(eActor.outsideInfo)).actorListInVeiw.Count; i++)
+		{
+			var element = ((EnemyOutsideInfo)(eActor.outsideInfo)).actorListInVeiw [i];
+			if (Vector3.Distance (element.transform.position, eActor.transform.position) > ((EnemyOutsideInfo)(eActor.outsideInfo)).viewRecognizeDistance ||
+			    element.roomInfo.roomName != eActor.roomInfo.roomName) 
+			{
+				continue;
+			}
+			
+			if (element.humanInfo.humanType == HumanType.Player)
+			{
+				eActor.targetActor = element;
+				break;
+			}
+		}
+	}
+
+
 }
