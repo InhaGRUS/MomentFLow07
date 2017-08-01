@@ -6,7 +6,6 @@ using UnityEngine;
 public class AimTarget : MonoBehaviour
 {
 	public Actor actor;
-    private Animator animator;
     private SpriteRenderer shoulderSpriteRenderer;
 
     public Transform shoulder;
@@ -23,7 +22,6 @@ public class AimTarget : MonoBehaviour
     void Start()
     {
 		actor = Actor.GetActor <AimTarget> (this);
-		animator = actor.shoulderAnimator;
         shoulderSpriteRenderer = shoulder.GetComponent<SpriteRenderer>();
     }
 

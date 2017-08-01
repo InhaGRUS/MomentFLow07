@@ -59,7 +59,7 @@ Material:
     - _DiffuseScatteringContraction: 10
     - _DispTiling: 2
     - _Displacement: 0.04
-    - _EdgeLength: 18.1
+    - _EdgeLength: 17.5
     - _EnableIndependentPuddleMaskTiling: 1
     - _HelpSnowMapping: 0
     - _Lux_FlowInterval: 1
@@ -69,7 +69,7 @@ Material:
     - _Lux_FlowSpeed: 0.48
     - _MaxDist: 10
     - _MinDist: 5
-    - _Parallax: 0.092
+    - _Parallax: 0.192
     - _ParallaxTiling: 1
     - _ParallaxToBaseRatio: 1
     - _Phong: 0

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
-	EnemyActor eActor;
+	public EnemyActor eActor;
 	public float disToChase = 2f;
 	public float disToTarget;
 	// Use this for initialization
-	void Start () {
+	protected new void Start () {
 		base.Start ();
 		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
 	}
@@ -19,15 +19,26 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (null == eActor.targetActor)
-			return false;
-		disToTarget = Vector3.Distance (eActor.targetActor.transform.position, eActor.transform.position);
-		if (disToTarget > disToChase &&
-			eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName
-		)
-		{
-			return true;
+		if (null == eActor.targetActor) {
+			if (!eActor.roomInfo.roomRectCollider.bounds.Contains (eActor.lastTargetPoint)) {
+				return false;
+			}
+			disToTarget = Vector3.Distance (eActor.lastTargetPoint, eActor.transform.position);
+			if (Mathf.Approximately (disToTarget, 0))
+				return false;
+			if (eActor.roomInfo.roomState == RoomState.Combat)
+				return true;
+		} 
+		else {
+			disToTarget = Vector3.Distance (eActor.targetActor.transform.position, eActor.transform.position);
+			if (disToTarget > disToChase &&
+				eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName
+			)
+			{
+				return true;
+			}
 		}
+		Debug.Log ("false to chase ");
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
@@ -38,7 +49,14 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	public override void DoSpecifiedAction ()
 	{
 		SetAnimationTrigger ();
-		eActor.agent.SetDestination (eActor.targetActor.transform.position);
+		eActor.FindSuspiciousObject ();
+		if (null != eActor.targetActor) {
+			eActor.agent.SetDestination (eActor.targetActor.transform.position);
+		}
+		else {
+			eActor.agent.SetDestination (eActor.lastTargetPoint);
+		}
+		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.agent.destination);
 	}
 	public override void CancelSpecifiedAction ()
 	{

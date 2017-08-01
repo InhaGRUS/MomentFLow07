@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class HideableObject : InteractableObject {
 
+	private Collider col;
+	public Vector3 colliderScale;
+	[SerializeField]
+	private List<HideableFace> hideableFace;
+
+	public void Start ()
+	{
+		col = GetComponent<Collider> ();
+		colliderScale = col.bounds.extents * 2f;
+	}
+		
 	#region implemented abstract members of DynamicObject
 	public override void SaveObject ()
 	{
@@ -29,5 +40,28 @@ public class HideableObject : InteractableObject {
 		
 	}
 	#endregion
-	
+
+	public bool GetFaceHideableState (HideableFaceName faceName)
+	{
+		for (int i = 0; i < hideableFace.Count; i++)
+		{
+			if (hideableFace [i].faceName == faceName)
+			{
+				return hideableFace [i].hideable;
+			}
+		}
+		return false;
+	}
+
+	public HideableFace GetHideableFaceByName (HideableFaceName faceName)
+	{
+		for (int i = 0; i< hideableFace.Count; i++)
+		{
+			if (hideableFace [i].faceName == faceName)
+			{
+				return hideableFace [i];
+			}
+		}
+		return new HideableFace();
+	}
 }

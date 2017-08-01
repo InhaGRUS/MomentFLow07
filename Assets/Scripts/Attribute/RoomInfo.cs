@@ -6,6 +6,8 @@ public class RoomInfo : MonoBehaviour {
 	public string roomName;
 	public RoomState roomState;
 
+	public Vector3 combatStartPoint;
+
 	public List<DynamicObject> dynamicObjectsInRoom = new List<DynamicObject>();
 	public List<Actor> actorsInRoom = new List<Actor>();
 	public List<InteractableObject> interactableObjectInRoom = new List<InteractableObject>();
@@ -28,6 +30,13 @@ public class RoomInfo : MonoBehaviour {
 	public void OnTriggerExit (Collider col)
 	{
 		IdentifyAndRemoveObject (col);
+		Debug.Log ("Exit");
+	}
+
+	public void SetRoomStateToCombatState (Vector3 combatPoint)
+	{
+		roomState = RoomState.Combat;
+		combatStartPoint = combatPoint;
 	}
 
 	void IdentifyAndAddObject (Collider col)

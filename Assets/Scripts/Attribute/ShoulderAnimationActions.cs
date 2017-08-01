@@ -21,6 +21,7 @@ public class ShoulderAnimationActions : MonoBehaviour {
 	{
 		var bullet = BulletPool.Instance.BorrowBullet (((GunInfo)actor.equipmentInfo.nowEquipWeaponInfo).usingBullet, actor);
 		bullet.transform.position = actor.aimTarget.shootPoint.position;
+		bullet.startPosition = bullet.transform.position;
 		bullet.transform.localRotation = Quaternion.LookRotation (actor.aimTarget.nowAimVector);
 		bullet.originVelocity = actor.aimTarget.nowAimVector * bullet.maxSpeed;
 		bullet.GetComponent<ParticleSystem> ().Play (false);

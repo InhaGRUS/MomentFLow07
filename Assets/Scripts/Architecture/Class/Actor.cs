@@ -37,10 +37,14 @@ public class Actor : DynamicObject {
 
 	public Vector3 actorVelocity;
 
-	// Use this for initialization
-	protected new void Start () {
+	public virtual void OnEnable ()
+	{
 		outsideInfo = GetComponentInChildren <OutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
+	}
+
+	// Use this for initialization
+	protected void Start () {
 		actorRigid = GetComponent<Rigidbody> ();
 
 		if (useShoulder) {

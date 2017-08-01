@@ -7,7 +7,7 @@ public class PlayerBodyInteractChecker : BodyAnimationCheckerBase {
 	public KeyCode interactKey = KeyCode.F;
 
 	// Use this for initialization
-	void Start () {
+	protected new void Start () {
 		base.Start ();
 		canTransition = false;
 	}

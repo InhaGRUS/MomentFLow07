@@ -17,7 +17,7 @@ public class Bullet : DynamicObject {
 	public float maxFlingDistance;
 	private float flingDistance;
 
-	private Vector3 startPosition = Vector3.zero;
+	public Vector3 startPosition = Vector3.zero;
 	[Header ("Other")]
 	public ParticleSystem destroyParticle;
 	private List<Collider> ignoreColliders = new List<Collider>();
@@ -33,7 +33,8 @@ public class Bullet : DynamicObject {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected new void Update () {
+		base.Update ();
 		flingDistance += rigid.velocity.magnitude * customDeltaTime;
 		rigid.velocity = originVelocity * Mathf.Pow(customTimeScale, 12f);
 		if (maxFlingDistance < flingDistance)

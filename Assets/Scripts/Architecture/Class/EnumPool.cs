@@ -19,7 +19,7 @@ public enum RoomState
 
 public enum InteractableObjectType
 {
-	Obstacle,
+	HideableObject,
 	Item
 }
 
@@ -64,6 +64,16 @@ public enum AimState
 {
 	Normal,
 	Bounce
+}
+
+public enum HideableFaceName
+{
+	leftFace = 0,
+	rightFace = 1,
+	forwardFace = 2,
+	backFace = 3,
+	upFace = 4,
+	downFace = 5
 }
 
 public class EnumPool {

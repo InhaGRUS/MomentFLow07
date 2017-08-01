@@ -86,7 +86,7 @@ public class EquipmentInfo : MonoBehaviour {
 				nowEquipWeaponType = EquipWeaponType.MeleeWeapon;
 			}
 			catch (Exception e) {
-
+				Debug.LogError (e.Message.ToString ());
 			}
 			return;
 		}
@@ -100,7 +100,7 @@ public class EquipmentInfo : MonoBehaviour {
 					nowEquipWeaponType = EquipWeaponType.Gun;
 				}
 				catch (Exception e) {
-
+					Debug.LogError (e.Message.ToString ());
 				}
 				return;
 			}
@@ -117,7 +117,7 @@ public class EquipmentInfo : MonoBehaviour {
 				nowEquipWeaponType = EquipWeaponType.Gun;
 			}
 			catch (Exception e) {
-
+				Debug.LogError (e.Message.ToString ());
 			}
 		}
 		else if (typeof(T) == typeof(MeleeWeaponInfo)) {
@@ -128,7 +128,7 @@ public class EquipmentInfo : MonoBehaviour {
 				nowEquipWeaponType = EquipWeaponType.MeleeWeapon;
 			}
 			catch (Exception e) {
-
+				Debug.LogError (e.Message.ToString ());
 			}
 		}
 		else {

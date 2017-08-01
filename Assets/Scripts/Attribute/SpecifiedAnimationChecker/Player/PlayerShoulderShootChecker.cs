@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 
+	private PlayerShoulderAimChecker aimChecker;
+
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
+		aimChecker = actor.GetSpecificAction <PlayerShoulderAimChecker> ();
 	}
 
 	#region implemented abstract members of ActionBase
@@ -30,8 +33,13 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	{
 		SetAnimationTrigger ();
 
+		if (actor.roomInfo.roomState != RoomState.Combat)
+		{
+			actor.roomInfo.SetRoomStateToCombatState (aimChecker.aimStartPoint.position);
+		}
+
 		actor.GetSpecificAction <PlayerShoulderAimChecker> ().PlayerAimRender ();
-		actor.aimTarget.AimToObject (actor.GetSpecificAction<PlayerShoulderAimChecker>().lineRenderer.GetPosition(1));
+		actor.aimTarget.AimToObject (aimChecker.lineRenderer.GetPosition(1));
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

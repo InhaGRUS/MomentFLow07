@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ItemInfo : InteractableObject {
-	public ItemType objectType;
+	public ItemType itemType;
 	public int itemId;
 	public Sprite itemSprite;
 	public string itemName;

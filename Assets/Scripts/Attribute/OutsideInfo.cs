@@ -200,7 +200,7 @@ public class OutsideInfo : MonoBehaviour {
 		
 		for (int i = 0; i < nearInteractableObjList.Count; i++)
 		{
-			if (nearInteractableObjList [i].interactableObjectType == InteractableObjectType.Obstacle)
+			if (nearInteractableObjList [i].interactableObjectType == InteractableObjectType.HideableObject)
 			{
 				return nearInteractableObjList [i];
 			}

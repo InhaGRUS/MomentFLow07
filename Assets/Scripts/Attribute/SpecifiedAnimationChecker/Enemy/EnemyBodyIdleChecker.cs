@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	EnemyActor eActor;
 	// Use this for initialization
-	void Start () {
+	protected new void Start () {
 		base.Start ();
 		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
 	}
@@ -30,7 +30,8 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	public override void DoSpecifiedAction ()
 	{
 		SetAnimationTrigger ();
-		FindSuspiciousObject ();
+		eActor.agent.destination = eActor.transform.position;
+		eActor.FindSuspiciousObject ();
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
@@ -38,25 +39,6 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 		nowActivated = false;
 	}
 	#endregion
-
-	public void FindSuspiciousObject ()
-	{
-		for (int i = 0; i < ((EnemyOutsideInfo)(eActor.outsideInfo)).actorListInVeiw.Count; i++)
-		{
-			var element = ((EnemyOutsideInfo)(eActor.outsideInfo)).actorListInVeiw [i];
-			if (Vector3.Distance (element.transform.position, eActor.transform.position) > ((EnemyOutsideInfo)(eActor.outsideInfo)).viewRecognizeDistance ||
-			    element.roomInfo.roomName != eActor.roomInfo.roomName) 
-			{
-				continue;
-			}
-			
-			if (element.humanInfo.humanType == HumanType.Player)
-			{
-				eActor.targetActor = element;
-				break;
-			}
-		}
-	}
 
 
 }

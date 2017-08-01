@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBodyCrouchHideChecker : BodyAnimationCheckerBase {
 
 	// Use this for initialization
-	void Start () {
+	protected new void Start () {
 		base.Start ();
 	}
 
