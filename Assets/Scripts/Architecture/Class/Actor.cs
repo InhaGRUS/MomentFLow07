@@ -15,6 +15,8 @@ public class Actor : DynamicObject {
 	public Rigidbody actorRigid;
 	public Collider bodyCollider;
 
+	public Vector3 damagedDirection;
+
 	public bool useShoulder = false;
 
 	[Header ("Body")]
@@ -106,10 +108,13 @@ public class Actor : DynamicObject {
 
 	}
 
-	public void DamagedFrom (Actor fromActor, float damagedAmount)
+	public void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
 	{
 		stateInfo.isDamaged = true;
 		humanInfo.hp -= damagedAmount;
+		damagedDirection = damagedDir;
+		stateInfo.isDamaged = true;
+		Debug.Log ("Actor : " + damagedDirection);
 	}
 
 	public static Actor FindActorByHumanName (string humanName)

@@ -10,7 +10,6 @@ public class EnemyActor : Actor {
 	public Actor targetActor;
 	public Vector3 suspiciousPoint;
 	public Vector3 lastTargetPoint;
-	public Vector3 damagedDirection;
 
 	public void OnEnable ()
 	{

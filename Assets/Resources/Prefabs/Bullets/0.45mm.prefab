@@ -207,6 +207,7 @@ MonoBehaviour:
   maxSpeed: 40
   accel: 1000
   maxFlingDistance: 100
+  startPosition: {x: 0, y: 0, z: 0}
   destroyParticle: {fileID: 198421173527136510}
   collisionMask:
     serializedVersion: 2

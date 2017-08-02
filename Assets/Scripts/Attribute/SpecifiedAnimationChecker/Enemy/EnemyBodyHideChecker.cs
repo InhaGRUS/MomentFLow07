@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
-	EnemyActor eActor;
+	public EnemyActor eActor;
 	public HideableObject targetHideableObj = null; 
 	public HideableFace targetFace;
 	public float autoBreakDistance;
@@ -24,14 +24,13 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		return true;
 	}
 	protected override bool IsSatisfiedToAction ()
-	{
-		if (null == targetHideableObj)
-			targetHideableObj = GetHideableObject () as HideableObject;
-		if (actor.humanInfo.maxHp != actor.humanInfo.hp &&
-			null != targetHideableObj &&
+	{		
+		if (eActor.stateInfo.isDamaged &&
+			null != GetHideableObject () &&
 			!eActor.stateInfo.isHiding
 		)
 		{
+			targetHideableObj = GetHideableObject () as HideableObject;
 			return true;
 		}
 		return false;
@@ -46,6 +45,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{
 		if (!eActor.stateInfo.isHiding)
 		{
+			Debug.Log ("Hide");
 			RunToPoint (targetHideableObj.transform.position + targetFace.point);
 		}
 		nowActivated = true;
@@ -61,14 +61,15 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public InteractableObject GetHideableObject ()
 	{
 		HideableObject hideableObj = null;
-		for (int i = 0; i < ((EnemyOutsideInfo)eActor.outsideInfo).hideableObjectInViewCount; i++)
+		for (int i = 0; i < eActor.GetEnemyOutsideInfo().hideableObjectInViewCount; i++)
 		{
-			hideableObj = ((EnemyOutsideInfo)eActor.outsideInfo).GetRankedObstacleByDistance (i) as HideableObject;
+			hideableObj = eActor.GetEnemyOutsideInfo().GetRankedObstacleByDistance (i) as HideableObject;
 
 			if (null == hideableObj)
 				continue;
+			
 			var face = GetHideableFace (hideableObj, eActor.damagedDirection);
-			if (null != face.point) {
+			if (null != face) {
 				targetFace = face;
 				return hideableObj;
 			}
@@ -84,16 +85,14 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 
 		HideableFace face = null;
 
-		Debug.Log ("abX : " + absX + "  abY : " + absY + "  abZ : " + absZ);
-
 		if (absX > absY) {
 			if (absX > absZ) {
 				if (damagedDir.x > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.leftFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.rightFace);
 					if (face.hideable)
 						return face;
 				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.rightFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.leftFace);
 					if (face.hideable)
 						return face;
 				}
@@ -138,16 +137,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	//  만약 point에 근접하면 return true, 아니면  return false
 	public bool RunToPoint (Vector3 obstaclePoint)
 	{
-		obstaclePoint.y = eActor.transform.position.z;
-		var dis = Vector3.Distance (eActor.transform.position, obstaclePoint);
-		if (dis > autoBreakDistance)
-		{
-			eActor.agent.SetDestination (obstaclePoint);
-			eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
-			return false;
-		}
-
-		SetAnimationTrigger ();
-		return true;
+		obstaclePoint.y = eActor.transform.position.y;
+		eActor.agent.destination = obstaclePoint;
+		eActor.agent.SetDestination (obstaclePoint);
+		eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
+		return false;
 	}
 }

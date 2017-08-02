@@ -5,6 +5,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class HideableObject : InteractableObject {
 
+	public float skinDepth = 0.1f;
+
 	private Collider col;
 	public Vector3 colliderScale;
 	public List<HideableFace> hideableFaceList = new List<HideableFace>();
@@ -24,27 +26,27 @@ public class HideableObject : InteractableObject {
 			hideableFaceList [i].faceName = (HideableFaceName)i;
 
 			if (i == 0){
-				hideableFaceList [i].point = Vector3.left * col.bounds.extents.x;
+				hideableFaceList [i].point = Vector3.left * (col.bounds.extents.x + skinDepth);
 				continue;
 			}
 			if (i == 1) {
-				hideableFaceList [i].point = Vector3.right * col.bounds.extents.x;
+				hideableFaceList [i].point = Vector3.right * (col.bounds.extents.x + skinDepth);
 				continue;
 			}
 			if (i == 2) {
-				hideableFaceList [i].point = Vector3.forward * col.bounds.extents.z;
+				hideableFaceList [i].point = Vector3.forward * (col.bounds.extents.z + skinDepth);
 				continue;
 			}
 			if (i == 3) {
-				hideableFaceList [i].point = Vector3.back * col.bounds.extents.z;
+				hideableFaceList [i].point = Vector3.back * (col.bounds.extents.z + skinDepth);
 				continue;
 			}
 			if (i == 4) {
-				hideableFaceList [i].point = Vector3.up * col.bounds.extents.y;
+				hideableFaceList [i].point = Vector3.up * (col.bounds.extents.y + skinDepth);
 				continue;
 			}
 			if (i == 5) {
-				hideableFaceList [i].point = Vector3.down * col.bounds.extents.y;
+				hideableFaceList [i].point = Vector3.down * (col.bounds.extents.y + skinDepth);
 				continue;
 			}
 		}

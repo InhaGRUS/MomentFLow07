@@ -39,7 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 1683134517039983843, guid: 0000000000000000d000000000000000,
     type: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.64691734, g: 0.69839656, b: 0.74844277, a: 1}
+  m_IndirectSpecularColor: {r: 0.6470464, g: 0.69853514, b: 0.7485796, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -96,15 +96,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.1
+    agentRadius: 0.05
     agentHeight: 2
     agentSlope: 15
     agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    minRegionArea: 0.05
+    minRegionArea: 0
     manualCellSize: 0
-    cellSize: 0.033333335
+    cellSize: 0.016666668
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 1
@@ -322,33 +322,6 @@ MonoBehaviour:
   bodyOnlyAnimationTriggerName:
   - TriggerStandup
   standUpKey: 99
---- !u!84 &85651447
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &127347299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,6 +3671,33 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+--- !u!84 &127366845
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &149699439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,111 +3831,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
-  customDeltaTime: 0.15860607
+  customDeltaTime: 0.149117
   customTimeScale: 1
   animators: []
   particles: []
   previousTimeScaleList: []
   interactableObjectType: 0
   interactCount: 0
+  skinDepth: 0.15
   colliderScale: {x: 0.45000005, y: 0.2999999, z: 0.3000002}
   hideableFaceList:
   - hideableObj: {fileID: 166471641}
     faceName: 0
     hideable: 1
-    point: {x: -0.22500002, y: 0, z: 0}
+    point: {x: -0.37500003, y: 0, z: 0}
   - hideableObj: {fileID: 166471641}
     faceName: 1
     hideable: 1
-    point: {x: 0.22500002, y: 0, z: 0}
+    point: {x: 0.37500003, y: 0, z: 0}
   - hideableObj: {fileID: 166471641}
     faceName: 2
     hideable: 0
-    point: {x: 0, y: 0, z: 0.1500001}
+    point: {x: 0, y: 0, z: 0.3000001}
   - hideableObj: {fileID: 166471641}
     faceName: 3
     hideable: 1
-    point: {x: 0, y: 0, z: -0.1500001}
+    point: {x: 0, y: 0, z: -0.3000001}
   - hideableObj: {fileID: 166471641}
     faceName: 4
-    hideable: 1
-    point: {x: 0, y: 0.14999995, z: 0}
+    hideable: 0
+    point: {x: 0, y: 0.29999995, z: 0}
   - hideableObj: {fileID: 166471641}
     faceName: 5
-    hideable: 1
-    point: {x: 0, y: -0.14999995, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
     hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
-  - hideableObj: {fileID: 0}
-    faceName: 0
-    hideable: 0
-    point: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: -0.29999995, z: 0}
 --- !u!1 &190296267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,7 +3952,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ede81b6067a2b22479b19921ea499c3a, type: 2}
+  - {fileID: 2100000, guid: 349ee2808d8c0954e8eda122a4e54878, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4376,7 +4305,7 @@ MonoBehaviour:
   animators: []
   particles: []
   previousTimeScaleList: []
-  roomInfo: {fileID: 0}
+  roomInfo: {fileID: 1653140820}
   humanInfo:
     humanName: 
     isTimeImmune: 0
@@ -4394,6 +4323,7 @@ MonoBehaviour:
     isUnbeatable: 0
   actorRigid: {fileID: 479815626}
   bodyCollider: {fileID: 1178487904}
+  damagedDirection: {x: 0, y: 0, z: 0}
   useShoulder: 1
   bodyAnimator: {fileID: 1178487900}
   shoulderAnimator: {fileID: 1004455592}
@@ -4405,11 +4335,10 @@ MonoBehaviour:
   nowBodyAnimationName: 
   nowShoulderAnimationName: 
   actorVelocity: {x: 0, y: 0, z: 0}
-  agent: {fileID: 0}
+  agent: {fileID: 479815624}
   targetActor: {fileID: 0}
   suspiciousPoint: {x: 0, y: 0, z: 0}
   lastTargetPoint: {x: 0, y: 0, z: 0}
-  damagedDirection: {x: 0, y: 0, z: 0}
 --- !u!195 &479815624
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4418,7 +4347,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 479815622}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.08
+  m_Radius: 0.01
   m_Speed: 0
   m_Acceleration: 100
   avoidancePriority: 50
@@ -4458,7 +4387,7 @@ Rigidbody:
   m_GameObject: {fileID: 479815622}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -4472,7 +4401,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 479815622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.82, y: 0.017, z: 4.59}
+  m_LocalPosition: {x: 0.1, y: 0, z: 5.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1178487903}
@@ -4945,7 +4874,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 85651447}
+  RainRipplesRenderTexture: {fileID: 127366845}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -8617,7 +8546,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ede81b6067a2b22479b19921ea499c3a, type: 2}
+  - {fileID: 2100000, guid: 349ee2808d8c0954e8eda122a4e54878, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9011,6 +8940,7 @@ MonoBehaviour:
     isUnbeatable: 0
   actorRigid: {fileID: 1360601030}
   bodyCollider: {fileID: 149699440}
+  damagedDirection: {x: 0, y: 0, z: 0}
   useShoulder: 1
   bodyAnimator: {fileID: 149699443}
   shoulderAnimator: {fileID: 2061424890}
@@ -9029,7 +8959,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1360601029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.214, y: 0.008, z: 5.265}
+  m_LocalPosition: {x: 1.67, y: 0.008, z: 5.265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 149699441}
@@ -9621,7 +9551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nowActivated: 0
-  actor: {fileID: 0}
+  actor: {fileID: 479815623}
   setAnimationTriggerName: []
   animationIndex: -1
   canTransition: 1
@@ -9630,6 +9560,7 @@ MonoBehaviour:
   - {fileID: 1268729568}
   - {fileID: 1501709359}
   bodyOnlyAnimationTriggerName: []
+  eActor: {fileID: 479815623}
   targetHideableObj: {fileID: 0}
   targetFace:
     hideableObj: {fileID: 0}
@@ -9696,14 +9627,14 @@ MonoBehaviour:
   nearInteractableObjList: []
   nearBulletObjList: []
   viewAngle: 125
-  viewMaxDistance: 2.1420138
-  viewRecognizeDistance: 1.130578
+  viewMaxDistance: 5.1597447
+  viewRecognizeDistance: 2.065569
   dynamicObjectListInView: []
   actorListInVeiw: []
   interactableObjectListInView: []
   itemInViewCount: 0
   hideableObjectInViewCount: 0
-  lookDirection: {x: -0.11393469, y: 0, z: -0.99348825}
+  lookDirection: {x: -0.9973907, y: 0, z: 0.072193205}
 --- !u!1 &1520083717
 GameObject:
   m_ObjectHideFlags: 0
@@ -9778,6 +9709,25 @@ Prefab:
     - target: {fileID: 4660054170174242, guid: 54e4a6a93cc08aa44a537716166a1481, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 208473538371002122, guid: 54e4a6a93cc08aa44a537716166a1481,
+        type: 2}
+      propertyPath: m_Carve
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 208473538371002122, guid: 54e4a6a93cc08aa44a537716166a1481,
+        type: 2}
+      propertyPath: m_TimeToStationary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 208473538371002122, guid: 54e4a6a93cc08aa44a537716166a1481,
+        type: 2}
+      propertyPath: m_MoveThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177225577872116, guid: 54e4a6a93cc08aa44a537716166a1481, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114389733520610084, guid: 54e4a6a93cc08aa44a537716166a1481, type: 2}

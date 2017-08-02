@@ -49,7 +49,7 @@ public class Bullet : DynamicObject {
 
 		if (null != colActor && !colActor.stateInfo.isUnbeatable)
 		{
-			colActor.DamagedFrom (owner, damage);
+			colActor.DamagedFrom (owner, damage, originVelocity.normalized);
 		}
 		Debug.Log ("COl : " + col.collider.name);
 		DestroyBullet ();

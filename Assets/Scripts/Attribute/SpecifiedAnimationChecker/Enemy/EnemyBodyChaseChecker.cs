@@ -6,6 +6,7 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	public EnemyActor eActor;
 	public float disToChase = 2f;
 	public float disToTarget;
+
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
@@ -38,7 +39,6 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 				return true;
 			}
 		}
-		Debug.Log ("false to chase ");
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
@@ -48,6 +48,7 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		Debug.Log ("Chase");
 		SetAnimationTrigger ();
 		eActor.FindSuspiciousObject ();
 		if (null != eActor.targetActor) {
