@@ -5,13 +5,17 @@ using UnityEngine;
 public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	EnemyActor eActor;
 	public HideableObject targetHideableObj = null; 
-	public HideableFace targetFace = new HideableFace(); 
+	public HideableFace targetFace;
 	public float autoBreakDistance;
 
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
 		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
+		if (autoBreakDistance == 0)
+		{
+			autoBreakDistance = eActor.bodyCollider.bounds.extents.x;
+		}
 	}
 
 	#region implemented abstract members of AnimationCheckerBase
@@ -35,21 +39,21 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	protected override void BeforeTransitionAction ()
 	{
 		targetHideableObj = null;
-		targetFace = new HideableFace();
+		targetFace = null;
 		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
 		if (!eActor.stateInfo.isHiding)
 		{
-			RunToPoint (targetFace.point.position);
+			RunToPoint (targetHideableObj.transform.position + targetFace.point);
 		}
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
 		targetHideableObj = null;
-		targetFace = new HideableFace();
+		targetFace = null;
 		nowActivated = false;
 	}
 	#endregion
@@ -78,7 +82,9 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		var absY = Mathf.Abs (damagedDir.y);
 		var absZ = Mathf.Abs (damagedDir.z);
 
-		HideableFace face = new HideableFace();
+		HideableFace face = null;
+
+		Debug.Log ("abX : " + absX + "  abY : " + absY + "  abZ : " + absZ);
 
 		if (absX > absY) {
 			if (absX > absZ) {

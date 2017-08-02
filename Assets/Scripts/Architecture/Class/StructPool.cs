@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct HideableFace
-{
-	public HideableFaceName faceName;
-	public bool hideable;
-	public Transform point;
-}
-
-[System.Serializable]
 public struct AnimationSet
 {
 
