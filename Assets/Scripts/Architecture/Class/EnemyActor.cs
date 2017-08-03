@@ -11,6 +11,9 @@ public class EnemyActor : Actor {
 	public Vector3 suspiciousPoint;
 	public Vector3 lastTargetPoint;
 
+	public float disToTarget;
+	public float disToSuspiciousPoint;
+
 	public void OnEnable ()
 	{
 		outsideInfo = GetComponentInChildren<EnemyOutsideInfo> ();
@@ -26,8 +29,14 @@ public class EnemyActor : Actor {
 	// Update is called once per frame
 	protected new void Update () {
 		base.Update ();
+		if (null != targetActor) {
+			disToTarget = Vector3.Distance (transform.position, targetActor.transform.position);
+		}
+		else {
+			disToSuspiciousPoint = Vector3.Distance (transform.position, suspiciousPoint);
+		}
 	}
-		
+
 	public void FindSuspiciousObject ()
 	{
 		for (int i = 0; i < GetEnemyOutsideInfo().actorListInVeiw.Count; i++)
@@ -37,8 +46,9 @@ public class EnemyActor : Actor {
 			if (dis > GetEnemyOutsideInfo().viewMaxDistance ||
 				element.roomInfo.roomName != roomInfo.roomName) 
 			{
-				if (null != targetActor)
+				if (null != targetActor) {
 					lastTargetPoint = targetActor.transform.position;
+				}
 				targetActor = null;
 				continue;
 			}
@@ -48,10 +58,12 @@ public class EnemyActor : Actor {
 				if (dis < GetEnemyOutsideInfo().viewMaxDistance)
 				{
 					suspiciousPoint = element.transform.position;
+					GetSpecificAction<EnemyBodySuspiciousChecker> ().foundSuspiciousObject = true;
 				}
 
 				if (dis < GetEnemyOutsideInfo ().viewRecognizeDistance) {
 					roomInfo.roomState = RoomState.Combat;
+					lastTargetPoint = suspiciousPoint;
 					targetActor = element;
 				}
 				break;

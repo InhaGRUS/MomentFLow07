@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBodyShootChecker : BodyAnimationCheckerBase {
+public class EnemyShoulderIdleChecker : ShoulderAnimationCheckerBase {
 	public EnemyActor eActor;
 
 	// Use this for initialization
@@ -12,34 +12,26 @@ public class EnemyBodyShootChecker : BodyAnimationCheckerBase {
 	}
 
 	#region implemented abstract members of AnimationCheckerBase
-
 	protected override bool CanTransition ()
 	{
 		return true;
 	}
-
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (null != eActor.targetActor) {
-			return true;
-		}
-		return false;
+		return true;
 	}
-
 	protected override void BeforeTransitionAction ()
 	{
-		throw new System.NotImplementedException ();
+		nowActivated = false;
 	}
-
 	public override void DoSpecifiedAction ()
 	{
-		throw new System.NotImplementedException ();
+		SetAnimationTrigger ();
+		nowActivated = true;
 	}
-
 	public override void CancelSpecifiedAction ()
 	{
-		throw new System.NotImplementedException ();
+		nowActivated = false;
 	}
-
 	#endregion
 }

@@ -17,11 +17,7 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (null == eActor.targetActor)
-		{
-			return true;
-		}
-		return false;
+		return true;
 	}
 	protected override void BeforeTransitionAction ()
 	{

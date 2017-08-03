@@ -114,7 +114,7 @@ public class Actor : DynamicObject {
 		humanInfo.hp -= damagedAmount;
 		damagedDirection = damagedDir;
 		stateInfo.isDamaged = true;
-		Debug.Log ("Actor : " + damagedDirection);
+		//Debug.Log ("Actor : " + damagedDirection);
 	}
 
 	public static Actor FindActorByHumanName (string humanName)
@@ -163,6 +163,24 @@ public class Actor : DynamicObject {
 			}
 		}
 		return null;
+	}
+
+	public bool PlaySpecificBodyAction <T> () where T : BodyAnimationCheckerBase
+	{
+		var newAction = GetSpecificAction<T> ();
+		if (null == newAction)
+			return false;
+		nowBodyAction = newAction;
+		return true;
+	}
+
+	public bool PlaySpecificShoulderAction <T> () where T : ShoulderAnimationCheckerBase
+	{
+		var newAction = GetSpecificAction<T> ();
+		if (null == newAction)
+			return false;
+		nowShoulderAction = newAction;
+		return true;
 	}
 
 	#region implemented abstract members of DynamicObject

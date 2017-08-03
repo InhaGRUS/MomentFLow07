@@ -51,7 +51,6 @@ public class Bullet : DynamicObject {
 		{
 			colActor.DamagedFrom (owner, damage, originVelocity.normalized);
 		}
-		Debug.Log ("COl : " + col.collider.name);
 		DestroyBullet ();
 	}
 

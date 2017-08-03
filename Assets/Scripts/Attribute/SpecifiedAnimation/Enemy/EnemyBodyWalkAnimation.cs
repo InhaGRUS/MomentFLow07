@@ -20,7 +20,7 @@ public class EnemyBodyWalkAnimation : BodyAnimationBase {
 	}
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		desireDir = (eActor.targetActor.transform.position - actor.transform.position).normalized;
+		desireDir = (eActor.agent.destination - actor.transform.position).normalized;
 		if (desireDir.x > 0) {
 			actor.SetLookDirection (false);
 		} else if (desireDir.x < 0) {

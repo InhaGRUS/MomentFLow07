@@ -8,6 +8,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public HideableFace targetFace;
 	public float autoBreakDistance;
 
+	[Header ("StateMaintainTimer")]
+	public float stateMaintainDuration = 5f;
+	public float stateMaintainTimer = 0f;
+
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
@@ -27,7 +31,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{		
 		if (eActor.stateInfo.isDamaged &&
 			null != GetHideableObject () &&
-			!eActor.stateInfo.isHiding
+			stateMaintainTimer <= stateMaintainDuration
 		)
 		{
 			targetHideableObj = GetHideableObject () as HideableObject;
@@ -39,14 +43,26 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{
 		targetHideableObj = null;
 		targetFace = null;
+		if (actor.stateInfo.isHiding)
+		{
+			actor.stateInfo.isHiding = false;
+			actor.bodyAnimator.SetTrigger ("TriggerStandup");
+		}
 		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
-		if (!eActor.stateInfo.isHiding)
-		{
-			Debug.Log ("Hide");
-			RunToPoint (targetHideableObj.transform.position + targetFace.point);
+		if (!eActor.stateInfo.isHiding) {
+			if (RunToPoint (targetHideableObj.transform.position + targetFace.point)) {
+				eActor.stateInfo.isHiding = true;
+				SetAnimationTrigger ();
+			}
+			else {
+				Debug.Log ("RunToHide");
+			}
+		} else {
+			Debug.Log ("Hided");
+			stateMaintainTimer += actor.customDeltaTime;
 		}
 		nowActivated = true;
 	}
@@ -54,6 +70,11 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{
 		targetHideableObj = null;
 		targetFace = null;
+		if (actor.stateInfo.isHiding)
+		{
+			actor.stateInfo.isHiding = false;
+			actor.bodyAnimator.SetBool ("TriggerStandUp", true);
+		}
 		nowActivated = false;
 	}
 	#endregion
@@ -141,6 +162,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		eActor.agent.destination = obstaclePoint;
 		eActor.agent.SetDestination (obstaclePoint);
 		eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
+
+		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= 0.05f) {
+			return true;
+		}
 		return false;
 	}
 }

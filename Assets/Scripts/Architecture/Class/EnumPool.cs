@@ -66,6 +66,12 @@ public enum AimState
 	Bounce
 }
 
+public enum EnemyLookAroundPriority
+{
+	Left,
+	Right
+}
+
 public enum HideableFaceName
 {
 	leftFace = 0,

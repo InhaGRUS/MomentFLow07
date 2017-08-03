@@ -67,14 +67,17 @@ public class EnemyChaseStateRenderer : Editor {
 		CheckChange (1, chaseChecker, discPoint);
 
 		discPoint = chaseChecker.actor.transform.position + Vector3.left * chaseChecker.disToChase;
+		size = HandleUtility.GetHandleSize (discPoint);
 		MakeButton (2, discPoint, size);
 		CheckChange (2, chaseChecker, discPoint);
 
 		discPoint = chaseChecker.actor.transform.position + Vector3.forward * chaseChecker.disToChase;
+		size = HandleUtility.GetHandleSize (discPoint);
 		MakeButton (3, discPoint, size);
 		CheckChange (3, chaseChecker, discPoint);
 
 		discPoint = chaseChecker.actor.transform.position + Vector3.back * chaseChecker.disToChase;
+		size = HandleUtility.GetHandleSize (discPoint);
 		MakeButton (4, discPoint, size);
 		CheckChange (4, chaseChecker, discPoint);
 

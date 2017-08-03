@@ -71,8 +71,8 @@ public class EnemyOutsideInfo : OutsideInfo {
 			disZ_z = lookDirection.z;
 			var degreeZ02 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
 
-			if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle ||
-				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle) {
+			if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle * 0.5f ||
+				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) {
 				IdentifyAndAddDynamicObject (obj);
 			} else {
 				IdentifyAndRemoveDynamicObject (obj);
