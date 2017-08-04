@@ -20,6 +20,7 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	protected override bool IsSatisfiedToAction ()
 	{
 		if (null == eActor.targetActor) {
+			return false;
 			if (!eActor.roomInfo.roomRectCollider.bounds.Contains (eActor.lastTargetPoint)) {
 				return false;
 			}

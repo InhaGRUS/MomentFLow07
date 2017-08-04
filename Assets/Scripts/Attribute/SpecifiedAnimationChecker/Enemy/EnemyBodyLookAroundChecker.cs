@@ -11,7 +11,7 @@ public class EnemyBodyLookAroundChecker : BodyAnimationCheckerBase {
 	public float rotateTimer = 0f;
 	public int loopNum = 1;
 
-	private int loopCount = 0;
+	public int loopCount = 0;
 
 	public bool isActionEnd = false;
 
@@ -28,36 +28,59 @@ public class EnemyBodyLookAroundChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (eActor.disToSuspiciousPoint <= 0.1f)
+		if (eActor.disToSuspiciousPoint <= 0.1f &&
+			null == eActor.targetActor &&
+			loopCount < loopNum
+		)
 			return true;
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
 	{
+		Debug.Log ("Before");
 		isActionEnd = false;
 		nowActivated = false;
+		loopCount = 0;
 	}
 	public override void DoSpecifiedAction ()
 	{
+		Debug.Log ("Look");
 		if (!nowActivated) {
-			originViewDirection = eActor.GetEnemyOutsideInfo ().lookDirection;
+			if (loopCount == 0) {
+				originViewDirection = eActor.GetEnemyOutsideInfo ().lookDirection;
+			}
 
 			if (lookPriority == EnemyLookAroundPriority.Left)
 			{
-				eActor.GetEnemyOutsideInfo ().SetViewDirection (Quaternion.Euler (Vector3.down * rotateAngle) * originViewDirection); 
+				eActor.GetEnemyOutsideInfo ().SetViewDirection (originViewDirection - Vector3.right * rotateAngle); 
+				lookPriority = EnemyLookAroundPriority.Right;
 			} 
 			else 
 			{
-				eActor.GetEnemyOutsideInfo ().SetViewDirection (Quaternion.Euler (Vector3.up * rotateAngle) * originViewDirection); 
+				eActor.GetEnemyOutsideInfo ().SetViewDirection (originViewDirection + Vector3.right * rotateAngle); 
+				lookPriority = EnemyLookAroundPriority.Left;
 			}
 		}
-
+			
 		nowActivated = true;
+
+		rotateTimer += actor.customDeltaTime;
+		if (rotateTimer >= rotateDuration) {
+			rotateTimer = 0f;
+			loopCount += 1;
+			nowActivated = false;
+		}
+		if (loopCount >= loopNum)
+		{
+			isActionEnd = true;
+		}
 	}
 	public override void CancelSpecifiedAction ()
 	{
+		Debug.Log ("Cancel");
 		isActionEnd = false;
 		nowActivated = false;
+		loopCount = 0;
 	}
 	#endregion
 }

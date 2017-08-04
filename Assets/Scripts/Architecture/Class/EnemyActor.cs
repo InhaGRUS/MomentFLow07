@@ -55,10 +55,11 @@ public class EnemyActor : Actor {
 
 			if (element.humanInfo.humanType == HumanType.Player)
 			{
-				if (dis < GetEnemyOutsideInfo().viewMaxDistance)
-				{
+				if (dis < GetEnemyOutsideInfo ().viewMaxDistance) {
 					suspiciousPoint = element.transform.position;
 					GetSpecificAction<EnemyBodySuspiciousChecker> ().foundSuspiciousObject = true;
+				} else {
+					GetSpecificAction<EnemyBodySuspiciousChecker> ().foundSuspiciousObject = false;
 				}
 
 				if (dis < GetEnemyOutsideInfo ().viewRecognizeDistance) {
