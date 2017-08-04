@@ -8,23 +8,23 @@ using UnityEditor;
 [CustomEditor(typeof(EnemyBodyChaseChecker))]
 public class EnemyChaseStateRenderer : Editor {
 
-	private EnemyBodyChaseChecker selectedChekcerInfo;
+	private EnemyBodyChaseChecker selectedCheckerInfo;
 
 	private void OnSceneGUI ()
 	{
 		#if UNITY_EDITOR
-		selectedChekcerInfo = target as EnemyBodyChaseChecker;
-		if (null == selectedChekcerInfo)
+		selectedCheckerInfo = target as EnemyBodyChaseChecker;
+		if (null == selectedCheckerInfo)
 			return;
-		if (null == selectedChekcerInfo.eActor)
+		if (null == selectedCheckerInfo.eActor)
 		{
-			selectedChekcerInfo.actor = selectedChekcerInfo.GetComponentInParent<Actor> ();
-			selectedChekcerInfo.eActor = selectedChekcerInfo.GetComponentInParent<EnemyActor>();
+			selectedCheckerInfo.actor = selectedCheckerInfo.GetComponentInParent<Actor> ();
+			selectedCheckerInfo.eActor = selectedCheckerInfo.GetComponentInParent<EnemyActor>();
 		}
 		
-		EnemyViewRenderer.DrawViewableRect (selectedChekcerInfo.eActor.GetEnemyOutsideInfo());
-		EnemyViewRenderer.DrawRecognizableRect (selectedChekcerInfo.eActor.GetEnemyOutsideInfo());
-		DrawChaseableRect (selectedChekcerInfo);
+		EnemyViewRenderer.DrawViewableRect (selectedCheckerInfo.eActor.GetEnemyOutsideInfo());
+		EnemyViewRenderer.DrawRecognizableRect (selectedCheckerInfo.eActor.GetEnemyOutsideInfo());
+		DrawChaseableRect (selectedCheckerInfo);
 		#endif
 	}
 

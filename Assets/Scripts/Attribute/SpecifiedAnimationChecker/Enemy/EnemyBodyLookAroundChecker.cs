@@ -44,7 +44,6 @@ public class EnemyBodyLookAroundChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-		Debug.Log ("Look");
 		if (!nowActivated) {
 			if (loopCount == 0) {
 				originViewDirection = eActor.GetEnemyOutsideInfo ().lookDirection;

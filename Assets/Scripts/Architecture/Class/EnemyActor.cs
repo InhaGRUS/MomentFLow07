@@ -46,10 +46,10 @@ public class EnemyActor : Actor {
 			if (dis > GetEnemyOutsideInfo().viewMaxDistance ||
 				element.roomInfo.roomName != roomInfo.roomName) 
 			{
-				if (null != targetActor) {
+				if (element == targetActor) {
 					lastTargetPoint = targetActor.transform.position;
+					targetActor = null;
 				}
-				targetActor = null;
 				continue;
 			}
 

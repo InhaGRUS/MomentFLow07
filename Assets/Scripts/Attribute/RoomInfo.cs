@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class RoomInfo : MonoBehaviour {
 	public string roomName;
 	public RoomState roomState;

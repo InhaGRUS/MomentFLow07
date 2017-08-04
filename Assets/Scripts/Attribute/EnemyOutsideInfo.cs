@@ -38,7 +38,12 @@ public class EnemyOutsideInfo : OutsideInfo {
 		while (deltaDir >= 0.01f) {
 			yield return new WaitForEndOfFrame ();
 			lookDirection = Vector3.Lerp (lookDirection, targetDir, actor.customDeltaTime * 3f);
+			if (lookDirection.x > 0)
+				actor.SetLookDirection (false, 1);
+			else if (lookDirection.x < 0)
+				actor.SetLookDirection (true, 1);
 		}
+		actor.ResetSetLookDirectionPriority ();
 	}
 
 	public void SetViewDirection (Vector3 targetPos)
