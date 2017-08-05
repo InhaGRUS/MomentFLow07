@@ -16,7 +16,7 @@ public class PlayerShoulderIdleChecker : ShoulderAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (actor.useShoulder && Input.GetAxis("Horizontal") == 0 && Input.GetAxis ("Vertical") == 0)
+		if (actor.useShoulder)
 		{
 			return true;
 		}

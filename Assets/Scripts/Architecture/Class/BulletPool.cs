@@ -88,6 +88,7 @@ public class BulletPool : MonoBehaviour {
 					borrowBullet = pool.GetChild (index).GetComponent<Bullet> ();
 					borrowBullet.bulletIndex = index;
 					borrowBullet.owner = owner;
+					Debug.Log ("Bullet Owner : " + owner.name);
 					borrowBullet.GetComponent<Collider> ().enabled = true;
 					borrowBullet.gameObject.SetActive (true);
 					return borrowBullet;
@@ -96,6 +97,8 @@ public class BulletPool : MonoBehaviour {
 				borrowBullet = pool.GetChild (index).GetComponent<Bullet> ();
 				borrowBullet.bulletIndex = index;
 				borrowBullet.owner = owner;
+				Physics.IgnoreCollision (owner.bodyCollider, borrowBullet.GetComponent<Collider> (), true);
+				Debug.Log ("Bullet Owner : " + owner.name);
 				borrowBullet.gameObject.SetActive (true);
 				borrowBullet.GetComponent<Collider> ().enabled = true;
 				return borrowBullet;
@@ -107,7 +110,7 @@ public class BulletPool : MonoBehaviour {
 	public void ReturnBullet (GameObject usedBullet)
 	{
 		//usedBullet.GetComponent<TrailRenderer> ().Clear ();
-		usedBullet.GetComponent<Bullet> ().owner = null;
+		Physics.IgnoreCollision (usedBullet.GetComponent<Bullet>().owner.bodyCollider, usedBullet.GetComponent<Collider> (), false);
 		usedBullet.GetComponent<Collider>().enabled = false;
 	}
 

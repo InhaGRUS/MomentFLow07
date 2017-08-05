@@ -102,6 +102,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 
 			lineRenderer.positionCount = points.Count;
 			lineRenderer.SetPositions (points.ToArray ());
+
 			// PlayerAimRay
 			var dir = actor.aimTarget.nowAimVector;
 
@@ -126,12 +127,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				playerAdditionalLineRenderer.startWidth = 0.02f * timer / aimColorFadeInDuration;
 				playerAdditionalLineRenderer.endWidth = lineRenderer.startWidth;
 			}
-			if (Mathf.Sign (mouseRay.direction.x) != -Mathf.Sign (actor.transform.localScale.x)) {
-				if (Mathf.Sign (mouseRay.direction.x) < 0)
-					actor.SetLookDirection (true, 1);
-				else
-					actor.SetLookDirection (false, 1);
-			}
+
 			break;
 		case AimState.Bounce:
 			break;

@@ -13,79 +13,79 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AimZAngleRatio
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: WalkDirection
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerIdle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerWalk
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerRun
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerTurnIdle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerCrouchIdle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerCrouchHide
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerCrouchWalk
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerStandup
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerAim
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerShoot
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -129,7 +129,7 @@ MonoBehaviour:
   bodyAnimClips: []
   shoulderAnimClips: []
   accel: 1000
-  maxWalkSpeed: 0.3
+  maxWalkSpeed: 0.65
   walkDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114213818641992620
 MonoBehaviour:
@@ -227,7 +227,7 @@ MonoBehaviour:
   shoulderAnimClips:
   - {fileID: 7400000, guid: 1c4aa5c40da24de49b41da75e2e80cea, type: 2}
   accel: 2000
-  maxWalkSpeed: 0.5
+  maxWalkSpeed: 0.65
   walkDirection: {x: 0, y: 0, z: 0}
 --- !u!206 &206349255356915410
 BlendTree:
@@ -237,7 +237,7 @@ BlendTree:
   m_Name: ShootBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
+    m_Motion: {fileID: 7400000, guid: a11833986f2ccf34291862051584949d, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -245,89 +245,41 @@ BlendTree:
     m_DirectBlendParameter: AimZAngleRatio
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.1
+    m_Motion: {fileID: 7400000, guid: 85ca943e652289546bc886fed80c90bb, type: 2}
+    m_Threshold: 0.125
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: AimZAngleRatio
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.2
+    m_Motion: {fileID: 7400000, guid: f68e87a082844ab46b77f7f8740c26d0, type: 2}
+    m_Threshold: 0.375
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: AimZAngleRatio
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.3
+    m_Motion: {fileID: 7400000, guid: 85ca943e652289546bc886fed80c90bb, type: 2}
+    m_Threshold: 0.625
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
+    m_DirectBlendParameter: AimYAngleRatio
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.4
+    m_Motion: {fileID: 7400000, guid: a11833986f2ccf34291862051584949d, type: 2}
+    m_Threshold: 0.875
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.5
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.6
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.70000005
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.8000001
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 0.9000001
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f9e9c5c3afbf9074184817fb813aab06, type: 2}
-    m_Threshold: 1.0000001
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: AimZAngleRatio
+    m_DirectBlendParameter: AimYAngleRatio
     m_Mirror: 0
   m_BlendParameter: AimZAngleRatio
   m_BlendParameterY: AimZAngleRatio
   m_MinThreshold: 0
-  m_MaxThreshold: 1.0000001
+  m_MaxThreshold: 0.875
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -849,9 +801,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 1
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

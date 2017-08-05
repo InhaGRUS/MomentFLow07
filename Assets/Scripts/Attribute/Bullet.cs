@@ -35,8 +35,13 @@ public class Bullet : DynamicObject {
 	// Update is called once per frame
 	protected new void Update () {
 		base.Update ();
+	}
+
+	public void FixedUpdate ()
+	{
 		flingDistance += rigid.velocity.magnitude * customDeltaTime;
 		rigid.velocity = originVelocity * Mathf.Pow(customTimeScale, 12f);
+
 		if (maxFlingDistance < flingDistance)
 		{
 			DestroyBullet ();
@@ -46,9 +51,10 @@ public class Bullet : DynamicObject {
 	public void OnCollisionEnter (Collision col)
 	{
 		var colActor = Actor.GetActor<Collider> (col.collider);
-
+		Debug.Log ("Col : " + col.collider.name);
 		if (null != colActor && !colActor.stateInfo.isUnbeatable)
 		{
+			colActor.actorRigid.velocity = Vector3.zero;
 			colActor.DamagedFrom (owner, damage, originVelocity.normalized);
 		}
 		DestroyBullet ();

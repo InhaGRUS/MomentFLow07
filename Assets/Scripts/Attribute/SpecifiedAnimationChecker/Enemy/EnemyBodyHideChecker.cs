@@ -46,7 +46,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		if (actor.stateInfo.isHiding)
 		{
 			actor.stateInfo.isHiding = false;
-			actor.bodyAnimator.SetTrigger ("TriggerStandup");
+			SetAnimationTrigger (1);
 		}
 		nowActivated = false;
 	}
@@ -73,7 +73,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		if (actor.stateInfo.isHiding)
 		{
 			actor.stateInfo.isHiding = false;
-			actor.bodyAnimator.SetBool ("TriggerStandUp", true);
+			SetAnimationTrigger (1);
 		}
 		nowActivated = false;
 	}

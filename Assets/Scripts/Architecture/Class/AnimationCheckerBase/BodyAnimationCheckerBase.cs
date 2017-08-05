@@ -42,6 +42,18 @@ public abstract class BodyAnimationCheckerBase : AnimationCheckerBase {
 			if (setAnimationTriggerName [animationIndex].bodyAnimationName != "")
 				actor.bodyAnimator.SetTrigger (bodyOnlyAnimationTriggerName [animationIndex]);
 		}
-			
+	}
+
+	public void SetAnimationTrigger (int index)
+	{
+		if (actor.useShoulder) {
+			if (setAnimationTriggerName [index].bodyAnimationName != "")
+				actor.bodyAnimator.SetTrigger (setAnimationTriggerName [index].bodyAnimationName);
+			if (setAnimationTriggerName [index].shoulderAnimationName != "")
+				actor.shoulderAnimator.SetTrigger (setAnimationTriggerName [index].shoulderAnimationName);
+		} else {
+			if (setAnimationTriggerName [index].bodyAnimationName != "")
+				actor.bodyAnimator.SetTrigger (bodyOnlyAnimationTriggerName [index]);
+		}
 	}
 }

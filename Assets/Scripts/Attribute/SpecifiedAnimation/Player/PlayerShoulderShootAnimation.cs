@@ -7,7 +7,7 @@ public class PlayerShoulderShootAnimation : ShoulderAnimationBase {
 
 	protected override void OnAnimationEnter (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		
+		actor.shoulderAnimator.GetComponent<ShoulderAnimationActions> ().Shoot ();
 	}
 
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

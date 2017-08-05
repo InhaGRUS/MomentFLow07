@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShoulderAnimationActions : MonoBehaviour {
-	private Actor actor;
+	public Actor actor;
 	private Transform shoulder;
 	private Animator animator;
 
@@ -19,7 +19,9 @@ public class ShoulderAnimationActions : MonoBehaviour {
 
 	public void Shoot ()
 	{
+		Debug.Log ("Shoot");
 		var bullet = BulletPool.Instance.BorrowBullet (((GunInfo)actor.equipmentInfo.nowEquipWeaponInfo).usingBullet, actor);
+		bullet.owner = actor;
 		bullet.transform.position = actor.aimTarget.shootPoint.position;
 		bullet.startPosition = bullet.transform.position;
 		bullet.transform.localRotation = Quaternion.LookRotation (actor.aimTarget.nowAimVector);

@@ -211,7 +211,7 @@ MonoBehaviour:
   destroyParticle: {fileID: 198421173527136510}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967291
   originVelocity: {x: 0, y: 0, z: 0}
 --- !u!135 &135196863931174690
 SphereCollider:
