@@ -27,7 +27,6 @@ public class Bullet : DynamicObject {
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent <Rigidbody> ();
-		startPosition = transform.position;
 		if (null == destroyParticle)
 			destroyParticle = GetComponentInChildren <ParticleSystem> ();
 	}
@@ -35,10 +34,6 @@ public class Bullet : DynamicObject {
 	// Update is called once per frame
 	protected new void Update () {
 		base.Update ();
-	}
-
-	public void FixedUpdate ()
-	{
 		flingDistance += rigid.velocity.magnitude * customDeltaTime;
 		rigid.velocity = originVelocity * Mathf.Pow(customTimeScale, 12f);
 
@@ -48,8 +43,14 @@ public class Bullet : DynamicObject {
 		}
 	}
 
+	public void FixedUpdate ()
+	{
+		
+	}
+
 	public void OnCollisionEnter (Collision col)
 	{
+		Debug.Log (startPosition);
 		var colActor = Actor.GetActor<Collider> (col.collider);
 		Debug.Log ("Col : " + col.collider.name);
 		if (null != colActor && !colActor.stateInfo.isUnbeatable)

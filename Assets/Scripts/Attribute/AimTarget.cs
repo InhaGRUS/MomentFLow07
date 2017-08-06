@@ -13,6 +13,7 @@ public class AimTarget : MonoBehaviour
 
 	public Vector3 targetAimVector;
 	public Vector3 nowAimVector;
+	public Vector3 nowShootVector;
 
     public float maxAngle;
     public float minAngle;

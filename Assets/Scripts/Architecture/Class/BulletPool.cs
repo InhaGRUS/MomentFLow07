@@ -110,7 +110,7 @@ public class BulletPool : MonoBehaviour {
 	public void ReturnBullet (GameObject usedBullet)
 	{
 		//usedBullet.GetComponent<TrailRenderer> ().Clear ();
-		Physics.IgnoreCollision (usedBullet.GetComponent<Bullet>().owner.bodyCollider, usedBullet.GetComponent<Collider> (), false);
+		usedBullet.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		usedBullet.GetComponent<Collider>().enabled = false;
 	}
 

@@ -55,11 +55,14 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	}
 	protected override void BeforeTransitionAction ()
 	{
+		
 		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
-		SetAnimationTrigger ();
+		//SetAnimationTrigger ();
+		actor.bodyAnimator.SetBool ("BoolAim", true);
+		actor.shoulderAnimator.SetBool ("BoolAim", true);
 		PlayerAimRender ();
 
 		nowActivated = true;
@@ -71,6 +74,9 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 		StopCoroutine ("EraseAimLine");
 		StartCoroutine ("EraseAimLine");
 		actor.aimTarget.AimToForward ();
+		actor.bodyAnimator.SetBool ("BoolAim", false);
+		actor.shoulderAnimator.SetBool ("BoolAim", false);
+
 		nowActivated = false;
 	}
 	#endregion
@@ -106,12 +112,18 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 			// PlayerAimRay
 			var dir = actor.aimTarget.nowAimVector;
 
-			if (Physics.Raycast (aimStartPoint.position, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
-				playerAimPoints.Add (hit.point);
+			if (Physics.Raycast (actor.shoulderAnimator.transform.position, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
+				dir = (hit.point - aimStartPoint.position).normalized;
+				if (Physics.Raycast (hit.point, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
+					playerAimPoints.Add (hit.point);
+				} else {
+					playerAimPoints.Add (aimStartPoint.position + dir * maxGunAimDistance);
+				}
+			} else {
+				playerAimPoints.Add (actor.shoulderAnimator.transform.position + dir * maxGunAimDistance);
 			}
-			else {
-				playerAimPoints.Add (aimStartPoint.position + dir * maxGunAimDistance);
-			}
+
+			actor.aimTarget.nowShootVector = ((playerAimPoints[1] - actor.aimTarget.shootPoint.position));
 
 			playerAdditionalLineRenderer.positionCount = playerAimPoints.Count;
 			playerAdditionalLineRenderer.SetPositions (playerAimPoints.ToArray ());
