@@ -28,7 +28,9 @@ public class PlayerBodyCrouchStandupChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-		SetAnimationTrigger ();
+		actor.stateInfo.isCrouhcing = false;
+		actor.bodyAnimator.SetBool ("BoolCrouch", false);
+		actor.shoulderAnimator.SetBool ("BoolCrouch", false);
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

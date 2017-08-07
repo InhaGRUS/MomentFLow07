@@ -14,7 +14,7 @@ public class PlayerBodyStandUpAnimation : BodyAnimationBase {
 	}
 	protected override void OnAnimationExit (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		actor.stateInfo.isCrouhcing = false;
+		
 	}
 	#endregion
 }

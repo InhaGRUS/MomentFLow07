@@ -19,7 +19,6 @@ public class PlayerBodyCrouchAnimation : BodyAnimationBase {
 
 	protected override void OnAnimationExit (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		actor.stateInfo.isCrouhcing = true;
 	}
 	#endregion
 
