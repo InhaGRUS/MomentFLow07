@@ -44,8 +44,9 @@ public abstract class BodyAnimationBase : AnimationBase {
 			actor.bodyAnimator.Play (actor.nowBodyAnimationName);
 		} 
 		else {
-			actor.nowBodyAnimationName = bodyAnimClips [index].name;
-			actor.nowShoulderAnimationName = shoulderAnimClips [index].name;
+			
+			actor.nowBodyAnimationName = bodyAnimClips [animationIndex].name;
+			actor.nowShoulderAnimationName = shoulderAnimClips [animationIndex].name;
 
 			foreach (var a in aoc.animationClips) {
 				if (a.name == actor.nowBodyAnimationName) {	
@@ -58,6 +59,9 @@ public abstract class BodyAnimationBase : AnimationBase {
 			aoc.ApplyOverrides (anims);
 			actor.bodyAnimator.runtimeAnimatorController = aoc;
 
+			actor.bodyAnimator.Play (actor.nowBodyAnimationName);
+
+			anims.Clear ();
 			aoc = new AnimatorOverrideController (actor.shoulderAnimator.runtimeAnimatorController);
 			foreach (var a in aoc.animationClips) {
 				if (a.name == actor.nowShoulderAnimationName) {	
@@ -69,6 +73,7 @@ public abstract class BodyAnimationBase : AnimationBase {
 			}
 			aoc.ApplyOverrides (anims);
 			actor.shoulderAnimator.runtimeAnimatorController = aoc;
+			actor.shoulderAnimator.Play (actor.nowShoulderAnimationName);
 		}
 	}
 

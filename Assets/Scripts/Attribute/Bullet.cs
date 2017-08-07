@@ -50,7 +50,6 @@ public class Bullet : DynamicObject {
 
 	public void OnCollisionEnter (Collision col)
 	{
-		Debug.Log (startPosition);
 		var colActor = Actor.GetActor<Collider> (col.collider);
 		Debug.Log ("Col : " + col.collider.name);
 		if (null != colActor && !colActor.stateInfo.isUnbeatable)

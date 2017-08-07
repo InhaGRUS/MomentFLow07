@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public EnemyActor eActor;
+	public EnemyOutsideInfo eOutsideInfo;
 	public HideableObject targetHideableObj = null; 
 	public HideableFace targetFace;
 	public float autoBreakDistance;
@@ -16,6 +17,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	protected new void Start () {
 		base.Start ();
 		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
+		eOutsideInfo = eActor.GetEnemyOutsideInfo ();
 		if (autoBreakDistance == 0)
 		{
 			autoBreakDistance = eActor.bodyCollider.bounds.extents.x;
@@ -29,12 +31,14 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{		
+		var foundHideableObj = GetHideableObject () as HideableObject;
+
 		if (eActor.stateInfo.isDamaged &&
-			null != GetHideableObject () &&
+			null != foundHideableObj &&
 			stateMaintainTimer <= stateMaintainDuration
 		)
 		{
-			targetHideableObj = GetHideableObject () as HideableObject;
+			targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
 			return true;
 		}
 		return false;
@@ -82,9 +86,9 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public InteractableObject GetHideableObject ()
 	{
 		HideableObject hideableObj = null;
-		for (int i = 0; i < eActor.GetEnemyOutsideInfo().hideableObjectInViewCount; i++)
+		for (int i = 0; i < eOutsideInfo.foundedHideableObjList.Count; i++)
 		{
-			hideableObj = eActor.GetEnemyOutsideInfo().GetRankedObstacleByDistance (i) as HideableObject;
+			hideableObj = eOutsideInfo.foundedHideableObjList [i];
 
 			if (null == hideableObj)
 				continue;

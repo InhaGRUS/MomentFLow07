@@ -85,6 +85,37 @@ public class RoomInfo : MonoBehaviour {
 		}
 	}
 
+	public InteractableObject GetRankedObstacleByDistance (Vector3 point, int rank)
+	{
+		var rankedObstacleList = interactableObjectInRoom;
+		rankedObstacleList.Sort (delegate(InteractableObject x, InteractableObject y) {
+			var dis01 = Vector3.Distance (point, x.transform.position);
+			var dis02 = Vector3.Distance (point, y.transform.position);
+			if (dis01 < dis02)	
+			{
+				return -1;
+			}
+			else if (dis01 == dis02)
+			{
+				return 0;
+			}
+			return 1;
+		});
+		int index = 0;
+		for (int i = 0; i < rankedObstacleList.Count; i++)
+		{
+			var element = rankedObstacleList [i];
+			if (element.interactableObjectType == InteractableObjectType.HideableObject)
+			{
+				if (index != rank)
+					index++;
+				else
+					return element;
+			}
+		}
+		return null;
+	}
+
 	public static RoomInfo FindRoomByName (string roomName)
 	{
 		var roomObjs = GameObject.FindObjectsOfType<RoomInfo> ();

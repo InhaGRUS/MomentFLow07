@@ -13,6 +13,7 @@ public class EnemyOutsideInfo : OutsideInfo {
 	public List<DynamicObject> dynamicObjectListInView = new List<DynamicObject>();
 	public List<Actor> actorListInVeiw = new List<Actor>();
 	public List<InteractableObject> interactableObjectListInView = new List<InteractableObject>();
+	public List<HideableObject> foundedHideableObjList = new List<HideableObject> ();
 
 	[HideInInspector]
 	public int itemInViewCount;
@@ -141,8 +142,23 @@ public class EnemyOutsideInfo : OutsideInfo {
 			case DynamicObjectType.InteractableObject:
 				interactableObjectListInView.Add ((InteractableObject)obj);
 
-				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject)
+				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject) {
 					hideableObjectInViewCount++;
+					foundedHideableObjList.Add ((HideableObject)obj);
+					foundedHideableObjList.Sort (delegate(HideableObject x, HideableObject y) {
+						var dis01 = Vector3.Distance (actor.transform.position, x.transform.position);
+						var dis02 = Vector3.Distance (actor.transform.position, y.transform.position);
+						if (dis01 < dis02)	
+						{
+							return -1;
+						}
+						else if (dis01 == dis02)
+						{
+							return 0;
+						}
+						return 1;
+					});
+				}
 				else if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.Item)
 					itemInViewCount++;
 				SortInteractableObjectListDistance ();
@@ -165,8 +181,9 @@ public class EnemyOutsideInfo : OutsideInfo {
 				
 				interactableObjectListInView.Remove ((InteractableObject)obj);
 
-				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject)
+				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject) {
 					hideableObjectInViewCount--;
+				}
 				else if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.Item)
 					itemInViewCount--;
 				SortInteractableObjectListDistance ();

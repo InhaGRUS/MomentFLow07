@@ -73,6 +73,7 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 			attackTimer += actor.customDeltaTime;
 			eActor.agent.SetDestination (eActor.transform.position);
 			actor.aimTarget.AimToObject (eActor.targetActor.bodyCollider.bounds.center);
+			actor.aimTarget.nowShootVector = (eActor.targetActor.bodyCollider.bounds.center - actor.aimTarget.shootPoint.position).normalized;
 			actor.bodyAnimator.SetBool ("BoolAim", true);
 			actor.shoulderAnimator.SetBool ("BoolAim", true);
 		} else {

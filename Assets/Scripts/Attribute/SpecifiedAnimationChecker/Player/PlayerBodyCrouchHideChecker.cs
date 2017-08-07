@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerBodyCrouchHideChecker : BodyAnimationCheckerBase {
 
+	public PlayerBodyCrouchIdleAnimation crouchIdleAnimation;
+
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
+		crouchIdleAnimation = actor.bodyAnimator.GetBehaviour<PlayerBodyCrouchIdleAnimation> ();
 	}
 
 	#region implemented abstract members of AnimationCheckerBase
