@@ -25,6 +25,7 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
 		eActor.agent.destination = eActor.transform.position;
 		eActor.FindSuspiciousObject ();

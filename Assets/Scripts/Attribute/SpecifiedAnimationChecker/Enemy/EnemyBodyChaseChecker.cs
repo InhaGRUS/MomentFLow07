@@ -21,22 +21,12 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	{
 		if (null == eActor.targetActor) {
 			return false;
-			if (!eActor.roomInfo.roomRectCollider.bounds.Contains (eActor.lastTargetPoint)) {
-				return false;
-			}
-			if (eActor.disToSuspiciousPoint <= 0.1f) {
-				return false;
-			}
-			if (eActor.roomInfo.roomState == RoomState.Combat)
-				return true;
 		} 
-		else {
-			if (eActor.disToTarget > disToChase &&
+		if (eActor.disToTarget > disToChase &&
 				eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName
-			)
-			{
-				return true;
-			}
+		)
+		{
+			return true;
 		}
 		return false;
 	}
@@ -46,6 +36,8 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		eActor.ReleaseCrouch ();
+
 		SetAnimationTrigger ();
 		eActor.FindSuspiciousObject ();
 		if (null != eActor.targetActor) {

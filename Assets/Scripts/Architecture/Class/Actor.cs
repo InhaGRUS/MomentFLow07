@@ -28,6 +28,12 @@ public class Actor : DynamicObject {
 
 	private SpriteRenderer shoulderSpriteRenderer;
 
+	[Header ("TensionGauge")]
+	[Range (0,1)]
+	public float tensionGauge = 0f;
+	public float tensionIncreaseAmount = 1f;
+	public float tensionDecreaseAmount = 1f;
+
 	[Header ("Action")]
 	public AnimationCheckerBase[] actions;
 	public AnimationCheckerBase nowBodyAction;
@@ -108,13 +114,54 @@ public class Actor : DynamicObject {
 
 	}
 
-	public void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
+	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
 	{
-		stateInfo.isDamaged = true;
-		humanInfo.hp -= damagedAmount;
+		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
 		damagedDirection = damagedDir;
-		stateInfo.isDamaged = true;
-		//Debug.Log ("Actor : " + damagedDirection);
+		IncreaseTension ();
+		SetToUnBeatable (0.5f);
+	}
+
+	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir, float tensionInc)
+	{
+		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
+		damagedDirection = damagedDir;
+		IncreaseTension (tensionInc);
+		SetToUnBeatable (0.5f);
+	}
+		
+	public IEnumerator SetToUnBeatable (float maintainTime)
+	{
+		float timer = 0f;
+		stateInfo.isUnbeatable = true;
+		while (timer <= maintainTime) 
+		{
+			timer += customDeltaTime;
+			yield return new WaitForEndOfFrame ();
+		}
+		stateInfo.isUnbeatable = false;
+		yield return null;
+	}
+
+	public void IncreaseTension (float tensionInc)
+	{
+		tensionGauge = Mathf.Min (tensionGauge + customDeltaTime * tensionInc, 1f);
+	}
+
+	public void IncreaseTension ()
+	{
+		IncreaseTension (tensionIncreaseAmount);
+	}
+
+	public void DecreaseTension (float tensionDec)
+	{
+		Debug.Log (humanInfo.hp / humanInfo.maxHp);
+		tensionGauge = Mathf.Max (tensionGauge - customDeltaTime * tensionDec, 0f);
+	}
+
+	public void DecreaseTension ()
+	{
+		DecreaseTension (tensionDecreaseAmount);
 	}
 
 	public static Actor FindActorByHumanName (string humanName)

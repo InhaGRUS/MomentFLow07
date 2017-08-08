@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
+public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
+
 	public EnemyActor eActor;
+	public EnemyBodyHideChecker hideChecker;
+
+	public float disToChase = 2f;
+
 	public EnemyOutsideInfo eOutsideInfo;
 	public HideableObject targetHideableObj = null; 
 	public HideableFace targetFace;
@@ -20,8 +25,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
-		eActor = EnemyActor.GetEnemyActor<Actor> (actor);
+		eActor = EnemyActor.GetEnemyActor <Actor> (actor);
 		eOutsideInfo = eActor.GetEnemyOutsideInfo ();
+		hideChecker = eActor.GetSpecificAction <EnemyBodyHideChecker> ();
+
 		if (autoBreakDistance == 0)
 		{
 			autoBreakDistance = eActor.bodyCollider.bounds.extents.x;
@@ -29,87 +36,100 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 
 	#region implemented abstract members of AnimationCheckerBase
+
 	protected override bool CanTransition ()
 	{
 		return true;
 	}
-	protected override bool IsSatisfiedToAction ()
-	{		
-		var foundHideableObj = GetHideableObject () as HideableObject;
 
-		if (eActor.tensionGauge >= tensionThreshold &&
-			null != foundHideableObj &&
-			stateMaintainTimer <= stateMaintainDuration
-		)
+	protected override bool IsSatisfiedToAction ()
+	{
+		if (null == eActor.targetActor || !eActor.stateInfo.isCrouhcing)
 		{
-			targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
-			return true;
+			return false;
 		}
 
-		Debug.Log ("FH : " + foundHideableObj);
-		Debug.Log ("SMT : " + stateMaintainTimer);
+		var foundHideableObj = GetHideableObject () as HideableObject;
+
+		if (foundHideableObj == hideChecker.targetHideableObj && targetFace == hideChecker.targetFace)
+			return false;
+		var hObjPoint = foundHideableObj.transform.position + targetFace.point;
+		hObjPoint.y = eActor.transform.position.y;
+		var disToHObjPoint = Vector3.Distance (hObjPoint, eActor.transform.position);
+
+		if (eActor.disToTarget > disToChase &&
+			disToHObjPoint > 0.05f &&
+			eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName)
+		{
+			targetHideableObj = foundHideableObj;
+			return true;
+		}
 		return false;
 	}
+
 	protected override void BeforeTransitionAction ()
 	{
 		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
 		stateMaintainTimer = 0f;
-		if (actor.stateInfo.isHiding)
-		{
-			actor.stateInfo.isHiding = false;
-			stateMaintainDuration = Random.Range (stateMaintainMinDuration, stateMaintainMaxDuration);
-		}
 		nowActivated = false;
 	}
+
 	public override void DoSpecifiedAction ()
 	{
-		if (!eActor.stateInfo.isHiding) {
-			if (RunToPoint (targetHideableObj.transform.position + targetFace.point)) {
-				eActor.stateInfo.isHiding = true;
-				targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = false;
-				eActor.SetToCrouch ();
-				SetAnimationTrigger ();
-			}
-			else {
-				Debug.Log ("RunToHide");
-				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
-			}
-		} else {
-			Debug.Log ("Hided");
-			actor.DecreaseTension ();
-			stateMaintainTimer += actor.customDeltaTime;
+		if (RunToPoint (targetHideableObj.transform.position + targetFace.point)) {
+			Debug.Log ("Arrived");
+		}
+		else {
+			SetAnimationTrigger ();
+			Debug.Log ("CrouchWalking Now");
 		}
 		nowActivated = true;
 	}
+
 	public override void CancelSpecifiedAction ()
 	{
 		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
 		stateMaintainTimer = 0f;
-		if (actor.stateInfo.isHiding)
-		{
-			actor.stateInfo.isHiding = false;
-		}
 		nowActivated = false;
 	}
+
 	#endregion
 
 	private InteractableObject GetHideableObject ()
 	{
 		HideableObject hideableObj = null;
+		int index = -1;
+		float disOfFaceToTarget = 0f;
+
 		for (int i = 0; i < eOutsideInfo.foundedHideableObjList.Count; i++)
 		{
 			hideableObj = eOutsideInfo.foundedHideableObjList [i];
 
 			if (null == hideableObj)
 				continue;
-			
-			var face = GetHideableFace (hideableObj, eActor.damagedDirection);
+
+			var face = GetHideableFace (hideableObj, (actor.transform.position - eActor.targetActor.transform.position).normalized);
 			if (null != face) {
-				targetFace = face;
-				return hideableObj;
+				if (index == -1) {
+					disOfFaceToTarget = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
+					index = i;
+					targetFace = face;
+					continue;
+				}
+					
+				var tmpDis = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
+
+				if (tmpDis <= disOfFaceToTarget) {
+					disOfFaceToTarget = tmpDis;
+					index = i;
+					targetFace = face;
+				}
 			}
 		}
-		return hideableObj;
+		if (index == -1)
+			return null;
+
+		return eOutsideInfo.foundedHideableObjList [index];
 	}
 
 	private HideableFace GetHideableFace (HideableObject hideableObj, Vector3 damagedDir)
@@ -168,7 +188,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		}
 		return face;
 	}
-
+		 
 	//  만약 point에 근접하면 return true, 아니면  return false
 	public bool RunToPoint (Vector3 obstaclePoint)
 	{

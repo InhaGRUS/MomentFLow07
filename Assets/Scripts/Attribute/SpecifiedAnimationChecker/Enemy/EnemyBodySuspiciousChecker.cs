@@ -35,6 +35,7 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
 		eActor.FindSuspiciousObject ();
 		eActor.agent.SetDestination (eActor.suspiciousPoint);

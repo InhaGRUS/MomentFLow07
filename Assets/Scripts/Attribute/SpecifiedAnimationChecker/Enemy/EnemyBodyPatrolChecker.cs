@@ -95,6 +95,8 @@ public class EnemyBodyPatrolChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
+		eActor.ReleaseCrouch ();
+
 		if (!nowActivated) {
 			ReIndexPatrolNodesByDistance ();
 			nowNode = GetPatrolNodeByIndex (0);

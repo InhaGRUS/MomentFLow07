@@ -771,10 +771,7 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchWalk
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102197686372345642}
   m_Solo: 0
@@ -870,9 +867,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: BoolCrouch
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102262453343778740}
@@ -1017,6 +1011,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: BoolAim
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BoolCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102907603149805144}
@@ -1497,10 +1494,7 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchIdle
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102339153364682410}
   m_Solo: 0
@@ -1545,6 +1539,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: BoolAim
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BoolCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102907603149805144}
@@ -1592,7 +1589,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchIdle
+    m_ConditionEvent: BoolCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102500975099622246}
@@ -1810,9 +1807,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: BoolCrouch
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchWalk
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102262453343778740}
   m_Solo: 0
@@ -1833,10 +1827,7 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: TriggerCrouchIdle
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102339153364682410}
   m_Solo: 0
@@ -2569,7 +2560,7 @@ AnimatorStateMachine:
     m_Position: {x: 432, y: 264, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102262453343778740}
-    m_Position: {x: 312, y: 408, z: 0}
+    m_Position: {x: 408, y: 516, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107472242173729514}

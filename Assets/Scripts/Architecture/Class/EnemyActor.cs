@@ -37,6 +37,38 @@ public class EnemyActor : Actor {
 		}
 	}
 
+	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
+	{
+		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
+		damagedDirection = damagedDir;
+		IncreaseTension ();
+	}
+
+	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir, float tensionInc)
+	{
+		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
+		damagedDirection = damagedDir;
+		IncreaseTension (tensionInc);
+	}
+
+	public void SetToCrouch ()
+	{
+		if (!stateInfo.isCrouhcing) {
+			stateInfo.isCrouhcing = true;
+			bodyAnimator.SetBool ("BoolCrouch", true);
+			shoulderAnimator.SetBool ("BoolCrouch", true);
+		}
+	}
+
+	public void ReleaseCrouch ()
+	{
+		if (stateInfo.isCrouhcing) {
+			stateInfo.isCrouhcing = false;
+			bodyAnimator.SetBool ("BoolCrouch", false);
+			shoulderAnimator.SetBool ("BoolCrouch", false);
+		}
+	}
+
 	public void FindSuspiciousObject ()
 	{
 		for (int i = 0; i < GetEnemyOutsideInfo().actorListInVeiw.Count; i++)
