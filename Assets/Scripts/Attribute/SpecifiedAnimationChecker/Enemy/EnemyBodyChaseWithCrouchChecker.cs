@@ -14,11 +14,12 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 	public HideableFace targetFace;
 	public float autoBreakDistance;
 
-	[Header ("StateMaintainOption")]
-	public float stateMaintainDuration = 5f;
-	public float stateMaintainMinDuration = 5f;
-	public float stateMaintainMaxDuration = 10f;
-	public float stateMaintainTimer = 0f;
+	[Header ("StateDelayTimer")]
+	public float stateDelay = 2.5f;
+	public float stateMaxDelay = 5f;
+	public float stateMinDelay = 2.5f;
+	public float stateDelayTimer = 0f;
+
 	[Range (0,1)]
 	public float tensionThreshold = 0.5f;
 
@@ -57,30 +58,40 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 		hObjPoint.y = eActor.transform.position.y;
 		var disToHObjPoint = Vector3.Distance (hObjPoint, eActor.transform.position);
 
-		if (eActor.disToTarget > disToChase &&
-			disToHObjPoint > 0.05f &&
+		if (disToHObjPoint > autoBreakDistance &&
+			stateDelayTimer >= stateDelay &&
+			targetFace.faceName == hideChecker.targetFace.faceName &&
 			eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName)
 		{
 			targetHideableObj = foundHideableObj;
 			return true;
 		}
+		stateDelayTimer += actor.customDeltaTime;
 		return false;
 	}
 
 	protected override void BeforeTransitionAction ()
 	{
 		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
-		stateMaintainTimer = 0f;
+		hideChecker.targetHideableObj = targetHideableObj;
+		hideChecker.targetFace = targetFace;
+		stateDelayTimer = 0f;
 		nowActivated = false;
 	}
 
 	public override void DoSpecifiedAction ()
 	{
 		if (RunToPoint (targetHideableObj.transform.position + targetFace.point)) {
+			eActor.agent.destination = eActor.transform.position;
+			SetAnimationTrigger (1);
+			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.targetActor.transform.position);
+			targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = false;
+			stateDelayTimer = 0f;
 			Debug.Log ("Arrived");
 		}
 		else {
-			SetAnimationTrigger ();
+			SetAnimationTrigger (0);
+			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.agent.destination);
 			Debug.Log ("CrouchWalking Now");
 		}
 		nowActivated = true;
@@ -89,7 +100,8 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 	public override void CancelSpecifiedAction ()
 	{
 		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
-		stateMaintainTimer = 0f;
+		hideChecker.targetHideableObj = targetHideableObj;
+		hideChecker.targetFace = targetFace;
 		nowActivated = false;
 	}
 
@@ -108,7 +120,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 			if (null == hideableObj)
 				continue;
 
-			var face = GetHideableFace (hideableObj, (actor.transform.position - eActor.targetActor.transform.position).normalized);
+			var face = GetHideableFace (hideableObj, (hideableObj.transform.position - eActor.targetActor.transform.position));
 			if (null != face) {
 				if (index == -1) {
 					disOfFaceToTarget = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
@@ -153,11 +165,11 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 				}
 			} else {
 				if (damagedDir.z > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
 					if (face.hideable)
 						return face;
 				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
 					if (face.hideable)
 						return face;
 				}
@@ -174,13 +186,14 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 					if (face.hideable)
 						return face;
 				}
-			} else {
+			}
+			else {
 				if (damagedDir.z > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
 					if (face.hideable)
 						return face;
 				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
+					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
 					if (face.hideable)
 						return face;
 				}
@@ -196,7 +209,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 		eActor.agent.destination = obstaclePoint;
 		eActor.agent.SetDestination (obstaclePoint);
 
-		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= 0.05f) {
+		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= autoBreakDistance) {
 			return true;
 		}
 		return false;

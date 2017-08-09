@@ -39,7 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 1683134517039983843, guid: 0000000000000000d000000000000000,
     type: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6470464, g: 0.69853514, b: 0.7485796, a: 1}
+  m_IndirectSpecularColor: {r: 0.64691734, g: 0.69839656, b: 0.74844277, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
-  customDeltaTime: 0.16197647
+  customDeltaTime: 0.055090602
   customTimeScale: 1
   animators: []
   particles: []
@@ -3894,6 +3894,438 @@ MonoBehaviour:
     faceName: 5
     hideable: 0
     point: {x: 0, y: -0.29999995, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
 --- !u!1 &190296267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4498,8 @@ MonoBehaviour:
   setAnimationTriggerName:
   - bodyAnimationName: TriggerCrouchWalk
     shoulderAnimationName: TriggerCrouchWalk
+  - bodyAnimationName: TriggerCrouchIdle
+    shoulderAnimationName: TriggerCrouchIdle
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
@@ -4889,33 +5323,6 @@ Transform:
   m_Father: {fileID: 650541643}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &674571518
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 0
-  m_ColorFormat: 0
-  m_MipMap: 1
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &752456489
 GameObject:
   m_ObjectHideFlags: 0
@@ -5009,7 +5416,7 @@ MonoBehaviour:
   RippleAnimSpeed: 1
   RippleRefraction: 0.5
   RenderTextureSize: 512
-  RainRipplesRenderTexture: {fileID: 674571518}
+  RainRipplesRenderTexture: {fileID: 1149108775}
   RainParticleSystem: {fileID: 0}
   MaxRainParticlesEmissionRate: 3000
   SnowGIMasterRenderers: []
@@ -8713,6 +9120,33 @@ Transform:
   m_Father: {fileID: 479815627}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1149108775
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 0
+  m_ColorFormat: 0
+  m_MipMap: 1
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1157782915
 GameObject:
   m_ObjectHideFlags: 0
@@ -10950,7 +11384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
-  customDeltaTime: 0.16197647
+  customDeltaTime: 0.055090602
   customTimeScale: 1
   animators: []
   particles: []
@@ -10958,24 +11392,24 @@ MonoBehaviour:
   interactableObjectType: 0
   interactCount: 0
   skinDepth: 0.15
-  colliderScale: {x: 0.45000005, y: 0.2999999, z: 0.3000002}
+  colliderScale: {x: 0.4499998, y: 0.2999999, z: 0.2999997}
   hideableFaceList:
   - hideableObj: {fileID: 2082566298}
     faceName: 0
     hideable: 1
-    point: {x: -0.37500003, y: 0, z: 0}
+    point: {x: -0.3749999, y: 0, z: 0}
   - hideableObj: {fileID: 2082566298}
     faceName: 1
     hideable: 1
-    point: {x: 0.37500003, y: 0, z: 0}
+    point: {x: 0.3749999, y: 0, z: 0}
   - hideableObj: {fileID: 2082566298}
     faceName: 2
     hideable: 1
-    point: {x: 0, y: 0, z: 0.3000001}
+    point: {x: 0, y: 0, z: 0.29999986}
   - hideableObj: {fileID: 2082566298}
     faceName: 3
     hideable: 1
-    point: {x: 0, y: 0, z: -0.3000001}
+    point: {x: 0, y: 0, z: -0.29999986}
   - hideableObj: {fileID: 2082566298}
     faceName: 4
     hideable: 0
@@ -10984,6 +11418,438 @@ MonoBehaviour:
     faceName: 5
     hideable: 0
     point: {x: 0, y: -0.29999995, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
 --- !u!1 &2084058840
 GameObject:
   m_ObjectHideFlags: 0

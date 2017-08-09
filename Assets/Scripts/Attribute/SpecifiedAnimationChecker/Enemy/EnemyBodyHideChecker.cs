@@ -176,7 +176,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		eActor.agent.destination = obstaclePoint;
 		eActor.agent.SetDestination (obstaclePoint);
 
-		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= 0.05f) {
+		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= autoBreakDistance) {
 			return true;
 		}
 		return false;
