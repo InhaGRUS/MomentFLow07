@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateInfo: 0
---- !u!114 &114268349841921002
+--- !u!114 &114252645738307610
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58183b7a90dd1b6448de87439ecd90c3, type: 3}
+  m_Script: {fileID: 11500000, guid: bbbb001f91e8d8c40993a66622f4b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isInitted: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   bodyOnlyAnimClips: []
   bodyAnimClips: []
   shoulderAnimClips: []
+  eActor: {fileID: 0}
 --- !u!114 &114270440031550252
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -175,7 +176,7 @@ MonoBehaviour:
   accel: 2000
   maxWalkSpeed: 0.5
   walkDirection: {x: 0, y: 0, z: 0}
---- !u!114 &114308336500966258
+--- !u!114 &114455469362766910
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71388f4aa036f2249b56e6e35afd2214, type: 3}
+  m_Script: {fileID: 11500000, guid: bbbb001f91e8d8c40993a66622f4b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isInitted: 0
@@ -192,26 +193,7 @@ MonoBehaviour:
   bodyOnlyAnimClips: []
   bodyAnimClips: []
   shoulderAnimClips: []
-  accel: 2000
-  maxWalkSpeed: 0.5
-  walkDirection: {x: 0, y: 0, z: 0}
---- !u!114 &114374709099898882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6c9514e37a6874393a387d918ae441, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInitted: 0
-  actor: {fileID: 0}
-  animationIndex: -1
-  bodyOnlyAnimClips: []
-  bodyAnimClips: []
-  shoulderAnimClips: []
+  eActor: {fileID: 0}
 --- !u!114 &114505096350527202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,6 +214,27 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2e70cee9f8f7d71489930ceb16c8dfb9, type: 2}
   shoulderAnimClips:
   - {fileID: 7400000, guid: d53e9963c09a6f8419202913ff029ad5, type: 2}
+--- !u!114 &114596989020233180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a416b630c540ef46a1b7396cc0120a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitted: 0
+  actor: {fileID: 0}
+  animationIndex: -1
+  bodyOnlyAnimClips: []
+  bodyAnimClips: []
+  shoulderAnimClips: []
+  eActor: {fileID: 0}
+  accel: 2000
+  maxWalkSpeed: 0.4
+  desireDir: {x: 0, y: 0, z: 0}
 --- !u!114 &114639277361903148
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2715,7 +2718,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101770648874730250}
   m_StateMachineBehaviours:
-  - {fileID: 114268349841921002}
+  - {fileID: 114455469362766910}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2743,7 +2746,7 @@ AnimatorState:
   - {fileID: 1101872338932196834}
   - {fileID: 1101867599176171052}
   m_StateMachineBehaviours:
-  - {fileID: 114308336500966258}
+  - {fileID: 114596989020233180}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2925,7 +2928,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101400973524313476}
   m_StateMachineBehaviours:
-  - {fileID: 114374709099898882}
+  - {fileID: 114252645738307610}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

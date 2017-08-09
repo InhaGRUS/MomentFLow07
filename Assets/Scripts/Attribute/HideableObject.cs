@@ -8,8 +8,10 @@ public class HideableObject : InteractableObject {
 	public float skinDepth = 0.1f;
 
 	private Collider col;
-	public Vector3 colliderScale;
+	public Vector3 colliderExtents;
 	public List<HideableFace> hideableFaceList = new List<HideableFace>();
+
+	public LayerMask ignoreHideableCheckLayer;
 
 	public void OnEnable ()
 	{
@@ -17,7 +19,7 @@ public class HideableObject : InteractableObject {
 		objectType = DynamicObjectType.InteractableObject;
 
 		col = GetComponent<Collider> ();
-		colliderScale = col.bounds.extents * 2f;
+		colliderExtents = col.bounds.extents;
 
 		for (int i = 0; i < 6; i++)
 		{
@@ -56,7 +58,7 @@ public class HideableObject : InteractableObject {
 	{
 		
 	}
-		
+
 	#region implemented abstract members of DynamicObject
 	public override void SaveObject ()
 	{

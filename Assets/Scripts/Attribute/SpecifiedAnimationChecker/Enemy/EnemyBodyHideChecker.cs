@@ -35,6 +35,9 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{		
+		if (actor.stateInfo.isCrouhcing && stateMaintainTimer <= stateMaintainDuration)
+			return true;
+		
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
 		if (eActor.tensionGauge >= tensionThreshold &&
@@ -42,17 +45,15 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 			stateMaintainTimer <= stateMaintainDuration
 		)
 		{
+			eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);
 			targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
 			return true;
 		}
-
-		Debug.Log ("FH : " + foundHideableObj);
-		Debug.Log ("SMT : " + stateMaintainTimer);
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
 	{
-		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
+		//targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
 		stateMaintainTimer = 0f;
 		if (actor.stateInfo.isHiding)
 		{
@@ -68,14 +69,14 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 				eActor.stateInfo.isHiding = true;
 				targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = false;
 				eActor.SetToCrouch ();
-				SetAnimationTrigger ();
+
 			}
 			else {
 				Debug.Log ("RunToHide");
 				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
 			}
 		} else {
-			Debug.Log ("Hided");
+			SetAnimationTrigger ();
 			actor.DecreaseTension ();
 			stateMaintainTimer += actor.customDeltaTime;
 		}
@@ -83,7 +84,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	public override void CancelSpecifiedAction ()
 	{
-		targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
+		//targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
 		stateMaintainTimer = 0f;
 		if (actor.stateInfo.isHiding)
 		{

@@ -145,19 +145,7 @@ public class EnemyOutsideInfo : OutsideInfo {
 				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject) {
 					hideableObjectInViewCount++;
 					foundedHideableObjList.Add ((HideableObject)obj);
-					foundedHideableObjList.Sort (delegate(HideableObject x, HideableObject y) {
-						var dis01 = Vector3.Distance (actor.transform.position, x.transform.position);
-						var dis02 = Vector3.Distance (actor.transform.position, y.transform.position);
-						if (dis01 < dis02)	
-						{
-							return -1;
-						}
-						else if (dis01 == dis02)
-						{
-							return 0;
-						}
-						return 1;
-					});
+					SortFoundedHideableObjectList (actor.transform.position);
 				}
 				else if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.Item)
 					itemInViewCount++;
@@ -232,6 +220,23 @@ public class EnemyOutsideInfo : OutsideInfo {
 		interactableObjectListInView.Sort (delegate(InteractableObject x, InteractableObject y) {
 			var dis01 = Vector3.Distance (transform.position, x.transform.position);
 			var dis02 = Vector3.Distance (transform.position, y.transform.position);
+			if (dis01 < dis02)	
+			{
+				return -1;
+			}
+			else if (dis01 == dis02)
+			{
+				return 0;
+			}
+			return 1;
+		});
+	}
+
+	public void SortFoundedHideableObjectList (Vector3 point)
+	{
+		foundedHideableObjList.Sort (delegate(HideableObject x, HideableObject y) {
+			var dis01 = Vector3.Distance (point, x.transform.position);
+			var dis02 = Vector3.Distance (point, y.transform.position);
 			if (dis01 < dis02)	
 			{
 				return -1;

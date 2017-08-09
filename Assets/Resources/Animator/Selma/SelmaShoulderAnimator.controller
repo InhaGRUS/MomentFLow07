@@ -1690,6 +1690,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: TriggerRun
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: BoolAim
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102561139460131886}
   m_Solo: 0

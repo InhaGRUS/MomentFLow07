@@ -52,15 +52,12 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
-		if (foundHideableObj == hideChecker.targetHideableObj && targetFace == hideChecker.targetFace)
-			return false;
 		var hObjPoint = foundHideableObj.transform.position + targetFace.point;
 		hObjPoint.y = eActor.transform.position.y;
 		var disToHObjPoint = Vector3.Distance (hObjPoint, eActor.transform.position);
 
 		if (disToHObjPoint > autoBreakDistance &&
 			stateDelayTimer >= stateDelay &&
-			targetFace.faceName == hideChecker.targetFace.faceName &&
 			eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName)
 		{
 			targetHideableObj = foundHideableObj;

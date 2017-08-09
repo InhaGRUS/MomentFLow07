@@ -66,6 +66,8 @@ public class EnemyActor : Actor {
 			stateInfo.isCrouhcing = false;
 			bodyAnimator.SetBool ("BoolCrouch", false);
 			shoulderAnimator.SetBool ("BoolCrouch", false);
+			stateInfo.isHiding = false;
+			GetSpecificAction <EnemyBodyHideChecker> ().targetFace.hideable = true;
 		}
 	}
 

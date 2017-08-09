@@ -155,7 +155,6 @@ public class Actor : DynamicObject {
 
 	public void DecreaseTension (float tensionDec)
 	{
-		Debug.Log (humanInfo.hp / humanInfo.maxHp);
 		tensionGauge = Mathf.Max (tensionGauge - customDeltaTime * tensionDec, 0f);
 	}
 

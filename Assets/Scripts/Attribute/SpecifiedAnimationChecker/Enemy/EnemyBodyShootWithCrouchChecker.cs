@@ -67,6 +67,7 @@ public class EnemyBodyShootWithCrouchChecker : BodyAnimationCheckerBase {
 
 		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.targetActor.transform.position);
 
+		//Aim State
 		if (attackTimer <= attackDelay) {
 			attackTimer += actor.customDeltaTime;
 			eActor.agent.SetDestination (eActor.transform.position);
@@ -74,7 +75,8 @@ public class EnemyBodyShootWithCrouchChecker : BodyAnimationCheckerBase {
 			actor.aimTarget.nowShootVector = (eActor.targetActor.bodyCollider.bounds.center - actor.aimTarget.shootPoint.position).normalized;
 			actor.bodyAnimator.SetBool ("BoolAim", true);
 			actor.shoulderAnimator.SetBool ("BoolAim", true);
-		} else {
+		}
+		else { // Shoot State
 			SetAnimationTrigger ();
 			attackTimer = 0f;
 		}
