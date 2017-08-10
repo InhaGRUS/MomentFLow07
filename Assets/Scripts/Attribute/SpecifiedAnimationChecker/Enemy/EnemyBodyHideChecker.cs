@@ -115,56 +115,42 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 
 	private HideableFace GetHideableFace (HideableObject hideableObj, Vector3 damagedDir)
 	{
-		var absX = Mathf.Abs (damagedDir.x);
-		var absY = Mathf.Abs (damagedDir.y);
-		var absZ = Mathf.Abs (damagedDir.z);
-
 		HideableFace face = null;
 
-		if (absX > absY) {
-			if (absX > absZ) {
-				if (damagedDir.x > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.rightFace);
-					if (face.hideable)
-						return face;
-				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.leftFace);
-					if (face.hideable)
-						return face;
-				}
-			} else {
-				if (damagedDir.z > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
-					if (face.hideable)
-						return face;
-				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
-					if (face.hideable)
-						return face;
-				}
+		if (damagedDir.x == CustomMaths.GetMaxValueFromVector (damagedDir).x) {
+			if (damagedDir.x > 0) {
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.rightFace);
+				if (face.hideable)
+					return face;
+			}
+			else {
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.leftFace);
+				if (face.hideable)
+					return face;
 			}
 		}
-		else {
-			if (absY > absZ) {
-				if (damagedDir.y > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.downFace);
-					if (face.hideable)
-						return face;
-				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.upFace);
-					if (face.hideable)
-						return face;
-				}
+		else if (damagedDir.y == CustomMaths.GetMaxValueFromVector (damagedDir).y)
+		{
+			if (damagedDir.y > 0) {
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.downFace);
+				if (face.hideable)
+					return face;
 			} else {
-				if (damagedDir.z > 0) {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
-					if (face.hideable)
-						return face;
-				} else {
-					face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
-					if (face.hideable)
-						return face;
-				}
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.upFace);
+				if (face.hideable)
+					return face;
+			}
+		}
+		else if (damagedDir.z == CustomMaths.GetMaxValueFromVector (damagedDir).z)
+		{
+			if (damagedDir.z > 0) {
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
+				if (face.hideable)
+					return face;
+			} else {
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
+				if (face.hideable)
+					return face;
 			}
 		}
 		return face;
