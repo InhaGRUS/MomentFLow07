@@ -52,6 +52,9 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
+		if (null == targetFace || null == foundHideableObj)
+			return false;
+		
 		var hObjPoint = foundHideableObj.transform.position + targetFace.point;
 		hObjPoint.y = eActor.transform.position.y;
 		var disToHObjPoint = Vector3.Distance (hObjPoint, eActor.transform.position);
@@ -118,7 +121,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 				continue;
 
 			var face = GetHideableFace (hideableObj, (hideableObj.transform.position - eActor.targetActor.transform.position));
-			if (null != face) {
+			if (null != face && face.hideable) {
 				if (index == -1) {
 					disOfFaceToTarget = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
 					index = i;
@@ -203,7 +206,6 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 	public bool RunToPoint (Vector3 obstaclePoint)
 	{
 		obstaclePoint.y = eActor.transform.position.y;
-		eActor.customAgent.agent.destination = obstaclePoint;
 		eActor.customAgent.SetDestination (obstaclePoint);
 
 		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= autoBreakDistance) {

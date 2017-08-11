@@ -16,6 +16,9 @@ public class CustomNavMeshAgent : MonoBehaviour {
 	public float remainingDistance;
 	public List<Vector3> destCornerPointList = new List<Vector3>();
 
+	public float cornerMaintainTimer = 0f;
+	public float cornerMaintainDuration = 5f;
+
 	// Use this for initialization
 	void Start () {
 		eActor = EnemyActor.GetEnemyActor <CustomNavMeshAgent> (this);
@@ -26,7 +29,13 @@ public class CustomNavMeshAgent : MonoBehaviour {
 	public void Update ()
 	{
 		remainingDistance = agent.remainingDistance;
+
 		if (nowDestinationIndex != 0) {
+			if (cornerMaintainTimer >= cornerMaintainDuration) {
+				nowDestinationIndex = 0;
+				cornerMaintainTimer = 0f;
+			}
+			cornerMaintainTimer += eActor.customDeltaTime;
 			SetDestination (destCornerPointList [nowDestinationIndex]);
 		}
 
@@ -60,8 +69,7 @@ public class CustomNavMeshAgent : MonoBehaviour {
 	{
 		nowDestinationIndex = 0;
 		destCornerPointList.Clear ();
-		destCornerPointList.Add (eActor.transform.position);
-		agent.SetDestination (eActor.transform.position);
+		SetDestination (eActor.transform.position);
 	}
 
 	public bool AddDestination (int depth, Vector3 startPoint, Vector3 targetPoint)
