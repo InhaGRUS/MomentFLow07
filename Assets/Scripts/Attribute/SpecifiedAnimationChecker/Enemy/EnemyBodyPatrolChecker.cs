@@ -115,7 +115,7 @@ public class EnemyBodyPatrolChecker : BodyAnimationCheckerBase {
 					}
 				}
 			} else {
-				eActor.agent.SetDestination (nowNode.nodePoint);
+				eActor.customAgent.SetDestination (nowNode.nodePoint);
 			}
 
 			if (null == nowNode) {

@@ -60,9 +60,9 @@ public class EnemyBodyShootWithWalkChecker : BodyAnimationCheckerBase {
 		if (attackTimer <= attackDelay) {
 			attackTimer += actor.customDeltaTime;
 			if (eActor.disToTarget >= disToChase)
-				eActor.agent.SetDestination (eActor.targetActor.transform.position);
+				eActor.customAgent.SetDestination (eActor.targetActor.transform.position);
 			else
-				eActor.agent.SetDestination (eActor.transform.position);
+				eActor.customAgent.SetDestination (eActor.transform.position);
 			actor.aimTarget.AimToObject (eActor.targetActor.bodyCollider.bounds.center);
 			actor.aimTarget.nowShootVector = (eActor.targetActor.bodyCollider.bounds.center - actor.aimTarget.shootPoint.position).normalized;
 			actor.bodyAnimator.SetBool ("BoolAim", true);

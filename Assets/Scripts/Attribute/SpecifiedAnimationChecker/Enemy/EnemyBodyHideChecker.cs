@@ -160,8 +160,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public bool RunToPoint (Vector3 obstaclePoint)
 	{
 		obstaclePoint.y = eActor.transform.position.y;
-		eActor.agent.destination = obstaclePoint;
-		eActor.agent.SetDestination (obstaclePoint);
+		eActor.customAgent.SetDestination (obstaclePoint);
 
 		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= autoBreakDistance) {
 			return true;

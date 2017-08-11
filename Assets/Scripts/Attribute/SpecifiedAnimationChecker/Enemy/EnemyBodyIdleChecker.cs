@@ -27,7 +27,7 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 	{
 		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
-		eActor.agent.destination = eActor.transform.position;
+		eActor.customAgent.StopMove ();
 		eActor.FindSuspiciousObject ();
 		nowActivated = true;
 	}

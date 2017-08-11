@@ -6,26 +6,23 @@ using UnityEngine.AI;
 using UnityEditor;
 #endif
 
-[CustomEditor (typeof (NavMeshAgent))]
+[CustomEditor (typeof (CustomNavMeshAgent))]
 public class NavMeshAgentPathRenderer : Editor {
-	private NavMeshAgent selectedAgent;
+	private CustomNavMeshAgent selectedAgent;
 
 	private void OnSceneGUI ()
 	{
 		#if UNITY_EDITOR
-		selectedAgent = target as NavMeshAgent;
+		selectedAgent = target as CustomNavMeshAgent;
 
 		if (null == selectedAgent)
 			return;
 
-		Debug.Log (selectedAgent.pathEndPosition);
-
-		Handles.color = Color.red;
-		var path = selectedAgent.path;
-		for (int i = 0; i < path.corners.Length; i++)
+		for (int i = 0; i < selectedAgent.destCornerPointList.Count; i++)
 		{
+			Handles.color = Color.red;
 			Handles.DrawSolidDisc (
-				path.corners [i],
+				selectedAgent.destCornerPointList [i],
 				Vector3.up,
 				0.05f
 			);

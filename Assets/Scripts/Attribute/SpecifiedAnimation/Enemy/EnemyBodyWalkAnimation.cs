@@ -14,13 +14,13 @@ public class EnemyBodyWalkAnimation : BodyAnimationBase {
 	{
 		if (null == eActor)
 			eActor = EnemyActor.GetEnemyActor<Actor> (actor);
-		eActor.agent.acceleration = accel;
-		eActor.agent.speed = maxWalkSpeed;
+		eActor.customAgent.agent.acceleration = accel;
+		eActor.customAgent.agent.speed = maxWalkSpeed;
 
 	}
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		desireDir = (eActor.agent.destination - actor.transform.position).normalized;
+		desireDir = (eActor.customAgent.agent.destination - actor.transform.position).normalized;
 		if (desireDir.x > 0) {
 			actor.SetLookDirection (false);
 		} else if (desireDir.x < 0) {

@@ -42,7 +42,7 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 
 		if (null != eActor.targetActor && 
 			!eActor.stateInfo.isHiding &&
-			velocity.magnitude <= eActor.agent.speed &&
+			velocity.magnitude <= eActor.customAgent.agent.speed &&
 			eActor.disToTarget <= disToShoot &&
 			stateDelayTimer >= stateDelay &&
 			eActor.equipmentInfo.nowEquipWeaponType == EquipWeaponType.Gun &&
@@ -78,11 +78,11 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 
 			if (eActor.disToTarget > disToChase) {
 				eActor.bodyAnimator.SetTrigger ("TriggerWalk");
-				eActor.agent.SetDestination (eActor.targetActor.transform.position);
+				eActor.customAgent.SetDestination (eActor.targetActor.transform.position);
 			}
 			else {
 				eActor.bodyAnimator.SetTrigger ("TriggerIdle");
-				eActor.agent.SetDestination (eActor.transform.position);
+				eActor.customAgent.StopMove ();
 			}
 
 			actor.aimTarget.AimToObject (eActor.targetActor.bodyCollider.bounds.center);
@@ -93,12 +93,12 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 			if (eActor.disToTarget > disToChase) {
 				eActor.bodyAnimator.SetTrigger ("TriggerWalk");
 				eActor.shoulderAnimator.SetTrigger ("TriggerShoot");
-				eActor.agent.SetDestination (eActor.targetActor.transform.position);
+				eActor.customAgent.SetDestination (eActor.targetActor.transform.position);
 			}
 			else {
 				eActor.bodyAnimator.SetTrigger ("TriggerShoot");
 				eActor.shoulderAnimator.SetTrigger ("TriggerShoot");
-				eActor.agent.SetDestination (eActor.transform.position);
+				eActor.customAgent.StopMove();
 			}
 			//SetAnimationTrigger ();
 			attackTimer = 0f;

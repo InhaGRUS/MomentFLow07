@@ -6,67 +6,130 @@ using UnityEngine.AI;
 public class CustomNavMeshAgent : MonoBehaviour {
 
 	public EnemyActor eActor;
-	private NavMeshAgent agent;
+	public NavMeshAgent agent;
 	public LayerMask obstacleMask;
 
 	public float comfortableDistance = 1f;
 
+	public int maxDepth = 3;
 	public int nowDestinationIndex = 0;
-	public List<Vector3> cornerPointList = new List<Vector3>();
+	public float remainingDistance;
+	public List<Vector3> destCornerPointList = new List<Vector3>();
 
 	// Use this for initialization
 	void Start () {
 		eActor = EnemyActor.GetEnemyActor <CustomNavMeshAgent> (this);
-		agent = eActor.agent;
+		agent = eActor.GetComponent<NavMeshAgent> ();
+		comfortableDistance = Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max) * 2;
+	}
+
+	public void Update ()
+	{
+		remainingDistance = agent.remainingDistance;
+		if (nowDestinationIndex != 0) {
+			SetDestination (destCornerPointList [nowDestinationIndex]);
+		}
+
+		if (remainingDistance <= 0.05f) {
+			if (nowDestinationIndex - 1 >= 0)
+				nowDestinationIndex -= 1;
+		}
 	}
 
 	public void SetDestination (Vector3 targetPoint)
+	{		
+		if (nowDestinationIndex != 0) {
+			destCornerPointList [0] = targetPoint;
+			return;
+		}
+		destCornerPointList.Clear ();
+		destCornerPointList.Add (targetPoint);
+
+		if (AddDestination (0, eActor.transform.position, targetPoint)) {
+			nowDestinationIndex = destCornerPointList.Count - 1;
+			agent.SetDestination (destCornerPointList [nowDestinationIndex]);
+		}
+		else {
+			Debug.Log ("Clear");
+			nowDestinationIndex = 0;
+			agent.SetDestination (targetPoint);
+		}
+	}
+
+	public void StopMove ()
 	{
-		Ray ray;
-		ray.origin = eActor.transform.position;
-		ray.direction = (targetPoint - eActor.transform.position).normalized;
-		RaycastHit hit;
-		var dir = (targetPoint - agent.transform.position).normalized;
+		nowDestinationIndex = 0;
+		destCornerPointList.Clear ();
+		destCornerPointList.Add (eActor.transform.position);
+		agent.SetDestination (eActor.transform.position);
+	}
 
-		if (eActor.bodyCollider.Raycast (ray, out hit, Vector3.Distance (eActor.transform.position, targetPoint))) {
-			var bodyToHitDir = (hit.point - targetPoint).normalized;
-			if (CustomMaths.GetMaxValueFromVector (bodyToHitDir).x == bodyToHitDir.x)
-			{
-				if (bodyToHitDir.x > 0) {
-					
-				}
-				else {
+	public bool AddDestination (int depth, Vector3 startPoint, Vector3 targetPoint)
+	{
+		startPoint.y = eActor.transform.position.y;
+		targetPoint.y = eActor.transform.position.y;
 
-				}
+		var dir = (targetPoint - startPoint).normalized;
+		var dis = Vector3.Distance (startPoint,targetPoint);
+
+		var hits = eActor.actorRigid.SweepTestAll (dir, dis);
+
+		for (int i = 0; i < hits.Length; i++)
+		{
+			var hitAgent = CustomNavMeshAgent.GetCustomNavMeshAgent <Collider> (hits [i].collider);
+			if (null != hitAgent &&
+				hitAgent != this &&
+				hitAgent.eActor.bodyCollider == hits [i].collider) {
+				var closestPoint = GetNearestCorner (hits [i].collider, hits[i].point);
+				var tmpDir = (closestPoint - new Vector3 (hits [i].collider.bounds.center.x, closestPoint.y, hits [i].collider.bounds.center.z)).normalized;
+				closestPoint += tmpDir * comfortableDistance;
+				if (depth < maxDepth)
+					return AddDestination (depth + 1, startPoint, closestPoint);
+				return false;
 			}
-			else if (CustomMaths.GetMaxValueFromVector (bodyToHitDir).y == bodyToHitDir.y)
+			else if (null != eActor.targetActor && eActor.targetActor.bodyCollider == hits [i].collider)
 			{
-				if (bodyToHitDir.y > 0) {
-
-				}
-				else {
-
-				}
-			}
-			else if (CustomMaths.GetMaxValueFromVector (bodyToHitDir).z == bodyToHitDir.z)
-			{
-				if (bodyToHitDir.z > 0) {
-
-				}
-				else {
-
-				}
+				destCornerPointList[0] = targetPoint;
+				return true;
 			}
 		}
+
+		if (targetPoint != destCornerPointList [0])
+			destCornerPointList.Add (targetPoint);
+		return true;
 	}
 
 	public Vector3 GetNearestCorner (Collider col, Vector3 point)
 	{
+		Debug.Log (col.name);
+		point.y = eActor.transform.position.y;
+		Vector3[] points = new Vector3[4];
+		points [0] = new Vector3 (col.bounds.max.x, eActor.transform.position.y, col.bounds.max.z);
+		points [1] = new Vector3 (col.bounds.min.x, eActor.transform.position.y, col.bounds.max.z);
+		points [2] = new Vector3 (col.bounds.max.x, eActor.transform.position.y, col.bounds.min.z);
+		points [3] = new Vector3 (col.bounds.min.x, eActor.transform.position.y, col.bounds.min.z);
 
+		int index = 0;
+		float tmpDis = Vector3.Distance (points[0], point);
+		for (int i = 1; i < 4; i++)
+		{
+			if (Vector3.Distance (points[i], point) <= tmpDis)
+			{
+				tmpDis = Vector3.Distance (points [i], point);
+				index = i;
+			}
+		}
+		return points [index];
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
+	public static CustomNavMeshAgent GetCustomNavMeshAgent<T> (T obj) where T : Component
+	{
+		if (null != obj.GetComponent<CustomNavMeshAgent>())
+			return obj.GetComponent<CustomNavMeshAgent>();
+		if (null != obj.GetComponentInChildren<CustomNavMeshAgent>())
+			return obj.GetComponentInChildren<CustomNavMeshAgent>();
+		if (null != obj.GetComponentInParent<CustomNavMeshAgent> ())
+			return obj.GetComponentInParent<CustomNavMeshAgent> ();
+		return null;
 	}
 }

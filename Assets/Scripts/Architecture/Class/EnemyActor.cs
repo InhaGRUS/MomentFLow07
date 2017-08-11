@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyActor : Actor {
 	[HideInInspector]
-	public NavMeshAgent agent;
+	public CustomNavMeshAgent customAgent;
 
 	public Actor targetActor;
 	public Vector3 suspiciousPoint;
@@ -18,7 +18,7 @@ public class EnemyActor : Actor {
 	{
 		outsideInfo = GetComponentInChildren<EnemyOutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
-		agent = GetComponent<NavMeshAgent> ();
+		customAgent = GetComponent<CustomNavMeshAgent> ();
 	}
 
 	// Use this for initialization

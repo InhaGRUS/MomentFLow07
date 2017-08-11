@@ -41,12 +41,12 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 		SetAnimationTrigger ();
 		eActor.FindSuspiciousObject ();
 		if (null != eActor.targetActor) {
-			eActor.agent.SetDestination (eActor.targetActor.transform.position);
+			eActor.customAgent.SetDestination (eActor.targetActor.transform.position);
 		}
 		else {
-			eActor.agent.SetDestination (eActor.lastTargetPoint);
+			eActor.customAgent.SetDestination (eActor.lastTargetPoint);
 		}
-		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.agent.destination);
+		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

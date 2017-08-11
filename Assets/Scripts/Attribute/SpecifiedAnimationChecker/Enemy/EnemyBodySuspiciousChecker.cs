@@ -38,8 +38,8 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
 		eActor.FindSuspiciousObject ();
-		eActor.agent.SetDestination (eActor.suspiciousPoint);
-		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.agent.destination);
+		eActor.customAgent.SetDestination (eActor.suspiciousPoint);
+		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

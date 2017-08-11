@@ -25,15 +25,15 @@ public class EnemyHideStateRenderer : Editor {
 
 		selectedChekcerInfo.actor = selectedChekcerInfo.GetComponentInParent<Actor> ();
 		selectedChekcerInfo.eActor = selectedChekcerInfo.GetComponentInParent<EnemyActor>();
-		selectedChekcerInfo.eActor.agent = selectedChekcerInfo.eActor.GetComponent<NavMeshAgent> ();
+		selectedChekcerInfo.eActor.customAgent.agent = selectedChekcerInfo.eActor.GetComponent<NavMeshAgent> ();
 
 		EnemyViewRenderer.DrawViewableRect (selectedChekcerInfo.eActor.GetEnemyOutsideInfo());
 		EnemyViewRenderer.DrawRecognizableRect (selectedChekcerInfo.eActor.GetEnemyOutsideInfo());
 
-		float size = HandleUtility.GetHandleSize (selectedChekcerInfo.eActor.agent.destination);
+		float size = HandleUtility.GetHandleSize (selectedChekcerInfo.eActor.customAgent.agent.destination);
 
 		Handles.color = Color.red;
-		Handles.Button (selectedChekcerInfo.eActor.agent.destination, Quaternion.Euler(Vector3.back), size * handleSize, pickSize, Handles.ArrowHandleCap);
+		Handles.Button (selectedChekcerInfo.eActor.customAgent.agent.destination, Quaternion.Euler(Vector3.back), size * handleSize, pickSize, Handles.ArrowHandleCap);
 
 		#endif
 	}

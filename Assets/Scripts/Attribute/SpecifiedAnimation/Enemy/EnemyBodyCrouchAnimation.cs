@@ -10,8 +10,8 @@ public class EnemyBodyCrouchAnimation : BodyAnimationBase {
 	{
 		if (null == eActor)
 			eActor = EnemyActor.GetEnemyActor<Actor> (actor);
-		eActor.agent.acceleration = 0f;
-		eActor.agent.speed = 0f;
+		eActor.customAgent.agent.acceleration = 0f;
+		eActor.customAgent.agent.speed = 0f;
 	}
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
