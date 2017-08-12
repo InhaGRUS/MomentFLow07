@@ -28,19 +28,14 @@ public class CustomNavMeshAgent : MonoBehaviour {
 
 	public void Update ()
 	{
-		if (eActor.stateInfo.isCrouhcing) {
-			comfortableDistance = Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max) * 0.6f;
-		} else {
-			Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max);
-		}
 		remainingDistance = agent.remainingDistance;
 
+		if (cornerMaintainTimer >= cornerMaintainDuration) {
+			nowDestinationIndex = 0;
+			cornerMaintainTimer = 0f;
+		}
+		cornerMaintainTimer += eActor.customDeltaTime;
 		if (nowDestinationIndex != 0) {
-			if (cornerMaintainTimer >= cornerMaintainDuration) {
-				nowDestinationIndex = 0;
-				cornerMaintainTimer = 0f;
-			}
-			cornerMaintainTimer += eActor.customDeltaTime;
 			SetDestination (destCornerPointList [nowDestinationIndex]);
 		}
 

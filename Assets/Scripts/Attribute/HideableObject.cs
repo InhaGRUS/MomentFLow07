@@ -15,7 +15,6 @@ public class HideableObject : InteractableObject {
 
 	public void OnEnable ()
 	{
-		Debug.Log ("OnEnabled");
 		objectType = DynamicObjectType.InteractableObject;
 
 		col = GetComponent<Collider> ();

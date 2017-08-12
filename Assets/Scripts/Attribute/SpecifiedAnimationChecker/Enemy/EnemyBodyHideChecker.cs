@@ -33,9 +33,13 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{		
-		if (actor.stateInfo.isCrouhcing && stateMaintainTimer <= stateMaintainDuration)
+		if (actor.stateInfo.isCrouhcing &&
+		    stateMaintainTimer <= stateMaintainDuration) {
+			Debug.Log ("Sustain");
 			return true;
-		
+		}
+		Debug.Log ("Not Sustain");
+		eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);	
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
 		if (eActor.tensionGauge >= tensionThreshold &&
@@ -43,8 +47,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 			stateMaintainTimer <= stateMaintainDuration
 		)
 		{
-			eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);
-			eActor.targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
+			eActor.targetHideableObj = foundHideableObj;
 			return true;
 		}
 		return false;
@@ -52,6 +55,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	protected override void BeforeTransitionAction ()
 	{
 		stateMaintainTimer = 0f;
+
 		if (actor.stateInfo.isHiding)
 		{
 			actor.stateInfo.isHiding = false;
@@ -65,13 +69,14 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 			if (RunToPoint (eActor.targetHideableObj.transform.position + eActor.targetFace.point)) {
 				eActor.stateInfo.isHiding = true;
 				eActor.targetFace.hideable = false;
+				eActor.previousFace = eActor.targetFace;
 				eActor.SetToCrouch ();
 				Debug.Log ("Hided");
 			}
 			else {
-				Debug.Log ("RunToHide");
 				eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
+				Debug.Log ("Run");
 			}
 		} else {
 			SetAnimationTrigger ();
@@ -84,6 +89,9 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{
 
 		stateMaintainTimer = 0f;
+
+		eActor.targetFace.hideable = true;
+
 		if (actor.stateInfo.isHiding)
 		{
 			actor.stateInfo.isHiding = false;
@@ -103,14 +111,15 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 				continue;
 			
 			var face = GetHideableFace (hideableObj, eActor.damagedDirection);
-			if (null != face) {
-				eActor.previousFace = eActor.targetFace;
+			if (null != face && face.hideable) {
+				/*eActor.previousFace = eActor.targetFace;
 				eActor.targetFace = face;
 
 				if (eActor.previousFace != eActor.targetFace) {
 					eActor.previousFace.hideable = true;
 					Debug.Log ("Move TO Next HOBJ");
-				}
+				}*/
+				eActor.targetFace = face;
 				return hideableObj;
 			}
 		}
@@ -148,11 +157,11 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		else if (damagedDir.z == CustomMaths.GetMaxValueFromVector (damagedDir).z)
 		{
 			if (damagedDir.z > 0) {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
 				if (face.hideable)
 					return face;
 			} else {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
+				face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
 				if (face.hideable)
 					return face;
 			}
@@ -165,7 +174,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{
 		obstaclePoint.y = eActor.transform.position.y;
 		eActor.customAgent.SetDestination (obstaclePoint);
-
+//		Debug.Log (eActor.name + " : " + eActor.targetFace.hideableObj.name + " . " + eActor.targetFace.faceName.ToString() + " * " + eActor.targetHideableObj.name);
 		if (Vector3.Distance (actor.transform.position, obstaclePoint) <= autoBreakDistance) {
 			return true;
 		}
