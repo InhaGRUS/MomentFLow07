@@ -21,10 +21,13 @@ public class EnemyHideStateRenderer : Editor {
 		selectedChekcerInfo = target as EnemyBodyHideChecker;
 
 		if (null == selectedChekcerInfo)
+		{
 			return;
+		}
 
 		selectedChekcerInfo.actor = selectedChekcerInfo.GetComponentInParent<Actor> ();
 		selectedChekcerInfo.eActor = selectedChekcerInfo.GetComponentInParent<EnemyActor>();
+		selectedChekcerInfo.eActor.customAgent = selectedChekcerInfo.actor.GetComponent<CustomNavMeshAgent>();
 		selectedChekcerInfo.eActor.customAgent.agent = selectedChekcerInfo.eActor.GetComponent<NavMeshAgent> ();
 
 		EnemyViewRenderer.DrawViewableRect (selectedChekcerInfo.eActor.GetEnemyOutsideInfo());

@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public EnemyActor eActor;
 	public EnemyOutsideInfo eOutsideInfo;
-	public HideableObject targetHideableObj = null; 
-	public HideableFace targetFace;
 	public float autoBreakDistance;
 
 	[Header ("StateMaintainOption")]
@@ -46,14 +44,13 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		)
 		{
 			eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);
-			targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
+			eActor.targetHideableObj = eOutsideInfo.foundedHideableObjList [0];
 			return true;
 		}
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
 	{
-		//targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
 		stateMaintainTimer = 0f;
 		if (actor.stateInfo.isHiding)
 		{
@@ -65,14 +62,15 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	public override void DoSpecifiedAction ()
 	{
 		if (!eActor.stateInfo.isHiding) {
-			if (RunToPoint (targetHideableObj.transform.position + targetFace.point)) {
+			if (RunToPoint (eActor.targetHideableObj.transform.position + eActor.targetFace.point)) {
 				eActor.stateInfo.isHiding = true;
-				targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = false;
+				eActor.targetFace.hideable = false;
 				eActor.SetToCrouch ();
-
+				Debug.Log ("Hided");
 			}
 			else {
 				Debug.Log ("RunToHide");
+				eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
 			}
 		} else {
@@ -84,7 +82,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	public override void CancelSpecifiedAction ()
 	{
-		//targetHideableObj.GetHideableFaceByName (targetFace.faceName).hideable = true;
+
 		stateMaintainTimer = 0f;
 		if (actor.stateInfo.isHiding)
 		{
@@ -106,7 +104,13 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 			
 			var face = GetHideableFace (hideableObj, eActor.damagedDirection);
 			if (null != face) {
-				targetFace = face;
+				eActor.previousFace = eActor.targetFace;
+				eActor.targetFace = face;
+
+				if (eActor.previousFace != eActor.targetFace) {
+					eActor.previousFace.hideable = true;
+					Debug.Log ("Move TO Next HOBJ");
+				}
 				return hideableObj;
 			}
 		}

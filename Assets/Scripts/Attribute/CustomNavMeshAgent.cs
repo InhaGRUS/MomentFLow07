@@ -23,11 +23,16 @@ public class CustomNavMeshAgent : MonoBehaviour {
 	void Start () {
 		eActor = EnemyActor.GetEnemyActor <CustomNavMeshAgent> (this);
 		agent = eActor.GetComponent<NavMeshAgent> ();
-		comfortableDistance = Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max) * 2;
+		comfortableDistance = Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max) * 1.25f;
 	}
 
 	public void Update ()
 	{
+		if (eActor.stateInfo.isCrouhcing) {
+			comfortableDistance = Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max) * 0.6f;
+		} else {
+			Vector3.Distance (eActor.bodyCollider.bounds.center, eActor.bodyCollider.bounds.max);
+		}
 		remainingDistance = agent.remainingDistance;
 
 		if (nowDestinationIndex != 0) {
@@ -59,7 +64,6 @@ public class CustomNavMeshAgent : MonoBehaviour {
 			agent.SetDestination (destCornerPointList [nowDestinationIndex]);
 		}
 		else {
-			Debug.Log ("Clear");
 			nowDestinationIndex = 0;
 			agent.SetDestination (targetPoint);
 		}
@@ -109,7 +113,6 @@ public class CustomNavMeshAgent : MonoBehaviour {
 
 	public Vector3 GetNearestCorner (Collider col, Vector3 point)
 	{
-		Debug.Log (col.name);
 		point.y = eActor.transform.position.y;
 		Vector3[] points = new Vector3[4];
 		points [0] = new Vector3 (col.bounds.max.x, eActor.transform.position.y, col.bounds.max.z);

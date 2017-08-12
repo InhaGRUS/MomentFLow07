@@ -14,6 +14,10 @@ public class EnemyActor : Actor {
 	public float disToTarget;
 	public float disToSuspiciousPoint;
 
+	public HideableObject targetHideableObj;
+	public HideableFace targetFace;
+	public HideableFace previousFace;
+
 	public void OnEnable ()
 	{
 		outsideInfo = GetComponentInChildren<EnemyOutsideInfo> ();
@@ -67,7 +71,8 @@ public class EnemyActor : Actor {
 			bodyAnimator.SetBool ("BoolCrouch", false);
 			shoulderAnimator.SetBool ("BoolCrouch", false);
 			stateInfo.isHiding = false;
-			GetSpecificAction <EnemyBodyHideChecker> ().targetFace.hideable = true;
+			if (null != targetFace)
+				targetFace.hideable = true;
 		}
 	}
 
