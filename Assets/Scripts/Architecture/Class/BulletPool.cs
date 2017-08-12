@@ -80,7 +80,7 @@ public class BulletPool : MonoBehaviour {
 
 				while (index < pool.childCount)
 				{
-					if (pool.GetChild(index).GetComponent<Collider>().enabled)
+					if (pool.GetChild(index).GetComponent<Bullet> ().destroyParticle.isPlaying)
 					{
 						index++;
 						continue;
@@ -98,7 +98,7 @@ public class BulletPool : MonoBehaviour {
 				borrowBullet.bulletIndex = index;
 				borrowBullet.owner = owner;
 				Physics.IgnoreCollision (owner.bodyCollider, borrowBullet.GetComponent<Collider> (), true);
-				Debug.Log ("Bullet Owner : " + owner.name);
+				borrowBullet.GetComponent<TrailRenderer> ().Clear ();
 				borrowBullet.gameObject.SetActive (true);
 				borrowBullet.GetComponent<Collider> ().enabled = true;
 				return borrowBullet;

@@ -35,10 +35,8 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	{		
 		if (actor.stateInfo.isCrouhcing &&
 		    stateMaintainTimer <= stateMaintainDuration) {
-			Debug.Log ("Sustain");
 			return true;
 		}
-		Debug.Log ("Not Sustain");
 		eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);	
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
@@ -71,12 +69,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 				eActor.targetFace.hideable = false;
 				eActor.previousFace = eActor.targetFace;
 				eActor.SetToCrouch ();
-				Debug.Log ("Hided");
 			}
 			else {
 				eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
-				Debug.Log ("Run");
 			}
 		} else {
 			SetAnimationTrigger ();
@@ -90,10 +86,10 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 
 		stateMaintainTimer = 0f;
 
-		eActor.targetFace.hideable = true;
 
 		if (actor.stateInfo.isHiding)
 		{
+			eActor.targetFace.hideable = true;
 			actor.stateInfo.isHiding = false;
 		}
 		nowActivated = false;

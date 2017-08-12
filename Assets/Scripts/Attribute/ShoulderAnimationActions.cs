@@ -19,7 +19,6 @@ public class ShoulderAnimationActions : MonoBehaviour {
 
 	public void Shoot ()
 	{
-		Debug.Log ("Shoot");
 		var bullet = BulletPool.Instance.BorrowBullet (((GunInfo)actor.equipmentInfo.nowEquipWeaponInfo).usingBullet, actor);
 		bullet.transform.position = actor.aimTarget.shootPoint.position;
 		bullet.startPosition = bullet.transform.position;

@@ -9,7 +9,6 @@ public class PlayerBodyCrouchIdleAnimation : BodyAnimationBase {
 		ChangeAnimationClipToIndex (0);
 		if (actor.stateInfo.isHiding) {
 			ChangeAnimationClipToIndex (1);
-			Debug.Log (animationIndex);
 		} 
 	}
 	protected override void OnAnimationStay (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

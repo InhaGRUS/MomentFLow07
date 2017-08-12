@@ -94,7 +94,6 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 			eActor.targetFace.hideable = false;
 			eActor.previousFace = eActor.targetFace;
 			stateDelayTimer = 0f;
-			Debug.Log ("Arrived");
 		}
 		else {
 			SetAnimationTrigger (0);

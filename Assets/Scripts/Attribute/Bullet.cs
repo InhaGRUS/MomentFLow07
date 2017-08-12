@@ -43,15 +43,10 @@ public class Bullet : DynamicObject {
 		}
 	}
 
-	public void FixedUpdate ()
-	{
-		
-	}
-
 	public void OnCollisionEnter (Collision col)
 	{
 		var colActor = Actor.GetActor<Collider> (col.collider);
-		Debug.Log ("Col : " + col.collider.name);
+		//Debug.Log ("Col : " + col.collider.name);
 		if (null != colActor && !colActor.stateInfo.isUnbeatable)
 		{
 			colActor.actorRigid.velocity = Vector3.zero;
