@@ -28,6 +28,12 @@ public class Actor : DynamicObject {
 
 	private SpriteRenderer shoulderSpriteRenderer;
 
+	[Header ("Crouch Setting")]
+	public float normalHeight;
+	public float normalCenterY;
+	public float crouchHeight;
+	public float crouchCenterY;
+
 	[Header ("TensionGauge")]
 	[Range (0,1)]
 	public float tensionGauge = 0f;
@@ -100,6 +106,34 @@ public class Actor : DynamicObject {
 	public void ResetSetLookDirectionPriority ()
 	{
 		nowSetLookDirectionPriority = 0;
+	}
+
+	public void SetToCrouch ()
+	{
+		bodyAnimator.SetBool ("BoolCrouch", true);
+		shoulderAnimator.SetBool ("BoolCrouch", true);
+		stateInfo.isCrouhcing = true;
+		var col = bodyCollider as CapsuleCollider;
+		col.center = new Vector3 (
+			col.center.x,
+			crouchCenterY,
+			col.center.z
+		);
+		col.height = crouchHeight;
+	}
+
+	public void ReleaseCrouch ()
+	{
+		bodyAnimator.SetBool ("BoolCrouch", false);
+		shoulderAnimator.SetBool ("BoolCrouch", false);
+		stateInfo.isCrouhcing = false;
+		var col = bodyCollider as CapsuleCollider;
+		col.center = new Vector3 (
+			col.center.x,
+			normalCenterY,
+			col.center.z
+		);
+		col.height = normalHeight;
 	}
 
 	public void HideShoulder (bool hideValue)

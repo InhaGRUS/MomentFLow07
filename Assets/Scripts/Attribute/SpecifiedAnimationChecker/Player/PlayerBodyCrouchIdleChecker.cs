@@ -38,10 +38,8 @@ public class PlayerBodyCrouchIdleChecker : BodyAnimationCheckerBase {
 
 	public override void DoSpecifiedAction ()
 	{
-		actor.stateInfo.isCrouhcing = true;
 		SetAnimationTrigger ();
-		actor.bodyAnimator.SetBool ("BoolCrouch", true);
-		actor.shoulderAnimator.SetBool ("BoolCrouch", true);
+		actor.SetToCrouch ();
 		nowActivated = true;
 	}
 

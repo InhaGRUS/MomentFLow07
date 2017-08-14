@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 33610893670803456}
   - component: {fileID: 64517599401872594}
   - component: {fileID: 23574160608585350}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,8 @@ GameObject:
   - component: {fileID: 4026171748304794}
   - component: {fileID: 114655031176329670}
   - component: {fileID: 65847550440922046}
-  m_Layer: 0
+  - component: {fileID: 65778479330136194}
+  m_Layer: 2
   m_Name: Room(Quadruple)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +641,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515568703068496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0577087, y: 0.3, z: 4.098}
+  m_LocalPosition: {x: 2.0577087, y: 0.28, z: 4.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4644789873511548}
@@ -2136,7 +2137,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -2440,6 +2441,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65778479330136194
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515568703068496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4366398, y: 1, z: 0.4453001}
+  m_Center: {x: 0, y: 0.6447973, z: -1.5359421}
 --- !u!65 &65847550440922046
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2602,12 +2615,9 @@ MonoBehaviour:
   actorsInRoom: []
   interactableObjectInRoom: []
   roomRectCollider: {fileID: 65847550440922046}
-  cameraRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+  cameraRectCollider: {fileID: 65778479330136194}
+  roomRectColor: {r: 0.5547145, g: 0.99264705, b: 0.6302202, a: 0.019607844}
+  cameraRectColor: {r: 0.49264705, g: 0.6431034, b: 1, a: 0.019607844}
 --- !u!137 &137122178595593814
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2649,7 +2659,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000009536743, y: -0.0024999976, z: 0}
+    m_Center: {x: -0.0000009536743, y: -0.0024999976, z: 0.000000059604645}
     m_Extent: {x: 0.50000066, y: 0.011500001, z: 0.5}
   m_DirtyAABB: 0
 --- !u!137 &137249527523723742
@@ -2693,7 +2703,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: -0.0024999976, z: 0}
+    m_Center: {x: 0, y: -0.0024999976, z: 0.000000059604645}
     m_Extent: {x: 0.5000003, y: 0.011500001, z: 0.5}
   m_DirtyAABB: 0
 --- !u!137 &137451185709458496
@@ -2737,7 +2747,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000009536743, y: -0.0025000572, z: 0}
+    m_Center: {x: -0.0000009536743, y: -0.0025000572, z: 0.000000059604645}
     m_Extent: {x: 0.50000066, y: 0.011499882, z: 0.5}
   m_DirtyAABB: 0
 --- !u!137 &137463007725524080
@@ -2781,7 +2791,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: -0.0025000572, z: -0.000000059604645}
+    m_Center: {x: 0, y: -0.0025000572, z: 0}
     m_Extent: {x: 0.5, y: 0.011500181, z: 0.5000002}
   m_DirtyAABB: 0
 --- !u!137 &137481012744255496
@@ -2826,7 +2836,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: -0.0025002956, z: -0.000000059604645}
-    m_Extent: {x: 0.5000004, y: 0.011500172, z: 0.50000036}
+    m_Extent: {x: 0.5000004, y: 0.011500172, z: 0.5000004}
   m_DirtyAABB: 0
 --- !u!137 &137899351560717046
 SkinnedMeshRenderer:
@@ -2869,7 +2879,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.00000047683716, y: -0.0025000572, z: -0.00000011920929}
+    m_Center: {x: 0.00000047683716, y: -0.0025000572, z: -0.000000059604645}
     m_Extent: {x: 0.5000004, y: 0.011500181, z: 0.50000036}
   m_DirtyAABB: 0
 --- !u!183 &183268322066766888
