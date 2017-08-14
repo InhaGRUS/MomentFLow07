@@ -80,7 +80,9 @@ public class BulletPool : MonoBehaviour {
 
 				while (index < pool.childCount)
 				{
-					if (pool.GetChild(index).GetComponent<Bullet> ().destroyParticle.isPlaying)
+					if (pool.GetChild(index).GetComponent<Bullet> ().destroyParticle.isPlaying ||
+						pool.GetChild(index).GetComponent<Collider> ().enabled
+					)
 					{
 						index++;
 						continue;

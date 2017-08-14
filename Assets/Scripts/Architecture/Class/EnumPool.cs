@@ -17,6 +17,12 @@ public enum RoomState
 	Clear
 }
 
+public enum CustomCameraButtonType
+{
+	RoomRect = 0,
+	CameraRect
+}
+
 public enum InteractableObjectType
 {
 	HideableObject,
