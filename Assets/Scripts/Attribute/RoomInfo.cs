@@ -16,8 +16,8 @@ public class RoomInfo : MonoBehaviour {
 	public Collider cameraRectCollider;
 
 	[Header ("Editor Setting")]
-	public Color roomRectColor;
-	public Color cameraRectColor;
+	public Color roomRectColor = new Color (0.5529f, 0.9921f, 0.6313f, 0.0196f);
+	public Color cameraRectColor = new Color (0.4941f, 0.6431f, 1f, 0.0196f);
 
 	public void Start ()
 	{

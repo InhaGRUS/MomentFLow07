@@ -157,6 +157,23 @@ public class RoomInfoRenderer : Editor {
 			roomInfo.roomRectColor
 		);
 
+		Handles.color = Color.yellow;
+		var colCenter = (roomInfo.roomRectCollider as BoxCollider).center;
+		MakeButton (10, roomInfo.transform.position + colCenter, buttonSize * 2.5f, CustomCameraButtonType.RoomRect);
+
+		if (selectedIndex == 10 && buttonType == CustomCameraButtonType.RoomRect)
+		{
+			EditorGUI.BeginChangeCheck ();
+
+			colCenter = Handles.DoPositionHandle (colCenter + roomInfo.transform.position, Quaternion.identity) - roomInfo.transform.position;
+
+			if (EditorGUI.EndChangeCheck ()) {
+				Undo.RecordObject (roomInfo, "Change Center");
+				EditorUtility.SetDirty (roomInfo);
+				(roomInfo.roomRectCollider as BoxCollider).center = colCenter;
+			}
+		}
+
 		for (int i = 0; i < 6; i++)
 		{
 			var midPoint = Vector3.zero;
@@ -165,6 +182,7 @@ public class RoomInfoRenderer : Editor {
 				midPoint += faces [i] [j];
 			}
 			midPoint /= 4f;
+			Handles.color = Color.white;
 			MakeButton (i, midPoint, buttonSize, CustomCameraButtonType.RoomRect);
 			if (selectedIndex == i && buttonType == CustomCameraButtonType.RoomRect)
 			{

@@ -76,7 +76,7 @@ Material:
     - _DoubleSided: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.21
+    - _Glossiness: 0.6
     - _Glossiness2: 0.5
     - _GlossyReflections: 1
     - _Lighting: 0
@@ -86,7 +86,7 @@ Material:
     - _Lux_FlowNormalTiling: 2
     - _Lux_FlowRefraction: 0.02
     - _Lux_FlowSpeed: 0.05
-    - _Metallic: 0.37
+    - _Metallic: 0.45
     - _Metallic2: 0
     - _MixMappingControl: 0
     - _Mode: 0

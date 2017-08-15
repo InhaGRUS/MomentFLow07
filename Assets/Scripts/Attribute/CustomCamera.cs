@@ -10,16 +10,21 @@ public class CustomCamera : MonoBehaviour {
 	[Header ("Camera Setting")]
 	public bool useRoomAnchor = true;
 	public bool useMaxDistance = true;
+	public bool useMinDistance = true;
 
 	[Header ("Following Setting")]
 	public float followSpeed;
 	public Vector3 offset;
 	public float bobMultiply = 1.5f;
+
 	public float maxDistance = 0.5f;
+	public float minDistance = 0.5f;
 
 	private float xRatio;
 	private float yRatio;
 	private float zRatio;
+
+	private float disToFollowingTarget = 0f;
 
 	void Start ()
 	{
@@ -31,6 +36,8 @@ public class CustomCamera : MonoBehaviour {
 		if (null != followingTarget && null != followingTarget.roomInfo)
 		{
 			nowFocusingRoom = followingTarget.roomInfo;
+			disToFollowingTarget = Vector3.Distance (transform.position, followingTarget.bodyCollider.bounds.center);
+
 			if (useRoomAnchor) {
 				xRatio = (Mathf.Abs (followingTarget.bodyCollider.bounds.center.x + offset.x - nowFocusingRoom.roomRectCollider.bounds.min.x)) / nowFocusingRoom.roomRectCollider.bounds.size.x;
 				if (followingTarget.stateInfo.isCrouhcing) {
@@ -49,17 +56,29 @@ public class CustomCamera : MonoBehaviour {
 				transform.position = Vector3.Lerp (transform.position, tmpPos, followSpeed * Time.deltaTime);
 				LockToCameraRect ();
 			}
-			if (useMaxDistance) {
-				var tmpPos = transform.position;
-				
-				tmpPos.x = Mathf.Clamp (tmpPos.x, followingTarget.bodyCollider.bounds.center.x - maxDistance,followingTarget.bodyCollider.bounds.center.x + maxDistance );
-				tmpPos.y = Mathf.Clamp (tmpPos.y, followingTarget.bodyCollider.bounds.center.y - maxDistance,followingTarget.bodyCollider.bounds.center.y + maxDistance );
-				tmpPos.z = Mathf.Clamp (tmpPos.z, followingTarget.bodyCollider.bounds.center.z - maxDistance,followingTarget.bodyCollider.bounds.center.z + maxDistance );
-				transform.position = tmpPos;
-			}
-			
-		}
 
+			if (useMaxDistance) {
+				var tmpPos = transform.position;	
+				var tmpVec = tmpPos - followingTarget.bodyCollider.bounds.center;
+				var dir = tmpVec.normalized;
+
+				if (disToFollowingTarget >= maxDistance) {
+					tmpPos =  tmpPos - (disToFollowingTarget - maxDistance) * dir;
+					transform.position = Vector3.Lerp (transform.position, tmpPos, Time.deltaTime);
+				}
+			}	
+
+			if (useMinDistance) {
+				var tmpPos = transform.position;
+				var tmpVec = tmpPos - followingTarget.bodyCollider.bounds.center;
+				var dir = tmpVec.normalized;
+
+				if (disToFollowingTarget < minDistance) {
+					tmpPos = tmpPos + (minDistance - disToFollowingTarget) * dir;
+					transform.position = Vector3.Lerp (transform.position, tmpPos, Time.deltaTime);
+				}
+			}
+		}
 	}
 
 	void LockToCameraRect ()
