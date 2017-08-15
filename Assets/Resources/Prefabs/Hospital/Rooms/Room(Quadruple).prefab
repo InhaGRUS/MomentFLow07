@@ -26,8 +26,8 @@ GameObject:
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1054876093666438
 GameObject:
@@ -38,14 +38,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4403236865166780}
   - component: {fileID: 33018255591189416}
-  - component: {fileID: 64596639014026206}
   - component: {fileID: 23241358620810934}
   m_Layer: 0
   m_Name: "\uD640\uB85C\uADF8\uB7A8TV"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1065114592300100
 GameObject:
@@ -58,12 +57,13 @@ GameObject:
   - component: {fileID: 33357798725765110}
   - component: {fileID: 65456620431203362}
   - component: {fileID: 23763697388465304}
+  - component: {fileID: 208540160458753074}
   m_Layer: 0
   m_Name: "\uAD00\uBB3C\uB300"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1115735142349316
 GameObject:
@@ -81,7 +81,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1133873853145684
 GameObject:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1248823079292734
 GameObject:
@@ -117,7 +117,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1331428785717766
 GameObject:
@@ -134,8 +134,8 @@ GameObject:
   m_Name: "\uB9C1\uAC70 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1356337925103822
 GameObject:
@@ -152,8 +152,8 @@ GameObject:
   m_Name: "\uB9C1\uAC70 (3)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1359349471656450
 GameObject:
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 33583203635843514}
   - component: {fileID: 137122178595593814}
   - component: {fileID: 183298506274988506}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Closed) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1364744235326342
 GameObject:
@@ -202,12 +202,14 @@ GameObject:
   - component: {fileID: 33795618625275424}
   - component: {fileID: 65766942763739096}
   - component: {fileID: 23373998609895428}
+  - component: {fileID: 208427377620588610}
+  - component: {fileID: 114037284376482258}
   m_Layer: 0
   m_Name: "\uCE68\uB300"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1379082679713564
 GameObject:
@@ -220,12 +222,13 @@ GameObject:
   - component: {fileID: 33469878602551786}
   - component: {fileID: 65737309263572998}
   - component: {fileID: 23052533373964292}
+  - component: {fileID: 208704130153203770}
   m_Layer: 0
   m_Name: "\uAD00\uBB3C\uB300 (2)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1394276214454082
 GameObject:
@@ -238,12 +241,14 @@ GameObject:
   - component: {fileID: 33047992502545874}
   - component: {fileID: 65645023787786064}
   - component: {fileID: 23762226653640274}
+  - component: {fileID: 208265940019875092}
+  - component: {fileID: 114252136695421832}
   m_Layer: 0
   m_Name: "\uCE68\uB300"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1427267554785970
 GameObject:
@@ -261,7 +266,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1450027726115382
 GameObject:
@@ -274,12 +279,14 @@ GameObject:
   - component: {fileID: 33484228005488312}
   - component: {fileID: 65411014592926878}
   - component: {fileID: 23287607675641134}
+  - component: {fileID: 208899112179983992}
+  - component: {fileID: 114231664821528662}
   m_Layer: 0
   m_Name: "\uCE68\uB300"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1462576500424140
 GameObject:
@@ -296,7 +303,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1464857968823402
 GameObject:
@@ -313,8 +320,8 @@ GameObject:
   m_Name: "\uB9C1\uAC70 (2)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1485758903134434
 GameObject:
@@ -332,7 +339,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1515568703068496
 GameObject:
@@ -350,7 +357,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1519534141037294
 GameObject:
@@ -367,7 +374,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1542025400185428
 GameObject:
@@ -380,12 +387,14 @@ GameObject:
   - component: {fileID: 33504998578860292}
   - component: {fileID: 65130017316078264}
   - component: {fileID: 23259092906206022}
+  - component: {fileID: 208204584360669942}
+  - component: {fileID: 114264245431844526}
   m_Layer: 0
   m_Name: "\uCE68\uB300"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1550846187119376
 GameObject:
@@ -398,12 +407,13 @@ GameObject:
   - component: {fileID: 33675275341414188}
   - component: {fileID: 65329807802934308}
   - component: {fileID: 23789896827897416}
+  - component: {fileID: 208043145166794490}
   m_Layer: 0
   m_Name: "\uAD00\uBB3C\uB300 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1584310843775428
 GameObject:
@@ -420,8 +430,8 @@ GameObject:
   m_Name: "\uC804\uB4F1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1596398158241604
 GameObject:
@@ -434,7 +444,7 @@ GameObject:
   - component: {fileID: 33862551009542268}
   - component: {fileID: 137451185709458496}
   - component: {fileID: 183665545905933758}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Closed) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +462,7 @@ GameObject:
   - component: {fileID: 33074482896632714}
   - component: {fileID: 137463007725524080}
   - component: {fileID: 183268322066766888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,8 +484,8 @@ GameObject:
   m_Name: "\uB9C1\uAC70"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1780557841752350
 GameObject:
@@ -493,7 +503,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1787497205890842
 GameObject:
@@ -504,14 +514,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4378562117982816}
   - component: {fileID: 33792437017930922}
-  - component: {fileID: 64009593700943980}
   - component: {fileID: 23872792440477440}
   m_Layer: 0
   m_Name: "\uD640\uB85C\uADF8\uB7A8TV (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1788817145709324
 GameObject:
@@ -528,8 +537,8 @@ GameObject:
   m_Name: "\uC804\uB4F1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1797697652493012
 GameObject:
@@ -542,12 +551,13 @@ GameObject:
   - component: {fileID: 33544794517694062}
   - component: {fileID: 65390409310943358}
   - component: {fileID: 23310705779674528}
+  - component: {fileID: 208863523593999652}
   m_Layer: 0
   m_Name: "\uAD00\uBB3C\uB300 (3)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1908009452115742
 GameObject:
@@ -560,7 +570,7 @@ GameObject:
   - component: {fileID: 33286581766329274}
   - component: {fileID: 137481012744255496}
   - component: {fileID: 183631236457409272}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Open (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,14 +586,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4476980556888624}
   - component: {fileID: 33275379756154566}
-  - component: {fileID: 64050697198470800}
   - component: {fileID: 23209564522631996}
+  - component: {fileID: 65538486017266272}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967263
   m_IsActive: 1
 --- !u!1 &1955176594849374
 GameObject:
@@ -596,7 +606,7 @@ GameObject:
   - component: {fileID: 33261297247972690}
   - component: {fileID: 137249527523723742}
   - component: {fileID: 183284114751719456}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Closed)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +624,7 @@ GameObject:
   - component: {fileID: 33272276721655814}
   - component: {fileID: 137899351560717046}
   - component: {fileID: 183899721522890652}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Curtain(Open (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2113,34 +2123,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718736075436462}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64009593700943980
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1787497205890842}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64050697198470800
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1923034618706784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64278564511005066
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2222,20 +2204,6 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64596639014026206
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054876093666438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -2405,6 +2373,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65538486017266272
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923034618706784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
+  m_Center: {x: 0, y: 0, z: -0.000000009313226}
 --- !u!65 &65645023787786064
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2565,6 +2545,490 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114037284376482258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364744235326342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac4d75f11235d948a8a1113d1a55b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 1
+  customDeltaTime: 0.15720974
+  customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
+  interactableObjectType: 0
+  interactCount: 0
+  skinDepth: 0.1
+  colliderExtents: {x: 0.21323013, y: 0.100234464, z: 0.40167522}
+  hideableFaceList:
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 0
+    hideable: 1
+    point: {x: -0.31323013, y: 0, z: 0}
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 1
+    hideable: 1
+    point: {x: 0.31323013, y: 0, z: 0}
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 2
+    hideable: 0
+    point: {x: 0, y: 0, z: 0.50167525}
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 3
+    hideable: 1
+    point: {x: 0, y: 0, z: -0.50167525}
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 4
+    hideable: 0
+    point: {x: 0, y: 0.20023447, z: 0}
+  - hideableObj: {fileID: 114037284376482258}
+    faceName: 5
+    hideable: 0
+    point: {x: 0, y: -0.20023447, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  ignoreHideableCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &114231664821528662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450027726115382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac4d75f11235d948a8a1113d1a55b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 1
+  customDeltaTime: 0.15720974
+  customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
+  interactableObjectType: 0
+  interactCount: 0
+  skinDepth: 0.1
+  colliderExtents: {x: 0.21323013, y: 0.100234464, z: 0.40167522}
+  hideableFaceList:
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 0
+    hideable: 1
+    point: {x: -0.31323013, y: 0, z: 0}
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 1
+    hideable: 1
+    point: {x: 0.31323013, y: 0, z: 0}
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 2
+    hideable: 1
+    point: {x: 0, y: 0, z: 0.50167525}
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 3
+    hideable: 0
+    point: {x: 0, y: 0, z: -0.50167525}
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 4
+    hideable: 0
+    point: {x: 0, y: 0.20023447, z: 0}
+  - hideableObj: {fileID: 114231664821528662}
+    faceName: 5
+    hideable: 0
+    point: {x: 0, y: -0.20023447, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  ignoreHideableCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &114252136695421832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394276214454082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac4d75f11235d948a8a1113d1a55b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 1
+  customDeltaTime: 0.15720974
+  customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
+  interactableObjectType: 0
+  interactCount: 0
+  skinDepth: 0.1
+  colliderExtents: {x: 0.21323025, y: 0.100235, z: 0.40167546}
+  hideableFaceList:
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 0
+    hideable: 1
+    point: {x: -0.31323025, y: 0, z: 0}
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 1
+    hideable: 1
+    point: {x: 0.31323025, y: 0, z: 0}
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 2
+    hideable: 1
+    point: {x: 0, y: 0, z: 0.5016755}
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 3
+    hideable: 0
+    point: {x: 0, y: 0, z: -0.5016755}
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 4
+    hideable: 0
+    point: {x: 0, y: 0.20023501, z: 0}
+  - hideableObj: {fileID: 114252136695421832}
+    faceName: 5
+    hideable: 0
+    point: {x: 0, y: -0.20023501, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  ignoreHideableCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &114264245431844526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542025400185428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac4d75f11235d948a8a1113d1a55b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 1
+  customDeltaTime: 0.15720974
+  customTimeScale: 1
+  animators: []
+  particles: []
+  previousTimeScaleList: []
+  interactableObjectType: 0
+  interactCount: 0
+  skinDepth: 0.1
+  colliderExtents: {x: 0.21323025, y: 0.100235, z: 0.40167522}
+  hideableFaceList:
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 0
+    hideable: 1
+    point: {x: -0.31323025, y: 0, z: 0}
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 1
+    hideable: 1
+    point: {x: 0.31323025, y: 0, z: 0}
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 2
+    hideable: 0
+    point: {x: 0, y: 0, z: 0.50167525}
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 3
+    hideable: 1
+    point: {x: 0, y: 0, z: -0.50167525}
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 4
+    hideable: 0
+    point: {x: 0, y: 0.20023501, z: 0}
+  - hideableObj: {fileID: 114264245431844526}
+    faceName: 5
+    hideable: 0
+    point: {x: 0, y: -0.20023501, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  - hideableObj: {fileID: 0}
+    faceName: 0
+    hideable: 0
+    point: {x: 0, y: 0, z: 0}
+  ignoreHideableCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114300865470084030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4010,3 +4474,123 @@ Cloth:
   m_CapsuleColliders:
   - {fileID: 0}
   m_SphereColliders: []
+--- !u!208 &208043145166794490
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550846187119376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208204584360669942
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542025400185428}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208265940019875092
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394276214454082}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208427377620588610
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364744235326342}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208540160458753074
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065114592300100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208704130153203770
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1379082679713564}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208863523593999652
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797697652493012}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &208899112179983992
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450027726115382}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.075, y: 0.075, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -31,7 +31,12 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-		SetAnimationTrigger ();
+		if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0 && !actor.stateInfo.isCrouhcing)
+			actor.bodyAnimator.SetTrigger ("TriggerWalk");
+		else if (actor.stateInfo.isCrouhcing || Input.GetAxis ("Horizontal") == 0 || Input.GetAxis ("Vertical") == 0)
+			actor.bodyAnimator.SetTrigger ("TriggerShoot");
+
+		actor.shoulderAnimator.SetTrigger ("TriggerShoot");
 
 		if (actor.roomInfo.roomState != RoomState.Combat)
 		{
@@ -45,6 +50,10 @@ public class PlayerShoulderShootChecker : ShoulderAnimationCheckerBase {
 	public override void CancelSpecifiedAction ()
 	{
 		nowActivated = false;
+		actor.GetSpecificAction<PlayerShoulderAimChecker> ().StopCoroutine ("EraseAimLine");
+		actor.GetSpecificAction<PlayerShoulderAimChecker> ().StartCoroutine ("EraseAimLine");
+		actor.bodyAnimator.SetBool ("BoolAim", false);
+		actor.shoulderAnimator.SetBool ("BoolAim", false);
 		actor.bodyAnimator.ResetTrigger ("TriggerShoot");
 		actor.shoulderAnimator.ResetTrigger ("TriggerShoot");
 		actor.ResetSetLookDirectionPriority ();
