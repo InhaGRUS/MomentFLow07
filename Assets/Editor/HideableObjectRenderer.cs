@@ -67,7 +67,7 @@ public class HideableObjectRenderer :  Editor{
 			var count = hideableObj.hideableFaceList.Count;
 			for (int i = count; i < 6; i++) {
 				hideableObj.hideableFaceList.Add (new HideableFace ());
-				hideableObj.hideableFaceList [i].faceName = (HideableFaceName)i;
+				hideableObj.hideableFaceList [i].faceName = (FaceName)i;
 			}
 		}
 		else

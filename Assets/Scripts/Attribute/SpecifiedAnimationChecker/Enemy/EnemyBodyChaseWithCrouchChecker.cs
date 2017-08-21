@@ -157,21 +157,21 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 
 		if (damagedDir.x == CustomMaths.GetMaxValueFromVector (damagedDir).x) {
 			if (damagedDir.x > 0) {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.rightFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.rightFace);
 			} else {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.leftFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.leftFace);
 			}
 		} else if (damagedDir.y == CustomMaths.GetMaxValueFromVector (damagedDir).y) {
 			if (damagedDir.y > 0) {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.downFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.downFace);
 			} else {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.upFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.upFace);
 			}
 		} else if (damagedDir.z == CustomMaths.GetMaxValueFromVector (damagedDir).z) {
 			if (damagedDir.z > 0) {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.forwardFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.frontFace);
 			} else {
-				face = hideableObj.GetHideableFaceByName (HideableFaceName.backFace);
+				face = hideableObj.GetHideableFaceByName (FaceName.backFace);
 			}
 		} else {
 			Debug.Log ("??");

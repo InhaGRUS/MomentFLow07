@@ -24,7 +24,7 @@ public class HideableObject : InteractableObject {
 		{
 			hideableFaceList.Add (new HideableFace ());
 			hideableFaceList [i].hideableObj = this;
-			hideableFaceList [i].faceName = (HideableFaceName)i;
+			hideableFaceList [i].faceName = (FaceName)i;
 
 			if (i == 0){
 				hideableFaceList [i].point = Vector3.left * (col.bounds.extents.x + skinDepth);
@@ -84,7 +84,7 @@ public class HideableObject : InteractableObject {
 	}
 	#endregion
 
-	public bool GetFaceHideableState (HideableFaceName faceName)
+	public bool GetFaceHideableState (FaceName faceName)
 	{
 		for (int i = 0; i < hideableFaceList.Count; i++)
 		{
@@ -96,7 +96,7 @@ public class HideableObject : InteractableObject {
 		return false;
 	}
 
-	public HideableFace GetHideableFaceByName (HideableFaceName faceName)
+	public HideableFace GetHideableFaceByName (FaceName faceName)
 	{
 		for (int i = 0; i< hideableFaceList.Count; i++)
 		{

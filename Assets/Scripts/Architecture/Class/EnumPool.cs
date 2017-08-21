@@ -78,11 +78,11 @@ public enum EnemyLookAroundPriority
 	Right
 }
 
-public enum HideableFaceName
+public enum FaceName
 {
 	leftFace = 0,
 	rightFace = 1,
-	forwardFace = 2,
+	frontFace = 2,
 	backFace = 3,
 	upFace = 4,
 	downFace = 5

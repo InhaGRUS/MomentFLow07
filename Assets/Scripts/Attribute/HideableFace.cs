@@ -6,7 +6,7 @@ using UnityEngine;
 public class HideableFace {
 	[HideInInspector]
 	public HideableObject hideableObj;
-	public HideableFaceName faceName;
+	public FaceName faceName;
 	public bool hideable;
 	public Vector3 point;
 }
