@@ -131,19 +131,66 @@ public class Rect3D : MonoBehaviour {
 			return boundVector [index];
 		}
 			
-		List<int> checkableList = new List<int> ();
+		List<FaceName> checkableList = new List<FaceName> ();
 		for (int i = 0; i < 6; i++)
 		{
 			if (GetFaceRect ((FaceName)i).Contains(point))
 			{
-				checkableList.Add (i);
+				checkableList.Add ((FaceName)i);
 			}
 		}
 
 		if (checkableList.Count != 0)
 		{
-			
+			int index;
+			var resultVec = Vector3.zero;
+			float minDis = -1f;
+
+			CalculateBoundPoint (checkableList [0], point, out resultVec, out minDis);
+
+			for (int i = 0; i < checkableList.Count; i++)
+			{
+				Vector3 tmpVector = Vector3.zero;
+				float tmpDis = 0f;
+
+				CalculateBoundPoint (checkableList [i], point, out tmpVector, out tmpDis);
+
+				if (tmpDis < minDis) {
+					minDis = tmpDis;
+					resultVec = tmpVector;
+				}
+			}
+			return resultVec;
 		}
 		return Vector3.one * -10000;
 	}
+
+	private void CalculateBoundPoint (FaceName face, Vector3 point, out Vector3 boundVector, out float distance)
+	{
+		switch (face) {
+		case FaceName.backFace:
+			boundVector = GetFaceRect (FaceName.backFace).center;
+			distance = Vector3.Distance (new Vector3 (point.x, point.y, boundVector.z), point);
+			return;
+		case FaceName.upFace: 
+			boundVector = GetFaceRect (FaceName.upFace).center;
+			distance = Vector3.Distance (new Vector3 (point.x, boundVector.y, point.z), point);
+			return;
+		case FaceName.frontFace:
+			boundVector = GetFaceRect (FaceName.frontFace).center;
+			distance = Vector3.Distance (new Vector3 (point.x, point.y, boundVector.z), point);
+			return;
+		case FaceName.downFace:
+			boundVector = GetFaceRect (FaceName.downFace).center;
+			distance = Vector3.Distance (new Vector3 (point.x, boundVector.y, point.z), point);
+			return;
+		case FaceName.leftFace:
+			boundVector = GetFaceRect (FaceName.leftFace).center;
+			distance = Vector3.Distance (new Vector3 (boundVector.x, point.y, point.z), point);
+			return;
+		}
+		boundVector = GetFaceRect (FaceName.rightFace).center;
+		distance = Vector3.Distance (new Vector3 (boundVector.x, point.y, point.z), point);
+	}
+
 }
