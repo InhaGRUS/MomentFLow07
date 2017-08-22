@@ -108,9 +108,42 @@ public class Rect3D : MonoBehaviour {
 		return objectFace [5];
 	}
 
-	public Vector3 GetNearestPointOnBound (Vector3 point)
+	public Vector3 GetNearestPoint (Vector3 point)
 	{
+		if (IsContainPoint (point)) {
+			Vector3[] boundVector = new Vector3 [6];
+			boundVector [0] = new Vector3 (maxPoint.x, point.y, point.z);
+			boundVector [1] = new Vector3 (minPoint.x, point.y, point.z);
+			boundVector [2] = new Vector3 (point.x, maxPoint.y, point.z);
+			boundVector [3] = new Vector3 (point.x, minPoint.y, point.z);
+			boundVector [4] = new Vector3 (point.x, point.y, maxPoint.z);
+			boundVector [5] = new Vector3 (point.x, point.y, minPoint.z);
 
-		return Vector3.zero;
+			int index = 0;
+			float minDis = Vector3.Distance (point, boundVector [0]);
+			for (int i = 1; i < 6; i++) {
+				var tmpDis = Vector3.Distance (point, boundVector [i]);
+				if (minDis > tmpDis) {
+					index = i;
+					minDis = tmpDis;
+				}
+			}
+			return boundVector [index];
+		}
+			
+		List<int> checkableList = new List<int> ();
+		for (int i = 0; i < 6; i++)
+		{
+			if (GetFaceRect ((FaceName)i).Contains(point))
+			{
+				checkableList.Add (i);
+			}
+		}
+
+		if (checkableList.Count != 0)
+		{
+			
+		}
+		return Vector3.one * -10000;
 	}
 }

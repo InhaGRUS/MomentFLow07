@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 358bb6e0f20b9934cb9285b602d4ba57
+timeCreated: 1503400342
+licenseType: Free
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: asphalt_eroded_black
+    prototypeName: asphalt_eroded_black
+    shaderName: 
+    shader: {fileID: 4800000, guid: 5e34a73ca109940e595b0dbea95f98e9, type: 3}
+    shaderKeywords: EFFECT_BUMP _NORMALMAP _PARALLAXMAP _WETNESS_SIMPLE
+    renderQueue: -1
+    lightmapFlags: 4
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: $randomseed
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: main_color
+      value:
+        scalar[0]: 1
+        scalar[1]: 1
+        scalar[2]: 1
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: asphalt_roughness
+      value:
+        scalar[0]: 0.5
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: surface_imperfection
+      value:
+        scalar[0]: 0.286
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: diffuse
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: basecolor
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: normal
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: specular
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: glossiness
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: roughness
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: metallic
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: height
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: luminosity
+      value:
+        scalar[0]: 0.446
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: contrast
+      value:
+        scalar[0]: 0.11
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: hue_shift
+      value:
+        scalar[0]: 0.161
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: saturation
+      value:
+        scalar[0]: 0.438
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: normal_intensity
+      value:
+        scalar[0]: 0.714
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: normal_format
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: height_range
+      value:
+        scalar[0]: 0.402
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: height_position
+      value:
+        scalar[0]: 0.723
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 4, y: 2.5}
+      generateMipmaps: 1
+      generateAllOutputs: 1
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 3
+      texEnvs:
+      - _BumpMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _CombinedMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailAlbedoMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailMask:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailNormalMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _EmissionMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _MainTex:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _MetallicGlossMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _MetallicGlossMap2:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _OcclusionMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _ParallaxMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      floats:
+      - _BumpScale: 3
+      - _Cull: 2
+      - _CullShadowPass: 3
+      - _Cutoff: 0.5
+      - _DetailNormalMapScale: 1
+      - _DiffuseScatteringBias: 0
+      - _DiffuseScatteringBias2: 0
+      - _DiffuseScatteringContraction: 8
+      - _DiffuseScatteringContraction2: 8
+      - _DiffuseScatteringEnabled: 0
+      - _DoubleSided: 0
+      - _DstBlend: 0
+      - _GlossMapScale: 1
+      - _Glossiness: 0.577
+      - _Glossiness2: 0.5
+      - _GlossyReflections: 1
+      - _Lighting: 0
+      - _LinearSteps: 20
+      - _Lux_FlowInterval: 1
+      - _Lux_FlowNormalStrength: 1
+      - _Lux_FlowNormalTiling: 2
+      - _Lux_FlowRefraction: 0.02
+      - _Lux_FlowSpeed: 0.05
+      - _Metallic: 0
+      - _Metallic2: 0
+      - _MixMappingControl: 0
+      - _Mode: 0
+      - _OcclusionStrength: 1
+      - _Parallax: 0.005
+      - _ParallaxTiling: 1
+      - _PuddleMask: 0
+      - _PuddleMaskTiling: 1
+      - _ScatteringPower: 4
+      - _SmoothnessTextureChannel: 0
+      - _Snow: 0
+      - _SnowDetailStrength: 0.3
+      - _SnowMapping: 0
+      - _SnowNormalStrength: 1
+      - _SnowOpacity: 0.5
+      - _SnowSlopeDamp: 0.75
+      - _SpecularHighlights: 1
+      - _SrcBlend: 1
+      - _SyncWaterOfMaterials: 0
+      - _TranslucencyStrength: 0.5
+      - _UVSec: 0
+      - _UseCombinedMap: 0
+      - _UseMixMapping: 0
+      - _UsePOM: 1
+      - _WaterSlopeDamp: 0.73
+      - _Wetness: 1
+      - _ZWrite: 1
+      colors:
+      - _Color: {r: 1, g: 1, b: 1, a: 1}
+      - _Color2: {r: 1, g: 1, b: 1, a: 1}
+      - _DiffuseScatteringCol: {r: 0, g: 0, b: 0, a: 0}
+      - _DiffuseScatteringCol2: {r: 0, g: 0, b: 0, a: 0}
+      - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      - _SnowAccumulation: {r: 0, g: 1, b: 0, a: 0}
+      - _SnowDetailTiling: {r: 4, g: 4, b: 0, a: 0}
+      - _SnowMaskTiling: {r: 0.3, g: 0.3, b: 0, a: 0}
+      - _SnowTiling: {r: 2, g: 2, b: 0, a: 0}
+      - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+      - _SpecColor2: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+      - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
+      - _WaterAccumulationCracksPuddles: {r: 0, g: 1.81, b: 0.43, a: 0.46}
+      - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
+      - _WaterColor: {r: 0, g: 0, b: 0, a: 0}
+      - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}
+    textureParameters:
+    - name: asphalt_eroded_black_basecolor
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_metallic
+      alphaSource: 7
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_height
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_specular
+      alphaSource: 7
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_glossiness
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: asphalt_eroded_black_roughness
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp: _MainTex
+      material: {instanceID: 0}
+      baseUID: 2127382202
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 1887126054
+    - shaderProp: _ParallaxMap
+      material: {instanceID: 0}
+      baseUID: 1887126098
+    - shaderProp: _MetallicGlossMap
+      material: {instanceID: 0}
+      baseUID: 1887126110
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

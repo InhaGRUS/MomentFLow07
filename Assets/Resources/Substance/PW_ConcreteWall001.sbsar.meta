@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: 0ffd6d87122a30a44976f4a40dacb522
+timeCreated: 1503403988
+licenseType: Free
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: PW_ConcreteWall001
+    prototypeName: PW_ConcreteWall001
+    shaderName: 
+    shader: {fileID: 4800000, guid: 5e34a73ca109940e595b0dbea95f98e9, type: 3}
+    shaderKeywords: EFFECT_BUMP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+    renderQueue: -1
+    lightmapFlags: 4
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: $randomseed
+      value:
+        scalar[0]: 9062
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Damage_Level
+      value:
+        scalar[0]: 0.39
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Damage_Contrast
+      value:
+        scalar[0]: 0.8
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Damager_Mask_Disorder
+      value:
+        scalar[0]: 78.4
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Overall_Height
+      value:
+        scalar[0]: 0.526
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Inner__Height
+      value:
+        scalar[0]: 0.483
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Outter_Height
+      value:
+        scalar[0]: 0.42
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Concrete_Disorder
+      value:
+        scalar[0]: 34.8
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Concrete_PatternSize
+      value:
+        scalar[0]: 187
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Roughness
+      value:
+        scalar[0]: -0.04
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Roughness_Contrast
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Cracks_Disorder
+      value:
+        scalar[0]: 43.8
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Cracks_Width
+      value:
+        scalar[0]: 25.1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Cracks_Breakup
+      value:
+        scalar[0]: 9
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Beam_Tile
+      value:
+        scalar[0]: 9
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Beam_Height
+      value:
+        scalar[0]: 0.63
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Beam_Roughness
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Beam_Roughness_Contrast
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Height_Range
+      value:
+        scalar[0]: 0.5
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Height_Position
+      value:
+        scalar[0]: 0.5
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 4, y: 2.5}
+      generateMipmaps: 1
+      generateAllOutputs: 1
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 3
+      texEnvs:
+      - _BumpMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _CombinedMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailAlbedoMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailMask:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _DetailNormalMap:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _EmissionMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _MainTex:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _MetallicGlossMap:
+          texture: {instanceID: 0}
+          scale: {x: 8, y: 5}
+          offset: {x: 0, y: 0}
+      - _MetallicGlossMap2:
+          texture: {instanceID: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _OcclusionMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      - _ParallaxMap:
+          texture: {instanceID: 0}
+          scale: {x: 4, y: 2.5}
+          offset: {x: 0, y: 0}
+      floats:
+      - _BumpScale: 1.5
+      - _Cull: 2
+      - _CullShadowPass: 2
+      - _Cutoff: 0.5
+      - _DetailNormalMapScale: 1
+      - _DiffuseScatteringBias: 0
+      - _DiffuseScatteringBias2: 0
+      - _DiffuseScatteringContraction: 8
+      - _DiffuseScatteringContraction2: 8
+      - _DiffuseScatteringEnabled: 0
+      - _DoubleSided: 0
+      - _DstBlend: 0
+      - _GlossMapScale: 1
+      - _Glossiness: 0.481
+      - _Glossiness2: 0.5
+      - _GlossyReflections: 1
+      - _Lighting: 0
+      - _LinearSteps: 20
+      - _Lux_FlowInterval: 1
+      - _Lux_FlowNormalStrength: 1
+      - _Lux_FlowNormalTiling: 2
+      - _Lux_FlowRefraction: 0.02
+      - _Lux_FlowSpeed: 0.05
+      - _Metallic: 0.327
+      - _Metallic2: 0
+      - _MixMappingControl: 0
+      - _Mode: 0
+      - _OcclusionStrength: 1
+      - _Parallax: 0.05
+      - _ParallaxTiling: 1
+      - _PuddleMask: 0
+      - _PuddleMaskTiling: 1
+      - _ScatteringPower: 4
+      - _SmoothnessTextureChannel: 0
+      - _Snow: 0
+      - _SnowDetailStrength: 0.3
+      - _SnowMapping: 0
+      - _SnowNormalStrength: 1
+      - _SnowOpacity: 0.5
+      - _SnowSlopeDamp: 0.75
+      - _SpecularHighlights: 1
+      - _SrcBlend: 1
+      - _SyncWaterOfMaterials: 0
+      - _TranslucencyStrength: 0.5
+      - _UVSec: 0
+      - _UseCombinedMap: 0
+      - _UseMixMapping: 0
+      - _UsePOM: 1
+      - _WaterSlopeDamp: 0.5
+      - _Wetness: 0
+      - _ZWrite: 1
+      colors:
+      - _Color: {r: 1, g: 1, b: 1, a: 1}
+      - _Color2: {r: 1, g: 1, b: 1, a: 1}
+      - _DiffuseScatteringCol: {r: 0, g: 0, b: 0, a: 0}
+      - _DiffuseScatteringCol2: {r: 0, g: 0, b: 0, a: 0}
+      - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      - _SnowAccumulation: {r: 0, g: 1, b: 0, a: 0}
+      - _SnowDetailTiling: {r: 4, g: 4, b: 0, a: 0}
+      - _SnowMaskTiling: {r: 0.3, g: 0.3, b: 0, a: 0}
+      - _SnowTiling: {r: 2, g: 2, b: 0, a: 0}
+      - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
+      - _WaterAccumulationCracksPuddles: {r: 0, g: 1, b: 0, a: 1}
+      - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
+      - _WaterColor: {r: 0, g: 0, b: 0, a: 0}
+      - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}
+    textureParameters:
+    - name: PW_ConcreteWall001_basecolor
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_metallic
+      alphaSource: 7
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_height
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_ambientocclusion
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_roughness
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_specular
+      alphaSource: 7
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: PW_ConcreteWall001_glossiness
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp: _MainTex
+      material: {instanceID: 0}
+      baseUID: 272220763
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 272220761
+    - shaderProp: _OcclusionMap
+      material: {instanceID: 0}
+      baseUID: 311276390
+    - shaderProp: _ParallaxMap
+      material: {instanceID: 0}
+      baseUID: 313641083
+    - shaderProp: _MetallicGlossMap
+      material: {instanceID: 0}
+      baseUID: 272220765
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
