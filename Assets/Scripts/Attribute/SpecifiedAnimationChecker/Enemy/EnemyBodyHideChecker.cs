@@ -33,6 +33,8 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{		
+		if (eActor.tensionGauge < tensionThreshold)
+			return false;
 		if (actor.stateInfo.isCrouhcing &&
 		    stateMaintainTimer <= stateMaintainDuration) {
 			return true;
@@ -40,8 +42,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 		eOutsideInfo.SortFoundedHideableObjectList (actor.transform.position);	
 		var foundHideableObj = GetHideableObject () as HideableObject;
 
-		if (eActor.tensionGauge >= tensionThreshold &&
-			null != foundHideableObj &&
+		if (null != foundHideableObj &&
 			stateMaintainTimer <= stateMaintainDuration
 		)
 		{

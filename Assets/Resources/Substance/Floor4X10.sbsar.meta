@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5fa159222aa4eb6438e1e507477b7b4d
-timeCreated: 1503501563
+timeCreated: 1503585497
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -31,7 +31,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 4, y: 2.5}
+      scale: {x: 4, y: 10}
       generateMipmaps: 1
       generateAllOutputs: 1
       animationUpdateRate: 42
@@ -40,7 +40,7 @@ SubstanceImporter:
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 10}
           offset: {x: 0, y: 0}
       - _CombinedMap:
           texture: {instanceID: 0}
@@ -60,15 +60,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 10}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 10}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 10}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap2:
           texture: {instanceID: 0}
@@ -83,7 +83,7 @@ SubstanceImporter:
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       floats:
-      - _BumpScale: 2
+      - _BumpScale: 3
       - _Cull: 0
       - _CullShadowPass: 0
       - _Cutoff: 0.5
@@ -131,7 +131,7 @@ SubstanceImporter:
       - _UseCombinedMap: 0
       - _UseMixMapping: 0
       - _UsePOM: 0
-      - _WaterSlopeDamp: 0.16
+      - _WaterSlopeDamp: 0.495
       - _Wetness: 1
       - _ZWrite: 1
       colors:
@@ -145,9 +145,9 @@ SubstanceImporter:
       - _SnowMaskTiling: {r: 0.3, g: 0.3, b: 0, a: 0}
       - _SnowTiling: {r: 2, g: 2, b: 0, a: 0}
       - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
-      - _WaterAccumulationCracksPuddles: {r: 0.206, g: 0.91, b: 0, a: 0.48}
+      - _WaterAccumulationCracksPuddles: {r: 0.51, g: 2.19, b: 0.6, a: 2.59}
       - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
-      - _WaterColor: {r: 0.6369485, g: 0.8454488, b: 0.875, a: 0.341}
+      - _WaterColor: {r: 0, g: 0, b: 0, a: 0}
       - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}
     textureParameters:
     - name: Wall_Paint_basecolor

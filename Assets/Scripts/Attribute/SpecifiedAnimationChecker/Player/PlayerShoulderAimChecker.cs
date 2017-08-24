@@ -24,6 +24,9 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 	public Color aimColor;
 	public Color additionalAimColor;
 
+	private CustomCamera mainCam;
+	public Transform aimTargetPos;
+
 	public void Update ()
 	{
 		lineRenderer.SetPosition (0, aimStartPoint.position);
@@ -38,6 +41,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 		additionalAimMat = new Material (playerAdditionalLineRenderer.material);
 		lineRenderer.material = aimMat;
 		playerAdditionalLineRenderer.material = additionalAimMat;
+		mainCam = Camera.main.GetComponent<CustomCamera>();
 	}
 
 	#region implemented abstract members of ActionBase
@@ -116,6 +120,8 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				dir = (hit.point - aimStartPoint.position).normalized;
 				if (Physics.Raycast (hit.point, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
 					playerAimPoints.Add (hit.point);
+					aimTargetPos.position = hit.point;
+					mainCam.GetComponent<UnityStandardAssets.ImageEffects.DepthOfField> ().focalTransform = aimTargetPos;
 				} else {
 					playerAimPoints.Add (aimStartPoint.position + dir * maxGunAimDistance);
 				}
@@ -123,7 +129,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				playerAimPoints.Add (actor.shoulderAnimator.transform.position + dir * maxGunAimDistance);
 			}
 
-			actor.aimTarget.nowShootVector = ((playerAimPoints[1] - actor.aimTarget.shootPoint.position));
+			actor.aimTarget.nowShootVector = ((playerAimPoints [1] - actor.aimTarget.shootPoint.position));
 
 			playerAdditionalLineRenderer.positionCount = playerAimPoints.Count;
 			playerAdditionalLineRenderer.SetPositions (playerAimPoints.ToArray ());
@@ -140,6 +146,11 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				playerAdditionalLineRenderer.endWidth = lineRenderer.startWidth;
 			}
 
+			//Make Camera Offset to aimvector
+			var cameraOffset = actor.aimTarget.nowAimVector;
+			cameraOffset.z = 0;
+			mainCam.ChangeOffset (cameraOffset);
+
 			break;
 		case AimState.Bounce:
 			break;
@@ -148,6 +159,9 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 
 	public IEnumerator EraseAimLine ()
 	{
+		//Make Camera Offset to Normal
+		mainCam.ChangeOffset (actor.roomInfo.offset);
+		mainCam.GetComponent<UnityStandardAssets.ImageEffects.DepthOfField> ().focalTransform = actor.transform;
 		while (timer < aimColorFadeInDuration) {
 			timer += actor.customDeltaTime;
 			lineRenderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, lineRenderer.material.color.a * (1 - timer / aimColorFadeOutDurtaion));

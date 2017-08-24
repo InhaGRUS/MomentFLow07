@@ -37,7 +37,7 @@ public class CustomCamera : MonoBehaviour {
 	void Update () {
 		if (null != followingTarget && null != followingTarget.roomInfo)
 		{
-			nowFocusingRoom = followingTarget.roomInfo;
+			SetFousingRoom (followingTarget.roomInfo);
 			disToFollowingTarget = Vector3.Distance (transform.position, followingTarget.bodyCollider.bounds.center);
 
 			if (useMaxDistance) {
@@ -70,7 +70,53 @@ public class CustomCamera : MonoBehaviour {
 
 	public void SetFousingRoom (RoomInfo newRoom)
 	{
+		if (nowFocusingRoom != newRoom)
+		{
+			nowFocusingRoom = newRoom;
+			useMaxDistance = nowFocusingRoom.useMaxDistance;
+			useMinDistance = nowFocusingRoom.useMinDistance;
+			useRoomAnchor = nowFocusingRoom.useRoomAnchor;
+			followSpeed = nowFocusingRoom.followSpeed;
+			ChangeOffset (nowFocusingRoom.offset);
+		}
+	}
 
+	public void ChangeOffset (Vector3 newOffset)
+	{
+		var expectPos = followingTarget.bodyCollider.bounds.center + newOffset;
+
+		if (newOffset.x > 0) {
+			var diffX = expectPos.x - nowFocusingRoom.cameraRectCollider.max.x;
+			if (diffX > 0)
+				newOffset.x -= diffX;
+		}
+		else if (newOffset.x < 0){
+			var diffX = expectPos.x - nowFocusingRoom.cameraRectCollider.min.x;
+			if (diffX < 0)
+				newOffset.x -= diffX;
+		}
+
+		if (newOffset.y > 0) {
+			var diffY = expectPos.y - nowFocusingRoom.cameraRectCollider.max.y;
+			if (diffY > 0)
+				newOffset.y -= diffY;
+		} 
+		else if (newOffset.y < 0){
+			var diffY = expectPos.y - nowFocusingRoom.cameraRectCollider.min.y;
+			if (diffY < 0)
+				newOffset.y -= diffY;
+		}
+
+		if (newOffset.z > 0) {
+			var diffZ = expectPos.z - nowFocusingRoom.cameraRectCollider.max.z;
+			if (diffZ > 0)
+				newOffset.z -= diffZ;
+		} else if (newOffset.z < 0) {
+			var diffZ = expectPos.z - nowFocusingRoom.cameraRectCollider.min.z;
+			if (diffZ < 0)
+				newOffset.z -= diffZ;
+		}
+		offset = newOffset;
 	}
 
 	void LockToCameraRect ()

@@ -15,6 +15,13 @@ public class RoomInfo : MonoBehaviour {
 	public Collider roomRectCollider;
 	public Rect3D cameraRectCollider;
 
+	[Header ("Camera Setting")]
+	public bool useRoomAnchor = true;
+	public bool useMaxDistance = true;
+	public bool useMinDistance = true;
+	public float followSpeed = 1f;
+	public Vector3 offset = Vector3.zero;
+
 	[Header ("Editor Setting")]
 	public Color roomRectColor = new Color (0.5529f, 0.9921f, 0.6313f, 0.0196f);
 	public Color cameraRectColor = new Color (0.4941f, 0.6431f, 1f, 0.0196f);
