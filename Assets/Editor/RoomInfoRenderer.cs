@@ -9,6 +9,7 @@ using UnityEditor;
 public class RoomInfoRenderer : Editor {
 
 	private RoomInfo selectedRoomInfo;
+	private string cameraRectName = "CamRect";
 	private static float buttonSize = 0.5f;
 
 	private void OnSceneGUI ()
@@ -34,8 +35,14 @@ public class RoomInfoRenderer : Editor {
 		if (null == selectedRoomInfo.cameraRectCollider)
 		{
 			Debug.Log ("Null CameraCollider");
-			selectedRoomInfo.cameraRectCollider = selectedRoomInfo.gameObject.AddComponent <BoxCollider> ();
-			selectedRoomInfo.cameraRectCollider.isTrigger = true;
+			selectedRoomInfo.cameraRectCollider = selectedRoomInfo.GetComponentInChildren<Rect3D> ();
+			if (null == selectedRoomInfo.cameraRectCollider || selectedRoomInfo.cameraRectCollider.rectName != cameraRectName)
+			{
+				GameObject newRect3D = new GameObject ("CamRect3D");
+				selectedRoomInfo.cameraRectCollider = newRect3D.AddComponent <Rect3D> ();
+				newRect3D.transform.parent = selectedRoomInfo.transform;
+				newRect3D.transform.localPosition = Vector3.zero;
+			}
 		}
 
 		DrawRoomColliderRect (selectedRoomInfo);
@@ -218,25 +225,27 @@ public class RoomInfoRenderer : Editor {
 
 	public static void DrawRoomCameraRect (RoomInfo roomInfo)
 	{
-		var faces = DrawRectangularWithOutline (roomInfo.cameraRectCollider.bounds.center, 
-			roomInfo.cameraRectCollider.bounds.extents,
+		var faces = DrawRectangularWithOutline (roomInfo.cameraRectCollider.transform.position + roomInfo.cameraRectCollider.centerPosition, 
+			roomInfo.cameraRectCollider.extents,
 			CustomCameraButtonType.CameraRect,
 			roomInfo.cameraRectColor
 		);
+
 		Handles.color = Color.cyan;
-		var colCenter = (roomInfo.cameraRectCollider as BoxCollider).center;
-		MakeButton (10, roomInfo.transform.position + colCenter, buttonSize * 2.5f, CustomCameraButtonType.CameraRect);
+		var colCenter = roomInfo.cameraRectCollider.transform.position;
+		MakeButton (10, colCenter, buttonSize * 2.5f, CustomCameraButtonType.CameraRect);
 
 		if (selectedIndex == 10 && buttonType == CustomCameraButtonType.CameraRect)
 		{
 			EditorGUI.BeginChangeCheck ();
 
-			colCenter = Handles.DoPositionHandle (colCenter + roomInfo.transform.position, Quaternion.identity) - roomInfo.transform.position;
+			colCenter = Handles.DoPositionHandle (colCenter, Quaternion.identity);
 
 			if (EditorGUI.EndChangeCheck ()) {
 				Undo.RecordObject (roomInfo, "Change Center");
 				EditorUtility.SetDirty (roomInfo);
-				(roomInfo.cameraRectCollider as BoxCollider).center = colCenter;
+				roomInfo.cameraRectCollider.transform.position = colCenter;
+				roomInfo.cameraRectCollider.ReloadRectInfo ();
 			}
 		}
 
@@ -260,21 +269,21 @@ public class RoomInfoRenderer : Editor {
 					Undo.RecordObject (roomInfo, "Change Camera Rect");
 					EditorUtility.SetDirty (roomInfo);
 					if (i == 0 || i == 1) {// Front or Back
-						var col = roomInfo.cameraRectCollider as BoxCollider;
+						var col = roomInfo.cameraRectCollider;
 						var tmpVec = col.extents;
-						tmpVec.z = Mathf.Abs (midPoint.z - (col.transform.position.z + col.center.z));
+						tmpVec.z = Mathf.Abs (midPoint.z - (col.transform.position.z + col.centerPosition.z));
 						col.extents = tmpVec;
 					} 
 					else if (i == 2 || i == 3) { // right side or left side
-						var col = roomInfo.cameraRectCollider as BoxCollider;
+						var col = roomInfo.cameraRectCollider;
 						var tmpVec = col.extents;
-						tmpVec.x = Mathf.Abs (midPoint.x - (col.transform.position.x + col.center.x));
+						tmpVec.x = Mathf.Abs (midPoint.x - (col.transform.position.x + col.centerPosition.x));
 						col.extents = tmpVec;
 					} 
 					else if (i == 4 || i == 5) { // top or down
-						var col = roomInfo.cameraRectCollider as BoxCollider;
+						var col = roomInfo.cameraRectCollider;
 						var tmpVec = col.extents;
-						tmpVec.y = Mathf.Abs (midPoint.y - (col.transform.position.y + col.center.y));
+						tmpVec.y = Mathf.Abs (midPoint.y - (col.transform.position.y + col.centerPosition.y));
 						col.extents = tmpVec;
 					}
 				}

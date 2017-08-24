@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 859e1ecc18abfd045bfb84fd22e1b09c
-timeCreated: 1503569941
+guid: 67af3b22f4f8fa145887e61d85cb6bcf
+timeCreated: 1503559279
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
   - serializedVersion: 16
-    name: Wall_Paint
+    name: Room_Floor
     prototypeName: Wall_Paint
     shaderName: 
     shader: {fileID: 4800000, guid: 5e34a73ca109940e595b0dbea95f98e9, type: 3}
-    shaderKeywords: _METALLICGLOSSMAP _NORMALMAP _WETNESS_SIMPLE
+    shaderKeywords: LUX_TRANSLUCENTLIGHTING _NORMALMAP _WETNESS_SIMPLE
     renderQueue: -1
     lightmapFlags: 4
     inputs:
@@ -23,7 +23,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 2578
+        scalar[0]: 3513
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -31,16 +31,16 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 4, y: 2.5}
+      scale: {x: 4, y: 3.55}
       generateMipmaps: 1
       generateAllOutputs: 1
-      animationUpdateRate: 42
+      animationUpdateRate: 0
     materialProperties:
       serializedVersion: 3
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 3.55}
           offset: {x: 0, y: 0}
       - _CombinedMap:
           texture: {instanceID: 0}
@@ -60,15 +60,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 3.55}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 3.55}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 2.5}
+          scale: {x: 4, y: 3.55}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap2:
           texture: {instanceID: 0}
@@ -83,9 +83,9 @@ SubstanceImporter:
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       floats:
-      - _BumpScale: 2
-      - _Cull: 0
-      - _CullShadowPass: 0
+      - _BumpScale: 3
+      - _Cull: 2
+      - _CullShadowPass: 3
       - _Cutoff: 0.5
       - _DetailNormalMapScale: 1
       - _DiffuseScatteringBias: 0
@@ -95,18 +95,18 @@ SubstanceImporter:
       - _DiffuseScatteringEnabled: 0
       - _DoubleSided: 0
       - _DstBlend: 0
-      - _GlossMapScale: 1
-      - _Glossiness: 0.5
+      - _GlossMapScale: 0
+      - _Glossiness: 0.447
       - _Glossiness2: 0.5
       - _GlossyReflections: 1
-      - _Lighting: 0
+      - _Lighting: 1
       - _LinearSteps: 20
       - _Lux_FlowInterval: 1
       - _Lux_FlowNormalStrength: 1
       - _Lux_FlowNormalTiling: 2
       - _Lux_FlowRefraction: 0.02
       - _Lux_FlowSpeed: 0.05
-      - _Metallic: 0
+      - _Metallic: 1
       - _Metallic2: 0
       - _MixMappingControl: 0
       - _Mode: 0
@@ -131,7 +131,7 @@ SubstanceImporter:
       - _UseCombinedMap: 0
       - _UseMixMapping: 0
       - _UsePOM: 0
-      - _WaterSlopeDamp: 0.164
+      - _WaterSlopeDamp: 0.495
       - _Wetness: 1
       - _ZWrite: 1
       colors:
@@ -147,27 +147,27 @@ SubstanceImporter:
       - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
       - _SpecColor2: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
       - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
-      - _WaterAccumulationCracksPuddles: {r: 1.01, g: 1.44, b: 0.2, a: 0.85}
+      - _WaterAccumulationCracksPuddles: {r: 0.51, g: 2.19, b: 0.6, a: 2.59}
       - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
-      - _WaterColor: {r: 0.49389058, g: 0.71450675, b: 0.77205884, a: 0.266}
+      - _WaterColor: {r: 0, g: 0, b: 0, a: 0}
       - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}
     textureParameters:
-    - name: Wall_Paint_basecolor
+    - name: Room_Floor_basecolor
       alphaSource: 6
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Wall_Paint_normal
+    - name: Room_Floor_normal
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Wall_Paint_metallic
+    - name: Room_Floor_metallic
       alphaSource: 7
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Wall_Paint_roughness
+    - name: Room_Floor_roughness
       alphaSource: 0
       filterMode: 1
       aniso: 1

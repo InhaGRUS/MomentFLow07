@@ -13,7 +13,7 @@ public class RoomInfo : MonoBehaviour {
 	public List<Actor> actorsInRoom = new List<Actor>();
 	public List<InteractableObject> interactableObjectInRoom = new List<InteractableObject>();
 	public Collider roomRectCollider;
-	public Collider cameraRectCollider;
+	public Rect3D cameraRectCollider;
 
 	[Header ("Editor Setting")]
 	public Color roomRectColor = new Color (0.5529f, 0.9921f, 0.6313f, 0.0196f);
