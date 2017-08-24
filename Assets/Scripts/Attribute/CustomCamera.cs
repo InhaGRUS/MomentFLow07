@@ -81,6 +81,11 @@ public class CustomCamera : MonoBehaviour {
 		}
 	}
 
+	public void SetFocusingRoom (RoomInfo newRoom)
+	{
+
+	}
+
 	void LockToCameraRect ()
 	{
 		var tmpPos = transform.position;

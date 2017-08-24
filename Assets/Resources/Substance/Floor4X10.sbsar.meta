@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5fa159222aa4eb6438e1e507477b7b4d
-timeCreated: 1503407453
+timeCreated: 1503501563
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -10,7 +10,7 @@ SubstanceImporter:
     prototypeName: Wall_Paint
     shaderName: 
     shader: {fileID: 4800000, guid: 5e34a73ca109940e595b0dbea95f98e9, type: 3}
-    shaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+    shaderKeywords: GEOM_TYPE_MESH _METALLICGLOSSMAP _NORMALMAP _WETNESS_SIMPLE
     renderQueue: -1
     lightmapFlags: 4
     inputs:
@@ -23,7 +23,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: $randomseed
       value:
-        scalar[0]: 0
+        scalar[0]: 3334
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -31,7 +31,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 4, y: 10}
+      scale: {x: 4, y: 2.5}
       generateMipmaps: 1
       generateAllOutputs: 1
       animationUpdateRate: 42
@@ -40,7 +40,7 @@ SubstanceImporter:
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 10}
+          scale: {x: 4, y: 2.5}
           offset: {x: 0, y: 0}
       - _CombinedMap:
           texture: {instanceID: 0}
@@ -60,15 +60,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 10}
+          scale: {x: 4, y: 2.5}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 10}
+          scale: {x: 4, y: 2.5}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 10}
+          scale: {x: 4, y: 2.5}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap2:
           texture: {instanceID: 0}
@@ -84,8 +84,8 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       floats:
       - _BumpScale: 2
-      - _Cull: 2
-      - _CullShadowPass: 2
+      - _Cull: 0
+      - _CullShadowPass: 0
       - _Cutoff: 0.5
       - _DetailNormalMapScale: 1
       - _DiffuseScatteringBias: 0
@@ -113,7 +113,7 @@ SubstanceImporter:
       - _OcclusionStrength: 1
       - _Parallax: 0.02
       - _ParallaxTiling: 1
-      - _PuddleMask: 0
+      - _PuddleMask: 1
       - _PuddleMaskTiling: 1
       - _ScatteringPower: 4
       - _SmoothnessTextureChannel: 0
@@ -131,8 +131,8 @@ SubstanceImporter:
       - _UseCombinedMap: 0
       - _UseMixMapping: 0
       - _UsePOM: 0
-      - _WaterSlopeDamp: 0.5
-      - _Wetness: 0
+      - _WaterSlopeDamp: 0.16
+      - _Wetness: 1
       - _ZWrite: 1
       colors:
       - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,9 +145,9 @@ SubstanceImporter:
       - _SnowMaskTiling: {r: 0.3, g: 0.3, b: 0, a: 0}
       - _SnowTiling: {r: 2, g: 2, b: 0, a: 0}
       - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
-      - _WaterAccumulationCracksPuddles: {r: 0, g: 1, b: 0, a: 1}
+      - _WaterAccumulationCracksPuddles: {r: 0.206, g: 0.91, b: 0, a: 0.48}
       - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
-      - _WaterColor: {r: 0, g: 0, b: 0, a: 0}
+      - _WaterColor: {r: 0.6369485, g: 0.8454488, b: 0.875, a: 0.341}
       - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}
     textureParameters:
     - name: Wall_Paint_basecolor

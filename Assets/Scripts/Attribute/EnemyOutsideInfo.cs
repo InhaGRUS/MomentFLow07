@@ -79,6 +79,9 @@ public class EnemyOutsideInfo : OutsideInfo {
 
 			if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle * 0.5f ||
 				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) {
+
+
+
 				IdentifyAndAddDynamicObject (obj);
 			} else {
 				IdentifyAndRemoveDynamicObject (obj);

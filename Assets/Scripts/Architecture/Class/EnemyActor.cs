@@ -82,6 +82,10 @@ public class EnemyActor : Actor {
 		{
 			var element = GetEnemyOutsideInfo().actorListInVeiw [i];
 			var dis = Vector3.Distance (element.transform.position, transform.position);
+
+			if (null == element.roomInfo)
+				return;
+
 			if (dis > GetEnemyOutsideInfo().viewMaxDistance ||
 				element.roomInfo.roomName != roomInfo.roomName) 
 			{

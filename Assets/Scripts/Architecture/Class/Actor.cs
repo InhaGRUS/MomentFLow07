@@ -6,7 +6,7 @@ public class Actor : DynamicObject {
 	[Header ("ActorInfo")]
 	public RoomInfo roomInfo;
 	public HumanInfo humanInfo = new HumanInfo();
-	[HideInInspector]
+
 	public OutsideInfo outsideInfo;
 	[HideInInspector]
 	public EquipmentInfo equipmentInfo;
@@ -261,6 +261,35 @@ public class Actor : DynamicObject {
 			return false;
 		nowShoulderAction = newAction;
 		return true;
+	}
+
+	public bool EnterRoom (RoomInfo newInfo)
+	{
+		if (null == roomInfo) {
+			roomInfo = newInfo;
+			return true;	
+		}
+		if (newInfo == roomInfo)
+		{
+			return false;
+		}
+		if (roomInfo.actorsInRoom.Contains (this)) {
+			return false;
+		}
+		Debug.Log ("Change Room Before : " + roomInfo.name + "  TO : " + newInfo.name);
+		roomInfo = newInfo;
+		return true;
+	}
+
+	public bool ExitRoom (RoomInfo prevRoom)
+	{
+		
+		if (prevRoom == roomInfo)
+		{
+			roomInfo = null;
+			return true;
+		}
+		return false;
 	}
 
 	#region implemented abstract members of DynamicObject

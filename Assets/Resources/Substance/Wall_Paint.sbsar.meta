@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 859e1ecc18abfd045bfb84fd22e1b09c
-timeCreated: 1503407499
+timeCreated: 1503501454
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -131,7 +131,7 @@ SubstanceImporter:
       - _UseCombinedMap: 0
       - _UseMixMapping: 0
       - _UsePOM: 0
-      - _WaterSlopeDamp: 0.73
+      - _WaterSlopeDamp: 0.164
       - _Wetness: 1
       - _ZWrite: 1
       colors:
@@ -145,7 +145,7 @@ SubstanceImporter:
       - _SnowMaskTiling: {r: 0.3, g: 0.3, b: 0, a: 0}
       - _SnowTiling: {r: 2, g: 2, b: 0, a: 0}
       - _UVRatio: {r: 1, g: 1, b: 0, a: 0}
-      - _WaterAccumulationCracksPuddles: {r: 1.01, g: 0.66, b: 0.2, a: 0.85}
+      - _WaterAccumulationCracksPuddles: {r: 1.01, g: 1.44, b: 0.2, a: 0.85}
       - _WaterAccumulationCracksPuddles2: {r: 0, g: 1, b: 0, a: 1}
       - _WaterColor: {r: 0.49389058, g: 0.71450675, b: 0.77205884, a: 0.266}
       - _WaterColor2: {r: 0, g: 0, b: 0, a: 0}

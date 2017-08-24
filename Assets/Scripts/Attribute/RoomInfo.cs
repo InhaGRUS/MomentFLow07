@@ -36,7 +36,6 @@ public class RoomInfo : MonoBehaviour {
 	public void OnTriggerExit (Collider col)
 	{
 		IdentifyAndRemoveObject (col);
-		Debug.Log ("Exit");
 	}
 
 	public void SetRoomStateToCombatState (Vector3 combatPoint)
@@ -54,16 +53,19 @@ public class RoomInfo : MonoBehaviour {
 			interactableObjectInRoom.Remove (null);
 
 			if (!dynamicObjectsInRoom.Contains (obj)) {
-				dynamicObjectsInRoom.Add (obj);
+				
 				switch (obj.objectType) {
 				case DynamicObjectType.Actor:
+					if (!((Actor)obj).EnterRoom (this)) {
+						return;
+					}
 					actorsInRoom.Add ((Actor)obj);
-					((Actor)obj).roomInfo = this;
 					break;
 				case DynamicObjectType.InteractableObject:
 					interactableObjectInRoom.Add ((InteractableObject)obj);
 					break;
 				}
+				dynamicObjectsInRoom.Add (obj);
 			}
 		}
 	}
@@ -80,6 +82,7 @@ public class RoomInfo : MonoBehaviour {
 				dynamicObjectsInRoom.Remove (obj);
 				switch (obj.objectType) {
 				case DynamicObjectType.Actor:
+					((Actor)obj).ExitRoom (this);
 					actorsInRoom.Remove ((Actor)obj);
 					break;
 				case DynamicObjectType.InteractableObject:
