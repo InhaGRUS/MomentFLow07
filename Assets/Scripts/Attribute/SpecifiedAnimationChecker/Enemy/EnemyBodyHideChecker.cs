@@ -74,6 +74,7 @@ public class EnemyBodyHideChecker : BodyAnimationCheckerBase {
 			else {
 				eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 				eActor.GetSpecificAction<EnemyBodyChaseChecker> ().SetAnimationTrigger ();
+
 			}
 		} else {
 			SetAnimationTrigger ();

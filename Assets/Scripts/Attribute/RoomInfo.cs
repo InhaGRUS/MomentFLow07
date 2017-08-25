@@ -8,7 +8,7 @@ public class RoomInfo : MonoBehaviour {
 	public RoomState roomState;
 
 	public Vector3 combatStartPoint;
-
+	[Header ("Room Information")]
 	public List<DynamicObject> dynamicObjectsInRoom = new List<DynamicObject>();
 	public List<Actor> actorsInRoom = new List<Actor>();
 	public List<InteractableObject> interactableObjectInRoom = new List<InteractableObject>();
@@ -25,6 +25,11 @@ public class RoomInfo : MonoBehaviour {
 	[Header ("Editor Setting")]
 	public Color roomRectColor = new Color (0.5529f, 0.9921f, 0.6313f, 0.0196f);
 	public Color cameraRectColor = new Color (0.4941f, 0.6431f, 1f, 0.0196f);
+
+	public delegate void OnRoomObjectChanged (DynamicObject obj);
+
+	public event OnRoomObjectChanged onRoomObjectAdded;
+	public event OnRoomObjectChanged onRoomObjectRemoved;
 
 	public void Start ()
 	{
@@ -73,6 +78,8 @@ public class RoomInfo : MonoBehaviour {
 					break;
 				}
 				dynamicObjectsInRoom.Add (obj);
+				if (null != onRoomObjectAdded)
+					onRoomObjectAdded (obj);
 			}
 		}
 	}
@@ -86,7 +93,6 @@ public class RoomInfo : MonoBehaviour {
 			interactableObjectInRoom.Remove (null);
 
 			if (dynamicObjectsInRoom.Contains (obj)) {
-				dynamicObjectsInRoom.Remove (obj);
 				switch (obj.objectType) {
 				case DynamicObjectType.Actor:
 					((Actor)obj).ExitRoom (this);
@@ -96,6 +102,9 @@ public class RoomInfo : MonoBehaviour {
 					interactableObjectInRoom.Remove ((InteractableObject)obj);
 					break;
 				}
+				dynamicObjectsInRoom.Remove (obj);
+				if (null != onRoomObjectRemoved)
+					onRoomObjectRemoved (obj);
 			}
 		}
 	}

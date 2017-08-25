@@ -7,7 +7,9 @@ public class EnemyActor : Actor {
 	[HideInInspector]
 	public CustomNavMeshAgent customAgent;
 
+	public LayerMask targetableMask;
 	public Actor targetActor;
+	public Actor suspiciousActor;
 	public Vector3 suspiciousPoint;
 	public Vector3 lastTargetPoint;
 
@@ -28,6 +30,9 @@ public class EnemyActor : Actor {
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
+		// Set Handlers
+		GetEnemyOutsideInfo ().onViewObjectAdded += HandlerObjectInViewAdded;
+		GetEnemyOutsideInfo ().onViewObjectRemoved += HandlerObjectInViewRemoved;
 	}
 	
 	// Update is called once per frame
@@ -41,17 +46,19 @@ public class EnemyActor : Actor {
 		}
 	}
 
-	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
+	public override void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir)
 	{
 		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
 		damagedDirection = damagedDir;
+		GetEnemyOutsideInfo ().SetViewDirection (fromActor.bodyCollider.bounds.center);
 		IncreaseTension ();
 	}
 
-	public virtual void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir, float tensionInc)
+	public override void DamagedFrom (Actor fromActor, float damagedAmount, Vector3 damagedDir, float tensionInc)
 	{
 		humanInfo.hp = Mathf.Max (humanInfo.hp - damagedAmount, 0f);
 		damagedDirection = damagedDir;
+		GetEnemyOutsideInfo ().SetViewDirection (fromActor.bodyCollider.bounds.center);
 		IncreaseTension (tensionInc);
 	}
 
@@ -75,8 +82,98 @@ public class EnemyActor : Actor {
 				targetFace.hideable = true;
 		}
 	}
+		
+	//OutsideInfo Handler Block
+	public void HandlerObjectInViewAdded (DynamicObject obj)
+	{
+		switch (obj.objectType) {
+		case DynamicObjectType.Actor:
+			//Identify Object, Is Object Target?
+			if (((1<<obj.gameObject.layer) & targetableMask) != 0)
+			{
+				var tmpActor = obj as Actor;
+				Debug.Log ("Added");
+				var disToActor = Vector3.Distance (tmpActor.bodyCollider.bounds.center, bodyCollider.bounds.center);
+				// Can i Recognize this Object?
+				if (disToActor <=  GetEnemyOutsideInfo().viewRecognizeDistance) {
+					targetActor = tmpActor;
+					suspiciousActor = targetActor;
+					suspiciousPoint = tmpActor.bodyCollider.bounds.center;
+					StopCoroutine ("ObserveSuspiciousActor");
+				}
+				else { // If i can't recognize this object, but i know there is suspicious object in my view
+					suspiciousActor = tmpActor;
+					suspiciousPoint = tmpActor.bodyCollider.bounds.center;
+					suspiciousPoint.y = transform.position.y;
+					GetSpecificAction<EnemyBodySuspiciousChecker> ().isFoundSuspiciousPoint = true;
+					StartCoroutine ("ObserveSuspiciousActor");
+				}
+			}
+			break;
+		case DynamicObjectType.Bullet:
 
-	public void FindSuspiciousObject ()
+			break;
+		case DynamicObjectType.InteractableObject:
+
+			break;
+		}
+	}
+	public void HandlerObjectInViewRemoved (DynamicObject obj)
+	{
+		Debug.Log ("Removed");
+		// obj on out of view now
+		switch (obj.objectType) {
+		case DynamicObjectType.Actor:
+			if ((Actor)obj == targetActor) // this means targetActor isn't null
+			{
+				suspiciousPoint = targetActor.bodyCollider.bounds.center;
+				suspiciousPoint.y = transform.position.y;
+				lastTargetPoint = suspiciousPoint;
+				//suspiciousActor = null;
+				targetActor = null;
+				StopCoroutine ("ObserveSuspiciousActor");
+				StartCoroutine ("LostSuspiciousTarget");
+			}
+			break;
+		case DynamicObjectType.Bullet:
+
+			break;
+		case DynamicObjectType.InteractableObject:
+
+			break;
+		}
+	}
+	//End of Handler Block
+
+	public IEnumerator ObserveSuspiciousActor ()
+	{
+		while (true)
+		{
+			if (null != suspiciousActor) {
+				var disToActor = Vector3.Distance (suspiciousActor.bodyCollider.bounds.center, bodyCollider.bounds.center);
+				if (disToActor > GetEnemyOutsideInfo ().viewRecognizeDistance) {
+					suspiciousPoint = suspiciousActor.bodyCollider.bounds.center;
+					suspiciousPoint.y = transform.position.y;
+					GetSpecificAction<EnemyBodySuspiciousChecker> ().isFoundSuspiciousPoint = true;
+				} 
+				else {
+					targetActor = suspiciousActor;
+					suspiciousPoint = suspiciousActor.bodyCollider.bounds.center;
+					suspiciousPoint.y = transform.position.y;
+				}
+			}
+			yield return new WaitForEndOfFrame ();
+		}
+	}
+
+	public IEnumerator LostSuspiciousTarget ()
+	{
+		yield return new WaitForSeconds (2.5f);
+		suspiciousActor = null;
+		StopCoroutine ("LostSuspiciousTarget");
+	}
+
+	/*public void FindSuspiciousObject ()
 	{
 		for (int i = 0; i < GetEnemyOutsideInfo().actorListInVeiw.Count; i++)
 		{
@@ -91,6 +188,7 @@ public class EnemyActor : Actor {
 			{
 				if (element == targetActor) {
 					lastTargetPoint = targetActor.transform.position;
+					suspiciousPoint = element.transform.position;
 					targetActor = null;
 				}
 				continue;
@@ -113,7 +211,7 @@ public class EnemyActor : Actor {
 				break;
 			}
 		}
-	}
+	}*/
 
 	public EnemyOutsideInfo GetEnemyOutsideInfo ()
 	{

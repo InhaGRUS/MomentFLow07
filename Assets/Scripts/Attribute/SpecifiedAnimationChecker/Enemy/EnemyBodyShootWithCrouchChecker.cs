@@ -65,6 +65,8 @@ public class EnemyBodyShootWithCrouchChecker : BodyAnimationCheckerBase {
 	{
 		stateMaintainTimer += actor.customDeltaTime;
 
+		if (null == eActor.targetActor)
+			return;
 		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.targetActor.transform.position);
 
 		//Aim State

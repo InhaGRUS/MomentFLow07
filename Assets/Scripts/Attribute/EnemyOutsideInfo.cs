@@ -22,6 +22,13 @@ public class EnemyOutsideInfo : OutsideInfo {
 
 	public Vector3 lookDirection = Vector3.forward;
 
+	public LayerMask viewableMask;
+
+	public delegate void OnViewObjectChanged (DynamicObject obj);
+
+	public event OnViewObjectChanged onViewObjectAdded;
+	public event OnViewObjectChanged onViewObjectRemoved;
+
 	// Use this for initialization
 	protected new void Start () {
 		base.Start ();
@@ -63,6 +70,7 @@ public class EnemyOutsideInfo : OutsideInfo {
 				continue;
 			}
 			var objPos = obj.transform.position;
+
 			var dis = Vector3.Distance (transform.position, obj.transform.position);
 			if (dis > viewMaxDistance) {
 				IdentifyAndRemoveDynamicObject (obj);
@@ -78,12 +86,24 @@ public class EnemyOutsideInfo : OutsideInfo {
 			var degreeZ02 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
 
 			if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle * 0.5f ||
-				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) {
-
-
-
-				IdentifyAndAddDynamicObject (obj);
-			} else {
+				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) 
+			{
+				RaycastHit hit;
+				Vector3 origin = actor.bodyCollider.bounds.center + Vector3.up * actor.bodyCollider.bounds.extents.y * 0.8f;
+				if (Physics.Raycast (origin , (objPos - origin).normalized, out hit, viewMaxDistance, viewableMask))
+				{
+					var hitDynamicObj = DynamicObject.GetDynamicObject (hit.collider);
+					if (hitDynamicObj == obj) {
+						IdentifyAndAddDynamicObject (obj);
+					} else if (null == hitDynamicObj) {
+						IdentifyAndRemoveDynamicObject (obj);
+					} else {
+						Debug.Log (obj.name + " : " + hitDynamicObj.name);
+					}
+				}
+			} 
+			else
+			{
 				IdentifyAndRemoveDynamicObject (obj);
 			}
 			yield return new WaitForEndOfFrame ();
@@ -136,7 +156,6 @@ public class EnemyOutsideInfo : OutsideInfo {
 	void IdentifyAndAddDynamicObject (DynamicObject obj)
 	{
 		if (!dynamicObjectListInView.Contains (obj)) {
-			dynamicObjectListInView.Add (obj);
 			switch (obj.objectType) {
 			case DynamicObjectType.Actor:
 				actorListInVeiw.Add ((Actor)obj);
@@ -144,7 +163,6 @@ public class EnemyOutsideInfo : OutsideInfo {
 				break;
 			case DynamicObjectType.InteractableObject:
 				interactableObjectListInView.Add ((InteractableObject)obj);
-
 				if (((InteractableObject)obj).interactableObjectType == InteractableObjectType.HideableObject) {
 					hideableObjectInViewCount++;
 					foundedHideableObjList.Add ((HideableObject)obj);
@@ -155,6 +173,9 @@ public class EnemyOutsideInfo : OutsideInfo {
 				SortInteractableObjectListDistance ();
 				break;
 			}
+			dynamicObjectListInView.Add (obj);
+			if (null != onViewObjectAdded)
+				onViewObjectAdded (obj);
 			SortDynamicObjectListByDistance ();
 		}
 	}
@@ -162,7 +183,6 @@ public class EnemyOutsideInfo : OutsideInfo {
 	void IdentifyAndRemoveDynamicObject (DynamicObject obj)
 	{
 		if (dynamicObjectListInView.Contains (obj)) {
-			dynamicObjectListInView.Remove (obj);
 			switch (obj.objectType) {
 			case DynamicObjectType.Actor:
 				actorListInVeiw.Remove ((Actor)obj);
@@ -180,6 +200,9 @@ public class EnemyOutsideInfo : OutsideInfo {
 				SortInteractableObjectListDistance ();
 				break;
 			}
+			dynamicObjectListInView.Remove (obj);
+			if (null != onViewObjectRemoved)
+				onViewObjectRemoved (obj);
 			SortDynamicObjectListByDistance ();
 		}
 	}

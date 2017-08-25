@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
-	public bool foundSuspiciousObject = false;
+	public bool isFoundSuspiciousPoint = false;
 	public EnemyActor eActor;
 
 	// Use this for initialization
@@ -19,7 +19,7 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (foundSuspiciousObject && 
+		if (null != eActor.suspiciousActor &&
 			null == eActor.targetActor &&
 			eActor.disToSuspiciousPoint > 0.1f
 		)
@@ -30,21 +30,21 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 	}
 	protected override void BeforeTransitionAction ()
 	{
-		foundSuspiciousObject = false;
+		//isFoundSuspiciousPoint = false;
 		nowActivated = false;
 	}
 	public override void DoSpecifiedAction ()
 	{
 		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
-		eActor.FindSuspiciousObject ();
+		//eActor.FindSuspiciousObject ();
 		eActor.customAgent.SetDestination (eActor.suspiciousPoint);
 		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()
 	{
-		foundSuspiciousObject = false;
+		//isFoundSuspiciousPoint = false;
 		nowActivated = false;
 	}
 	#endregion

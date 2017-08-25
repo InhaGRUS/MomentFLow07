@@ -123,7 +123,7 @@ public class EnemyBodyPatrolChecker : BodyAnimationCheckerBase {
 				nowNode = GetPatrolNodeByIndex (0);
 			}
 		} 
-		eActor.FindSuspiciousObject ();
+		//eActor.FindSuspiciousObject ();
 		eActor.GetEnemyOutsideInfo ().SetViewDirection (nowNode.nodePoint);
 
 		nowActivated = true;

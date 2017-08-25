@@ -28,7 +28,7 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
 		eActor.customAgent.StopMove ();
-		eActor.FindSuspiciousObject ();
+		//eActor.FindSuspiciousObject ();
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

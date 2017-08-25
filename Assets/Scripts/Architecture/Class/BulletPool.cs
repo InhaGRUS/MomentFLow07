@@ -90,7 +90,6 @@ public class BulletPool : MonoBehaviour {
 					borrowBullet = pool.GetChild (index).GetComponent<Bullet> ();
 					borrowBullet.bulletIndex = index;
 					borrowBullet.owner = owner;
-					Debug.Log ("Bullet Owner : " + owner.name);
 					borrowBullet.GetComponent<Collider> ().enabled = true;
 					borrowBullet.gameObject.SetActive (true);
 					return borrowBullet;

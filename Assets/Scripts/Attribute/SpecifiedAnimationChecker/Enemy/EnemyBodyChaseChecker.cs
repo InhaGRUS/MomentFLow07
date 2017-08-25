@@ -39,7 +39,7 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 		eActor.ReleaseCrouch ();
 
 		SetAnimationTrigger ();
-		eActor.FindSuspiciousObject ();
+		//eActor.FindSuspiciousObject ();
 		if (null != eActor.targetActor) {
 			eActor.customAgent.SetDestination (eActor.targetActor.transform.position);
 		}

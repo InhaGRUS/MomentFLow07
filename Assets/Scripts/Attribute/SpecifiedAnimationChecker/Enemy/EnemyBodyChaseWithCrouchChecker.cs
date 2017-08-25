@@ -45,7 +45,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (null == eActor.targetActor || !eActor.stateInfo.isCrouhcing)
+		if (null == eActor.suspiciousActor || !eActor.stateInfo.isCrouhcing)
 		{
 			return false;
 		}
@@ -63,7 +63,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 		var disToHObjPoint = Vector3.Distance (hObjPoint, eActor.transform.position);
 
 		if (stateDelayTimer >= stateDelay &&
-			eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName)
+			eActor.roomInfo.roomName == eActor.suspiciousActor.roomInfo.roomName)
 		{
 			if (eActor.targetFace != tmpFace && tmpFace.hideable)
 			{
@@ -97,7 +97,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 		}
 		else {
 			SetAnimationTrigger (0);
-			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
+			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.suspiciousActor.transform.position);
 		}
 		nowActivated = true;
 	}
@@ -125,17 +125,17 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 				continue;
 			}
 
-			var face = GetHideableFace (hideableObj, (hideableObj.transform.position - eActor.targetActor.transform.position));
+			var face = GetHideableFace (hideableObj, (hideableObj.transform.position - eActor.suspiciousActor.transform.position));
 
 			if (null != face && face.hideable) {
 				if (index == -1) {
-					disOfFaceToTarget = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
+					disOfFaceToTarget = Vector3.Distance (eActor.suspiciousActor.transform.position, hideableObj.transform.position + face.point);
 					index = i;
 					tmpFace = face;
 					continue;
 				}
 					
-				var tmpDis = Vector3.Distance (eActor.targetActor.transform.position, hideableObj.transform.position + face.point);
+				var tmpDis = Vector3.Distance (eActor.suspiciousActor.transform.position, hideableObj.transform.position + face.point);
 
 				if (tmpDis <= disOfFaceToTarget) {
 					disOfFaceToTarget = tmpDis;
