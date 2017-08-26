@@ -10,7 +10,18 @@ public class SoundManager : MonoBehaviour {
 
 	private List<RoomInfo> roomsInScene = new List<RoomInfo>();
 	public List<SurfaceTypePair> keyList = new List<SurfaceTypePair>();
-	public Dictionary <SurfaceTypePair, AudioClip> collideAudioDic = new Dictionary<SurfaceTypePair, AudioClip>();
+	public Dictionary <SurfaceTypePair, AudioClip[]> bulletImpactDic = new Dictionary<SurfaceTypePair, AudioClip[]>();
+
+	[Header ("Path")]
+	public string pathOfBulletImapactOnWall;
+	public string pathOfBulletImpactOnMetal;
+	public string pathOfBulletImpactOnGlass;
+	public string pathOfBulletFlyClips;
+
+	[Header ("Cashing Clips")]
+	public const int CATEGORY_OF_BULLETIMPACT_COUNT = 3;
+	public List<AudioClip[]> listOfBulletImpactClip = new List<AudioClip[]> ();
+	private List<AudioClip> listOfBulletFlyClip = new List<AudioClip> ();
 
 	private GameObject audioSourcePool;
 	public List<CustomAudioResource> audioSourceList = new List<CustomAudioResource>();
@@ -20,12 +31,12 @@ public class SoundManager : MonoBehaviour {
 	void Awake ()
 	{
 		instance = this;
-		SceneGeneralInfo.GetInstance.OnStartScene += PoolingAudioSource;
+		SceneGeneralInfo.GetInstance.OnStartScene += PoolingDatas;
 		SceneGeneralInfo.GetInstance.OnStartScene += SettingAudioDictionary;
 		SceneGeneralInfo.GetInstance.OnStartScene += LoadRoomsInfo;
 	}
 
-	void PoolingAudioSource ()
+	void PoolingDatas ()
 	{
 		audioSourcePool = new GameObject ("AudioSourcePool");
 		audioSourcePool.transform.parent = transform;
@@ -40,6 +51,17 @@ public class SoundManager : MonoBehaviour {
 			customSource.source = source;
 			audioSourceList.Add (customSource);
 		}
+
+		var clipsOfBulletImpactOnWall = Resources.LoadAll (pathOfBulletImapactOnWall).Cast<AudioClip>().ToArray();
+		var clipsOfBulletImpactOnMetal = Resources.LoadAll (pathOfBulletImpactOnMetal).Cast<AudioClip>().ToArray();
+		var clipsOfBulletImpactOnGlass = Resources.LoadAll (pathOfBulletImpactOnGlass).Cast<AudioClip>().ToArray();
+
+		listOfBulletFlyClip = Resources.LoadAll (pathOfBulletFlyClips).Cast<AudioClip> ().ToList();
+
+		// Align By Enum SoundCategory Priority 
+		listOfBulletImpactClip.Add (clipsOfBulletImpactOnWall);
+		listOfBulletImpactClip.Add (clipsOfBulletImpactOnMetal);
+		listOfBulletImpactClip.Add (clipsOfBulletImpactOnGlass);
 	}
 
 	void SettingAudioDictionary ()
@@ -49,18 +71,18 @@ public class SoundManager : MonoBehaviour {
 			Debug.LogError ("Surface Doc is Null");
 			return;
 		}
-		var audioNodes = doc.SelectNodes ("SurfaceAudioInfoSet/StateSet");
+		var audioNodes = doc.SelectNodes ("SurfaceAudioInfoSet/BulletImpact");
 
 		foreach (XmlNode node in audioNodes) {
 			var firstType = (SurfaceType)Enum.Parse (typeof(SurfaceType), node.SelectSingleNode ("FirstSurface").InnerText);
 			var secondType = (SurfaceType)Enum.Parse (typeof(SurfaceType), node.SelectSingleNode ("SecondSurface").InnerText);
 
 			var tmpAudioPair = new SurfaceTypePair (firstType, secondType);
-			AudioClip clip = Resources.Load<AudioClip> (node.SelectSingleNode ("AudioPath").InnerText + ".wav");
-			//Debug.Log (node.SelectSingleNode ("AudioPath").InnerText + " : " + firstType + " , " + secondType);
-			collideAudioDic.Add (tmpAudioPair, clip);
+			string category = node.SelectSingleNode ("Category").InnerText;
+			var intCategory = (int)Enum.Parse (typeof(SoundCategory), category);
+			bulletImpactDic.Add (tmpAudioPair, listOfBulletImpactClip[intCategory]);
 			var reversedPair = tmpAudioPair.GetReversePair ();
-			collideAudioDic.Add (reversedPair, clip);
+			bulletImpactDic.Add (reversedPair, listOfBulletImpactClip[intCategory]);
 			keyList.Add (tmpAudioPair);
 			keyList.Add (reversedPair);
 		}
@@ -93,31 +115,59 @@ public class SoundManager : MonoBehaviour {
 		return audioSourceList [nowSourceTopIndex];
 	}
 
+	public CustomAudioResource BorrowAudioSource ()
+	{
+		for (int i = nowSourceTopIndex; i < audioSourceList.Count; i++)
+		{
+			if (!audioSourceList [i].IsPlaying)
+			{
+				nowSourceTopIndex = i;
+				return audioSourceList [i];
+			}
+		}
+		nowSourceTopIndex = audioSourceList.Count;
+		var source = audioSourcePool.AddComponent<AudioSource> ();
+		source.playOnAwake = false;
+		source.loop = false;
+		var customSource = audioSourcePool.AddComponent <CustomAudioResource> ();
+		customSource.source = source;
+		audioSourceList.Add (customSource);
+		return audioSourceList [nowSourceTopIndex];
+	}
+
+
 	public void ReturnAudioSource (int index)
 	{
 		nowSourceTopIndex = index;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
+	public void ReturnAudioSource (CustomAudioResource source)
+	{
+		var index = audioSourceList.IndexOf (source);
+		ReturnAudioSource (index);
 	}
-
+		
 	public SurfaceTypePair GetKeyValueInAudioDictionary (SurfaceTypePair tmpKey)
 	{
-		var result = keyList.First (element => (element.first == tmpKey.first && element.second == tmpKey.second));
+		var result = keyList.Find (element => (element.first == tmpKey.first && element.second == tmpKey.second));
 		return result;
 	}
 
 	public AudioClip GetCollideAudioClip (SurfaceTypePair keyPair)
 	{
-		AudioClip clip = new AudioClip();
+		AudioClip[] clip;
 		var getKey = GetKeyValueInAudioDictionary (keyPair);
-		if (collideAudioDic.TryGetValue (getKey, out clip))
+		if (null == getKey)
+			return null;
+		if (bulletImpactDic.TryGetValue (getKey, out clip))
 		{
-			Debug.Log (clip.name);
-			return clip;
+			return clip[UnityEngine.Random.Range (0, clip.Length - 1)]; 
 		}
 		return null;
+	}
+
+	public AudioClip GetBulletFlyAudioClip ()
+	{
+		return listOfBulletFlyClip[UnityEngine.Random.Range(0, listOfBulletFlyClip.Count - 1)];
 	}
 }

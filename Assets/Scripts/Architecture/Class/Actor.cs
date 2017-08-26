@@ -279,19 +279,19 @@ public class Actor : DynamicObject {
 		if (roomInfo.actorsInRoom.Contains (this)) {
 			return false;
 		}
-		Debug.Log ("Change Room Before : " + roomInfo.name + "  TO : " + newInfo.name);
+		Debug.Log (transform.name + " - Enter Room Before : " + roomInfo.name + "  TO : " + newInfo.name);
 		roomInfo = newInfo;
 		return true;
 	}
 
 	public bool ExitRoom (RoomInfo prevRoom)
 	{
-		
-		//if (prevRoom == roomInfo)
-		//{
-		//	roomInfo = null;
-		//	return true;
-		//}
+		Debug.Log (transform.name + " - Eixt Room Before : " + prevRoom.name + "  TO : " + roomInfo.name);
+		if (prevRoom == roomInfo)
+		{
+			roomInfo = null;
+			return true;
+		}
 		return false;
 	}
 

@@ -8,6 +8,9 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 	public float disToShoot = 1f;
 	public float disToChase = 0.5f;
 
+	public float minAimY;
+	public float maxAimY;
+
 	[Header ("StateMaintainTimer")]
 	public float stateMaintainDuration = 5f;
 	public float stateMaintainTimer = 0f;
@@ -42,7 +45,7 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 
 		if (null != eActor.targetActor && 
 			!eActor.stateInfo.isHiding &&
-			velocity.magnitude <= eActor.customAgent.agent.speed &&
+			//velocity.magnitude <= eActor.customAgent.agent.speed &&
 			eActor.disToTarget <= disToShoot &&
 			stateDelayTimer >= stateDelay &&
 			eActor.equipmentInfo.nowEquipWeaponType == EquipWeaponType.Gun &&
@@ -86,7 +89,7 @@ public class EnemyBodyShootWithStopChecker : BodyAnimationCheckerBase {
 			}
 
 			actor.aimTarget.AimToObject (eActor.targetActor.bodyCollider.bounds.center);
-			actor.aimTarget.nowShootVector = (eActor.targetActor.bodyCollider.bounds.center - actor.aimTarget.shootPoint.position).normalized;
+			actor.aimTarget.nowShootVector = (eActor.targetActor.bodyCollider.bounds.center + Vector3.up * Random.Range (-eActor.targetActor.bodyCollider.bounds.extents.y * minAimY, eActor.targetActor.bodyCollider.bounds.extents.y * maxAimY)  - actor.aimTarget.shootPoint.position).normalized;
 			actor.bodyAnimator.SetBool ("BoolAim", true);
 			actor.shoulderAnimator.SetBool ("BoolAim", true);
 		} else {

@@ -23,10 +23,14 @@ public class Bullet : DynamicObject {
 	public LayerMask collisionMask;
 	public Vector3 originVelocity;
 
+	private CustomAudioResource flingSound;
+
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent <Rigidbody> ();
 		surfaceInfo = GetComponent<SurfaceInfo> ();
+		flingSound = GetComponent<CustomAudioResource> ();
+		flingSound.OnPlayEnd += ReturnFlingSound;
 		if (null == destroyParticle)
 			destroyParticle = GetComponentInChildren <ParticleSystem> ();
 	}
@@ -36,6 +40,20 @@ public class Bullet : DynamicObject {
 		if (null != surfaceInfo)
 			surfaceInfo.PlayCollideAudio (otherOne);
 	}
+
+	public void PlayFlingSound ()
+	{
+		if (null == flingSound) {
+			flingSound = SoundManager.instance.BorrowAudioSource ();
+			flingSound.OnPlayEnd += ReturnFlingSound;
+		}
+		if (!flingSound.IsPlaying) {
+			flingSound.source.pitch = 1f;
+			flingSound.source.volume = 1f;
+			flingSound.Clip = SoundManager.instance.GetBulletFlyAudioClip ();
+			flingSound.Play ();
+		}
+	}
 	
 	// Update is called once per frame
 	protected new void Update () {
@@ -43,10 +61,14 @@ public class Bullet : DynamicObject {
 		flingDistance += rigid.velocity.magnitude * customDeltaTime;
 		rigid.velocity = originVelocity * Mathf.Pow(customTimeScale, 12f);
 
-		if (maxFlingDistance < flingDistance)
-		{
+		if (maxFlingDistance < flingDistance) {
 			DestroyBullet ();
 		}
+	}
+
+	public void ReturnFlingSound ()
+	{
+		flingSound.OnPlayEnd -= ReturnFlingSound;
 	}
 
 	public void OnCollisionEnter (Collision col)
@@ -93,11 +115,11 @@ public class Bullet : DynamicObject {
 		previousTimeScaleList.Clear ();
 
 		GetComponent<ParticleSystem> ().Stop ();
-
+		GetComponent<ParticleSystem> ().Clear ();
+		GetComponent<TrailRenderer> ().Clear ();
 		destroyParticle.transform.parent = transform.parent;
 		destroyParticle.transform.position = transform.position;
 		destroyParticle.Play ();
-	
 		BulletPool.Instance.ReturnBullet (gameObject);
 	}
 }

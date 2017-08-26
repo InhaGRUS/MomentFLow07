@@ -25,6 +25,7 @@ public class ShoulderAnimationActions : MonoBehaviour {
 		bullet.startPosition = bullet.transform.position;
 		bullet.transform.rotation = Quaternion.LookRotation (actor.aimTarget.nowShootVector);
 		bullet.originVelocity = actor.aimTarget.nowShootVector * bullet.maxSpeed;
+		bullet.PlayFlingSound ();
 		bullet.GetComponent<ParticleSystem> ().Play (false);
 	}
 

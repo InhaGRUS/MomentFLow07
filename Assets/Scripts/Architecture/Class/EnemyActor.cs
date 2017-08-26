@@ -83,6 +83,12 @@ public class EnemyActor : Actor {
 		}
 	}
 
+	public void OnDrawGizmos ()
+	{
+		Gizmos.color = Color.blue;
+		Gizmos.DrawCube (suspiciousPoint, Vector3.one * 0.25f);
+	}
+
 	//OutsideInfo Handler Block
 	public void HandlerObjectInViewAdded (DynamicObject obj)
 	{
@@ -92,7 +98,6 @@ public class EnemyActor : Actor {
 			if (((1<<obj.gameObject.layer) & targetableMask) != 0)
 			{
 				var tmpActor = obj as Actor;
-				Debug.Log ("Added");
 				var disToActor = Vector3.Distance (tmpActor.bodyCollider.bounds.center, bodyCollider.bounds.center);
 				// Can i Recognize this Object?
 				if (disToActor <=  GetEnemyOutsideInfo().viewRecognizeDistance) {
@@ -120,7 +125,6 @@ public class EnemyActor : Actor {
 	}
 	public void HandlerObjectInViewRemoved (DynamicObject obj)
 	{
-		Debug.Log ("Removed");
 		// obj on out of view now
 		switch (obj.objectType) {
 		case DynamicObjectType.Actor:

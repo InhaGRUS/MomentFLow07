@@ -1,118 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SurfaceAudioInfoSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
+	<BulletImpact>
+		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>HumanSkin</SecondSurface>
-		<AudioPath>SurfaceSound/ActionVFX Bullet Hits SFX/Bullet Hits/Wall Hits/Wall-Hit 1</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Iron</SecondSurface>
-		<AudioPath>SurfaceSound/ActionVFX Bullet Hits SFX/Bullet Hits/Wall Hits/Wall-Hit 1</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Wood</SecondSurface>
-		<AudioPath>SurfaceSound/ActionVFX Bullet Hits SFX/Bullet Hits/Wall Hits/Wall-Hit 1</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Ceramic</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Cotton</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Ceramic</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>HumanSkin</FirstSurface>
-		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-
-	<StateSet>
+            <Category>Wall</Category>
+	</BulletImpact>
+       <BulletImpact>
 		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>Iron</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
+            <Category>Metal</Category>
+	</BulletImpact>
+	<BulletImpact>
 		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>Wood</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
+            <Category>Wall</Category>
+	</BulletImpact>
+	<BulletImpact>
 		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>Ceramic</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
+            <Category>Glass</Category>
+	</BulletImpact>
+	<BulletImpact>
 		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>Cotton</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
+            <Category>Wall</Category>
+	</BulletImpact>
+	<BulletImpact>
 		<FirstSurface>Iron</FirstSurface>
 		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-
-	<StateSet>
-		<FirstSurface>Wood</FirstSurface>
-		<SecondSurface>Wood</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Wood</FirstSurface>
-		<SecondSurface>Ceramic</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Wood</FirstSurface>
-		<SecondSurface>Cotton</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Wood</FirstSurface>
-		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-
-	<StateSet>
-		<FirstSurface>Ceramic</FirstSurface>
-		<SecondSurface>Ceramic</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Ceramic</FirstSurface>
-		<SecondSurface>Cotton</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Ceramic</FirstSurface>
-		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-
-	<StateSet>
-		<FirstSurface>Cotton</FirstSurface>
-		<SecondSurface>Cotton</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-	<StateSet>
-		<FirstSurface>Cotton</FirstSurface>
-		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
-
-	<StateSet>
-		<FirstSurface>Rock</FirstSurface>
-		<SecondSurface>Rock</SecondSurface>
-		<AudioPath>SurfaceSound/HumanSkinCollideSound</AudioPath>
-	</StateSet>
+           	<Category>Wall</Category>
+	</BulletImpact>
 </SurfaceAudioInfoSet>

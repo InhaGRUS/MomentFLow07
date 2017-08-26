@@ -96,6 +96,7 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 			stateDelayTimer = 0f;
 		}
 		else {
+			eActor.DecreaseTension ();
 			SetAnimationTrigger (0);
 			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.suspiciousActor.transform.position);
 		}

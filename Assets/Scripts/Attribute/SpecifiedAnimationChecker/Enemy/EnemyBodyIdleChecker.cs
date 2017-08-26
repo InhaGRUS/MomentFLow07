@@ -28,6 +28,10 @@ public class EnemyBodyIdleChecker : BodyAnimationCheckerBase {
 		eActor.ReleaseCrouch ();
 		SetAnimationTrigger ();
 		eActor.customAgent.StopMove ();
+		if (null != eActor.targetActor)
+		{
+			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.targetActor.bodyCollider.bounds.center);
+		}
 		//eActor.FindSuspiciousObject ();
 		nowActivated = true;
 	}

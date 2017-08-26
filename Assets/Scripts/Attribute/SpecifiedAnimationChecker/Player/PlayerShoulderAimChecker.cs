@@ -103,6 +103,8 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				if (Physics.Raycast (aimStartPoint.position, (hit.point - aimStartPoint.position).normalized, out hit, maxGunAimDistance, aimableLayerMask)) {
 					points.Add (hit.point);
 					actor.aimTarget.AimToObject (hit.point);
+					aimTargetPos.position = hit.point;
+					mainCam.GetComponent<UnityStandardAssets.ImageEffects.DepthOfField> ().focalTransform = aimTargetPos;
 				}
 			} else {
 				var point = aimStartPoint.position + mouseRay.direction * maxGunAimDistance;
@@ -120,8 +122,7 @@ public class PlayerShoulderAimChecker : ShoulderAnimationCheckerBase {
 				dir = (hit.point - aimStartPoint.position).normalized;
 				if (Physics.Raycast (hit.point, dir, out hit, maxGunAimDistance, aimableLayerMask)) {
 					playerAimPoints.Add (hit.point);
-					aimTargetPos.position = hit.point;
-					mainCam.GetComponent<UnityStandardAssets.ImageEffects.DepthOfField> ().focalTransform = aimTargetPos;
+
 				} else {
 					playerAimPoints.Add (aimStartPoint.position + dir * maxGunAimDistance);
 				}

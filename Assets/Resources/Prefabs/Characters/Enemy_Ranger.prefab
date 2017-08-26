@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 95262590464454568}
   - component: {fileID: 114128838792229830}
   - component: {fileID: 136023945862162382}
+  - component: {fileID: 114333905493834056}
   m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
@@ -749,6 +750,8 @@ MonoBehaviour:
   eActor: {fileID: 114285941095305738}
   disToShoot: 3.369873
   disToChase: 2
+  minAimY: 0.25
+  maxAimY: 0.8
   stateMaintainDuration: 5
   stateMaintainTimer: 0
   stateDelay: 2.5
@@ -833,8 +836,8 @@ MonoBehaviour:
   animationIndex: -1
   canTransition: 1
   canTransitionActionList:
-  - {fileID: 114225070722639916}
   - {fileID: 114632029130905558}
+  - {fileID: 114225070722639916}
   - {fileID: 114568191122250222}
   - {fileID: 114386777362081736}
   - {fileID: 114044052818929770}
@@ -1009,6 +1012,24 @@ MonoBehaviour:
     damage: 0
     attackDelay: 0
   nowEquipWeaponType: 0
+--- !u!114 &114333905493834056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125677016938324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cf3edefb94e0049bb15943df067978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 0
+  usingAudioSourceIndex: -1
+  audioPriority: 0
+  originCollideClip: {fileID: 0}
+  useOriginSound: 0
+  audioPitch: 1
+  audioVolume: 1
 --- !u!114 &114339998613849208
 MonoBehaviour:
   m_ObjectHideFlags: 1

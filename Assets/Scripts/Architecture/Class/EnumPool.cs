@@ -27,6 +27,14 @@ public enum SurfaceType
 	Rock
 }
 
+public enum SoundCategory
+{
+	Wall,
+	Metal,
+	Glass,
+	Wood
+}
+
 public enum CustomCameraButtonType
 {
 	RoomRect = 0,
@@ -48,9 +56,9 @@ public enum HumanType
 
 public enum SoundType
 {
-	GunFireSound,
-	SuspiciousSound,
-	YellSound
+	BulletImapact,
+	GunFire,
+	BulletFly
 }
 
 public enum ItemType
