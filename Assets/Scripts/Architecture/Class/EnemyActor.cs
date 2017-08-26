@@ -83,6 +83,12 @@ public class EnemyActor : Actor {
 		}
 	}
 		
+	public void OnDrawGizmos ()
+	{
+		Gizmos.color = Color.blue;
+		Gizmos.DrawCube (suspiciousPoint, Vector3.one * 0.5f);
+	}
+
 	//OutsideInfo Handler Block
 	public void HandlerObjectInViewAdded (DynamicObject obj)
 	{
@@ -105,9 +111,9 @@ public class EnemyActor : Actor {
 					suspiciousActor = tmpActor;
 					suspiciousPoint = tmpActor.bodyCollider.bounds.center;
 					suspiciousPoint.y = transform.position.y;
-					GetSpecificAction<EnemyBodySuspiciousChecker> ().isFoundSuspiciousPoint = true;
 					StartCoroutine ("ObserveSuspiciousActor");
 				}
+				GetSpecificAction<EnemyBodySuspiciousChecker> ().isFoundSuspiciousPoint = true;
 			}
 			break;
 		case DynamicObjectType.Bullet:
@@ -126,13 +132,24 @@ public class EnemyActor : Actor {
 		case DynamicObjectType.Actor:
 			if ((Actor)obj == targetActor) // this means targetActor isn't null
 			{
-				suspiciousPoint = targetActor.bodyCollider.bounds.center;
-				suspiciousPoint.y = transform.position.y;
-				lastTargetPoint = suspiciousPoint;
-				//suspiciousActor = null;
-				targetActor = null;
-				StopCoroutine ("ObserveSuspiciousActor");
-				StartCoroutine ("LostSuspiciousTarget");
+				if (targetActor.roomInfo != roomInfo) {
+					Debug.Log ("Target Enter Other Room");
+					suspiciousActor = targetActor;
+					suspiciousPoint = suspiciousActor.bodyCollider.bounds.center;
+					suspiciousPoint.y = transform.position.y;
+					StartCoroutine ("ObserveSuspiciousActor");
+				}
+				else {
+					Debug.Log ("Target Out Of View");
+					suspiciousPoint = targetActor.bodyCollider.bounds.center;
+					suspiciousPoint.y = transform.position.y;
+					lastTargetPoint = suspiciousPoint;
+					//suspiciousActor = null;
+					targetActor = null;
+					StopCoroutine ("ObserveSuspiciousActor");
+					StartCoroutine ("LostSuspiciousTarget");
+				}
+
 			}
 			break;
 		case DynamicObjectType.Bullet:

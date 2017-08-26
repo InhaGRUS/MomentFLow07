@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyOutsideInfo : OutsideInfo {
-
+	private EnemyActor eActor;
 	private RoomInfo roomInfo;
 
 	public float viewAngle;
@@ -33,6 +33,9 @@ public class EnemyOutsideInfo : OutsideInfo {
 	protected new void Start () {
 		base.Start ();
 		actor = Actor.GetActor <EnemyOutsideInfo> (this);
+		eActor = EnemyActor.GetEnemyActor <Actor> (actor);
+
+		onViewObjectRemoved += ObjectOnViewRemoved;
 	}
 	
 	// Update is called once per frame
@@ -64,47 +67,57 @@ public class EnemyOutsideInfo : OutsideInfo {
 	public IEnumerator FindDynamicObjectsInView ()
 	{
 		roomInfo = actor.roomInfo;
-		for (int i = 0; i < roomInfo.dynamicObjectsInRoom.Count; i++) {
-			var obj = roomInfo.dynamicObjectsInRoom [i];
-			if (obj == ((DynamicObject)actor)) {
-				continue;
-			}
-			var objPos = obj.transform.position;
 
-			var dis = Vector3.Distance (transform.position, obj.transform.position);
-			if (dis > viewMaxDistance) {
-				IdentifyAndRemoveDynamicObject (obj);
-				continue;
-			}
-			var adjustedPos = new Vector3 (objPos.x, transform.position.y, objPos.z);
-			var disZ_x = adjustedPos.x - transform.position.x;
-			var disZ_z = adjustedPos.z - transform.position.z;
-			var degreeZ01 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
-
-			disZ_x = lookDirection.x;
-			disZ_z = lookDirection.z;
-			var degreeZ02 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
-
-			if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle * 0.5f ||
-				Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) 
-			{
-				RaycastHit hit;
-				Vector3 origin = actor.bodyCollider.bounds.center + Vector3.up * actor.bodyCollider.bounds.extents.y * 0.8f;
-				if (Physics.Raycast (origin , (objPos - origin).normalized, out hit, viewMaxDistance, viewableMask))
-				{
-					var hitDynamicObj = DynamicObject.GetDynamicObject (hit.collider);
-					if (hitDynamicObj == obj) {
-						IdentifyAndAddDynamicObject (obj);
-					} else if (null == hitDynamicObj) {
-						IdentifyAndRemoveDynamicObject (obj);
-					} else {
-						Debug.Log (obj.name + " : " + hitDynamicObj.name);
-					}
+		var rooms = GameObject.FindObjectsOfType<RoomInfo> ();
+		foreach (var roomElement in rooms)
+		{
+			for (int i = 0; i < roomElement.dynamicObjectsInRoom.Count; i++) {
+				var obj = roomElement.dynamicObjectsInRoom [i];
+				if (obj == ((DynamicObject)actor)) {
+					continue;
 				}
-			} 
-			else
-			{
-				IdentifyAndRemoveDynamicObject (obj);
+				var objPos = obj.GetComponentInChildren<Collider>().bounds.center;
+				
+				var dis = Vector3.Distance (transform.position, obj.transform.position);
+				if (dis > viewMaxDistance) {
+					IdentifyAndRemoveDynamicObject (obj);
+					continue;
+				}
+				var adjustedPos = new Vector3 (objPos.x, transform.position.y, objPos.z);
+				var disZ_x = adjustedPos.x - transform.position.x;
+				var disZ_z = adjustedPos.z - transform.position.z;
+				var degreeZ01 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
+				
+				disZ_x = lookDirection.x;
+				disZ_z = lookDirection.z;
+				var degreeZ02 = Mathf.Atan2 (disZ_x, disZ_z) * Mathf.Rad2Deg;
+				
+				if (Mathf.Abs (degreeZ01 - degreeZ02) <= viewAngle * 0.5f ||
+					Mathf.Abs (degreeZ01 -degreeZ02) >= 360 - viewAngle * 0.5f) 
+				{
+					RaycastHit hit;
+					Vector3 origin = actor.bodyCollider.bounds.center + Vector3.up * actor.bodyCollider.bounds.extents.y * 0.8f;
+					var castDis = Mathf.Sqrt (viewMaxDistance * viewMaxDistance + (origin.y - objPos.y) * (origin.y - objPos.y));
+					//Debug.Log (obj.name + " : " + castDis);
+					if (Physics.Raycast (origin , (objPos - origin).normalized, out hit, castDis, viewableMask))
+					{
+						var hitDynamicObj = DynamicObject.GetDynamicObject <Collider> (hit.collider);
+						if (hitDynamicObj == obj) {
+							//Debug.Log ("Add To List : " + hitDynamicObj.name);
+							IdentifyAndAddDynamicObject (obj);
+						}
+						else if (null == hitDynamicObj) {
+							//Debug.Log ("Not Dynamic Obj : " + hit.collider.name);
+							IdentifyAndRemoveDynamicObject (obj);
+						} else {
+							//Debug.Log (obj.name + " : " + hitDynamicObj.name);
+						}
+					}
+				} 
+				else
+				{
+					IdentifyAndRemoveDynamicObject (obj);
+				}
 			}
 			yield return new WaitForEndOfFrame ();
 		}
@@ -204,6 +217,14 @@ public class EnemyOutsideInfo : OutsideInfo {
 			if (null != onViewObjectRemoved)
 				onViewObjectRemoved (obj);
 			SortDynamicObjectListByDistance ();
+		}
+	}
+
+	public void ObjectOnViewRemoved (DynamicObject obj)
+	{
+		if (obj == eActor.targetActor as DynamicObject)
+		{
+			eActor.targetActor = null;
 		}
 	}
 

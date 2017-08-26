@@ -124,7 +124,7 @@ public class EnemyBodyPatrolChecker : BodyAnimationCheckerBase {
 			}
 		} 
 		//eActor.FindSuspiciousObject ();
-		eActor.GetEnemyOutsideInfo ().SetViewDirection (nowNode.nodePoint);
+		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
 
 		nowActivated = true;
 	}

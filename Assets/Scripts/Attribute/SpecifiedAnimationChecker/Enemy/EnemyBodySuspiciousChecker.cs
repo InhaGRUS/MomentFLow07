@@ -19,13 +19,21 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 	}
 	protected override bool IsSatisfiedToAction ()
 	{
-		if (null != eActor.suspiciousActor &&
+
+		/*if (null != eActor.suspiciousActor &&
 			null == eActor.targetActor &&
 			eActor.disToSuspiciousPoint > 0.1f
 		)
 		{
 			return true;
+		}*/
+
+		if (null == eActor.targetActor &&
+			isFoundSuspiciousPoint
+		) {
+			return true;
 		}
+
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
@@ -35,11 +43,15 @@ public class EnemyBodySuspiciousChecker : BodyAnimationCheckerBase {
 	}
 	public override void DoSpecifiedAction ()
 	{
-		eActor.ReleaseCrouch ();
-		SetAnimationTrigger ();
-		//eActor.FindSuspiciousObject ();
-		eActor.customAgent.SetDestination (eActor.suspiciousPoint);
-		eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
+		if (eActor.disToSuspiciousPoint > 0.1f) {
+			eActor.ReleaseCrouch ();
+			SetAnimationTrigger ();
+			//eActor.FindSuspiciousObject ();
+			eActor.customAgent.SetDestination (eActor.suspiciousPoint);
+			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.customAgent.agent.destination);
+		} else {
+			isFoundSuspiciousPoint = false;
+		}
 		nowActivated = true;
 	}
 	public override void CancelSpecifiedAction ()

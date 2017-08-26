@@ -21,6 +21,8 @@ public class Actor : DynamicObject {
 
 	[Header ("Body")]
 	public Animator bodyAnimator;
+	public float listenableDistance = 2f;
+
 	[Header ("Shoulder")]
 	public Animator shoulderAnimator;
 	public AimTarget aimTarget;
@@ -284,11 +286,11 @@ public class Actor : DynamicObject {
 	public bool ExitRoom (RoomInfo prevRoom)
 	{
 		
-		if (prevRoom == roomInfo)
-		{
-			roomInfo = null;
-			return true;
-		}
+		//if (prevRoom == roomInfo)
+		//{
+		//	roomInfo = null;
+		//	return true;
+		//}
 		return false;
 	}
 

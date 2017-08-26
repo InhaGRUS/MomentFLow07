@@ -22,8 +22,7 @@ public class EnemyBodyChaseChecker : BodyAnimationCheckerBase {
 		if (null == eActor.targetActor) {
 			return false;
 		} 
-		if (eActor.disToTarget > disToChase &&
-				eActor.roomInfo.roomName == eActor.targetActor.roomInfo.roomName
+		if (eActor.disToTarget > disToChase
 		)
 		{
 			return true;

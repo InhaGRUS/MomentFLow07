@@ -29,10 +29,10 @@ public class EnemyBodyLookAroundChecker : BodyAnimationCheckerBase {
 	protected override bool IsSatisfiedToAction ()
 	{
 		if (eActor.disToSuspiciousPoint <= 0.1f &&
-			null == eActor.targetActor &&
-			loopCount < loopNum
-		)
+		    null == eActor.targetActor &&
+		    loopCount < loopNum) {
 			return true;
+		}
 		return false;
 	}
 	protected override void BeforeTransitionAction ()
