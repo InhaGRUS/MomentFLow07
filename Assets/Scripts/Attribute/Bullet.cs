@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : DynamicObject {
 	public Actor owner;
-
 	[HideInInspector]
 	public Rigidbody rigid;
 
@@ -27,8 +26,15 @@ public class Bullet : DynamicObject {
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent <Rigidbody> ();
+		surfaceInfo = GetComponent<SurfaceInfo> ();
 		if (null == destroyParticle)
 			destroyParticle = GetComponentInChildren <ParticleSystem> ();
+	}
+
+	void PlayCollideSound (SurfaceInfo otherOne)
+	{
+		if (null != surfaceInfo)
+			surfaceInfo.PlayCollideAudio (otherOne);
 	}
 	
 	// Update is called once per frame
@@ -52,6 +58,7 @@ public class Bullet : DynamicObject {
 			colActor.actorRigid.velocity = Vector3.zero;
 			colActor.DamagedFrom (owner, damage, originVelocity.normalized);
 		}
+		PlayCollideSound (col.collider.GetComponentInChildren<SurfaceInfo> ());
 		DestroyBullet ();
 	}
 

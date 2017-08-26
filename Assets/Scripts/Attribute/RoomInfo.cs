@@ -31,6 +31,16 @@ public class RoomInfo : MonoBehaviour {
 	public event OnRoomObjectChanged onRoomObjectAdded;
 	public event OnRoomObjectChanged onRoomObjectRemoved;
 
+	public void Awake ()
+	{
+		SceneGeneralInfo.GetInstance.OnInitScene += AddRoomInfo;
+	}
+
+	void AddRoomInfo ()
+	{
+		SceneGeneralInfo.GetInstance.roomsInScene.Add (this);
+	}
+
 	public void Start ()
 	{
 		roomRectCollider = GetComponent <Collider> ();

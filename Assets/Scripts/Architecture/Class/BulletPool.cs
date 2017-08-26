@@ -99,7 +99,6 @@ public class BulletPool : MonoBehaviour {
 				borrowBullet.bulletIndex = index;
 				borrowBullet.owner = owner;
 				Physics.IgnoreCollision (owner.bodyCollider, borrowBullet.GetComponent<Collider> (), true);
-				borrowBullet.GetComponent<TrailRenderer> ().Clear ();
 				borrowBullet.gameObject.SetActive (true);
 				borrowBullet.GetComponent<Collider> ().enabled = true;
 				return borrowBullet;

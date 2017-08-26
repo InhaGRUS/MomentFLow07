@@ -57,6 +57,7 @@ public class Actor : DynamicObject {
 	{
 		outsideInfo = GetComponentInChildren <OutsideInfo> ();
 		equipmentInfo = GetComponentInChildren <EquipmentInfo> ();
+		surfaceInfo = GetComponentInChildren <SurfaceInfo> ();
 	}
 
 	// Use this for initialization

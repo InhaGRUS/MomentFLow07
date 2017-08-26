@@ -17,6 +17,16 @@ public enum RoomState
 	Clear
 }
 
+public enum SurfaceType
+{
+	HumanSkin,
+	Iron,
+	Wood,
+	Ceramic,
+	Cotton, // 솜
+	Rock
+}
+
 public enum CustomCameraButtonType
 {
 	RoomRect = 0,

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class DynamicObject : MonoBehaviour, ISaveable, ILoadable {
 
 	public DynamicObjectType objectType;
-
+	public SurfaceInfo surfaceInfo;
 	public float customDeltaTime;
 	public float customTimeScale = 1;
 

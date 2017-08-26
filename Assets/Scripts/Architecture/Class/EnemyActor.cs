@@ -82,12 +82,6 @@ public class EnemyActor : Actor {
 				targetFace.hideable = true;
 		}
 	}
-		
-	public void OnDrawGizmos ()
-	{
-		Gizmos.color = Color.blue;
-		Gizmos.DrawCube (suspiciousPoint, Vector3.one * 0.5f);
-	}
 
 	//OutsideInfo Handler Block
 	public void HandlerObjectInViewAdded (DynamicObject obj)
