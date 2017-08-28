@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SurfaceTypePair
 {
@@ -40,7 +41,12 @@ public class SurfaceInfo : MonoBehaviour{
 	public void ReturnAudio ()
 	{
 		Debug.Log ("Audio Played");
-		nowUsingSource.OnPlayEnd -= ReturnAudio;
+		try{
+			nowUsingSource.OnPlayEnd -= ReturnAudio;
+		}
+		catch (Exception e) {
+
+		}
 		SoundManager.instance.ReturnAudioSource (usingAudioSourceIndex);
 		usingAudioSourceIndex = -1;
 		nowUsingSource = null;

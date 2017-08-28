@@ -94,9 +94,9 @@ public class EnemyBodyChaseWithCrouchChecker : BodyAnimationCheckerBase {
 			eActor.targetFace.hideable = false;
 			eActor.previousFace = eActor.targetFace;
 			stateDelayTimer = 0f;
+			eActor.DecreaseTension ();
 		}
 		else {
-			eActor.DecreaseTension ();
 			SetAnimationTrigger (0);
 			eActor.GetEnemyOutsideInfo ().SetViewDirection (eActor.suspiciousActor.transform.position);
 		}

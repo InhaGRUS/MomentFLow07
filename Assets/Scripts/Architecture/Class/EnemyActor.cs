@@ -103,12 +103,12 @@ public class EnemyActor : Actor {
 				if (disToActor <=  GetEnemyOutsideInfo().viewRecognizeDistance) {
 					targetActor = tmpActor;
 					suspiciousActor = targetActor;
-					suspiciousPoint = tmpActor.bodyCollider.bounds.center;
+					suspiciousPoint = tmpActor.transform.position;
 					StopCoroutine ("ObserveSuspiciousActor");
 				}
 				else { // If i can't recognize this object, but i know there is suspicious object in my view
 					suspiciousActor = tmpActor;
-					suspiciousPoint = tmpActor.bodyCollider.bounds.center;
+					suspiciousPoint = tmpActor.transform.position;
 					suspiciousPoint.y = transform.position.y;
 					StartCoroutine ("ObserveSuspiciousActor");
 				}
